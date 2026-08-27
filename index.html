@@ -62,14 +62,23 @@
     margin-top:4px;
     font-weight:400;
   }
-  .intro{
+  .intro-block{
     max-width:400px;
-    text-align:justify;
+    text-align:right;
+  }
+  .resume-link{
+    display:inline-block;
+    font-size:13px;
+    color:var(--muted);
+    text-decoration:underline;
+    margin-bottom:10px;
+  }
+  .intro{
+    text-align:right;
     font-size:14.5px;
-    line-height:1.55;
+    line-height:1.6;
     color:var(--ink);
     margin:0;
-    padding-top:4px;
   }
 
   .contact-row{
@@ -89,6 +98,7 @@
     transition:background 0.15s ease, color 0.15s ease;
   }
   .pill:hover{ background:var(--orange); color:var(--paper); }
+  .pill-linkedin:hover{ background:#0A66C2; color:#fff; border-color:#0A66C2; }
 
   hr{
     border:none; border-top:1px solid var(--hairline);
@@ -172,6 +182,11 @@
   .project-row:nth-child(even) .project-media{ order:2; }
 
   .project-media{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .media-slot{
     aspect-ratio:4/3;
     border:1.5px dashed var(--hairline);
     border-radius:2px;
@@ -179,11 +194,13 @@
     display:flex; align-items:center; justify-content:center;
     overflow:hidden;
   }
-  .project-media img,
-  .project-media video{
+  .media-slot img,
+  .media-slot video,
+  .media-slot iframe{
     width:100%; height:100%;
     object-fit:cover;
     display:block;
+    border:0;
   }
   .media-placeholder{
     text-align:center;
@@ -225,6 +242,7 @@
   .contact-panel p{ margin:10px 0 0; color:#C9C3B8; font-size:14px; max-width:480px; line-height:1.5; }
   .contact-panel .pill{ background:var(--ink); }
   .contact-panel .pill:hover{ background:var(--orange); border-color:var(--orange); }
+  .contact-panel .pill-linkedin:hover{ background:#0A66C2; border-color:#0A66C2; }
 
   footer{
     margin-top:40px;
@@ -245,13 +263,16 @@
       <p class="role">Étudiant urbaniste</p>
       <p class="place">Paris, France</p>
     </div>
-    <p class="intro">Étudiant en M2 TRAME à l'École d'Urbanisme de Paris, je travaille sur les mobilités, le diagnostic territorial et la géographie administrative française, entre outils de géomatique et contribution en source ouverte sur Wikipédia.</p>
+    <div class="intro-block">
+      <a class="resume-link" href="#">Résumé personnel</a>
+      <p class="intro">Master 2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME)<br>Parcours Transport, Mobilités, Réseau<br>École d'urbanisme de Paris</p>
+    </div>
   </div>
 
   <div class="contact-row">
     <a class="pill" href="mailto:evan.lison@outlook.com">evan.lison@outlook.com</a>
     <a class="pill" href="tel:+33771651708">+33 (0)7 71 65 17 08</a>
-    <a class="pill" href="https://evanlison.com" target="_blank" rel="noopener">evanlison.com</a>
+    <a class="pill pill-linkedin" href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 
   <hr>
@@ -263,7 +284,7 @@
       <div class="comp-side">
         <div>
           <p class="sub-label">Outils</p>
-          <p>QGIS, Rhino / SketchUp, Magrit, Inkscape, Canva, suite Office.</p>
+          <p>QGIS, Magrit, Inkscape, Canva, suite Office.</p>
         </div>
         <div>
           <p class="sub-label">Langues</p>
@@ -281,8 +302,8 @@
       <div class="card">
         <h3>École d'Urbanisme de Paris</h3>
         <p class="when">Depuis 2026, Champs-sur-Marne.</p>
-        <p class="subtitle">M2 Urbanisme et aménagement</p>
-        <p class="desc">Parcours Territoire, réseaux, aménagement, mobilités et environnement (TRAME) — spécialisation transports et données territoriales.</p>
+        <p class="subtitle">M2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME)</p>
+        <p class="desc">Parcours Transport, Mobilités, Réseau.</p>
       </div>
       <div class="card">
         <h3>Université Paris-Nanterre</h3>
@@ -306,7 +327,12 @@
 
     <div class="project-row">
       <div class="project-media">
-        <iframe src="https://www.youtube.com/embed/wgp-_W0dSjU" title="Réorganisation du Grand Paris" style="width:100%;height:100%;border:0;display:block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="media-slot">
+          <div class="media-placeholder"><span class="plus">+</span>Document PDF à ajouter</div>
+        </div>
+        <div class="media-slot">
+          <iframe src="https://www.youtube.com/embed/wgp-_W0dSjU" title="Réorganisation du Grand Paris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
       </div>
       <div class="project-text">
         <h3>Réorganisation du Grand Paris</h3>
@@ -318,7 +344,12 @@
 
     <div class="project-row">
       <div class="project-media">
-        <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
+        <div class="media-slot">
+          <div class="media-placeholder"><span class="plus">+</span>Photo, vidéo ou PDF à ajouter</div>
+        </div>
+        <div class="media-slot">
+          <div class="media-placeholder"><span class="plus">+</span>Photo, vidéo ou PDF à ajouter</div>
+        </div>
       </div>
       <div class="project-text">
         <h3>Infobox de lignes de transport</h3>
@@ -330,7 +361,12 @@
 
     <div class="project-row">
       <div class="project-media">
-        <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
+        <div class="media-slot">
+          <div class="media-placeholder"><span class="plus">+</span>Photo, vidéo ou PDF à ajouter</div>
+        </div>
+        <div class="media-slot">
+          <div class="media-placeholder"><span class="plus">+</span>Photo, vidéo ou PDF à ajouter</div>
+        </div>
       </div>
       <div class="project-text">
         <h3>Analyse de fréquence des bus</h3>
@@ -342,7 +378,12 @@
 
     <div class="project-row">
       <div class="project-media">
-        <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
+        <div class="media-slot">
+          <div class="media-placeholder"><span class="plus">+</span>Photo, vidéo ou PDF à ajouter</div>
+        </div>
+        <div class="media-slot">
+          <div class="media-placeholder"><span class="plus">+</span>Photo, vidéo ou PDF à ajouter</div>
+        </div>
       </div>
       <div class="project-text">
         <h3>Diagnostic sensible</h3>
@@ -354,7 +395,12 @@
 
     <div class="project-row">
       <div class="project-media">
-        <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
+        <div class="media-slot">
+          <div class="media-placeholder"><span class="plus">+</span>Photo, vidéo ou PDF à ajouter</div>
+        </div>
+        <div class="media-slot">
+          <div class="media-placeholder"><span class="plus">+</span>Photo, vidéo ou PDF à ajouter</div>
+        </div>
       </div>
       <div class="project-text">
         <h3>Diagnostic mobilités</h3>
@@ -366,7 +412,12 @@
 
     <div class="project-row">
       <div class="project-media">
-        <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
+        <div class="media-slot">
+          <div class="media-placeholder"><span class="plus">+</span>Photo, vidéo ou PDF à ajouter</div>
+        </div>
+        <div class="media-slot">
+          <div class="media-placeholder"><span class="plus">+</span>Photo, vidéo ou PDF à ajouter</div>
+        </div>
       </div>
       <div class="project-text">
         <h3>SIG</h3>
@@ -391,9 +442,9 @@
       </div>
       <div class="card">
         <h3>Carrefour Arcades</h3>
-        <p class="when">2022, Noisy-le-Grand.</p>
-        <p class="subtitle todo">Poste à compléter</p>
-        <p class="desc todo">Résumé à compléter.</p>
+        <p class="when">déc. 2022-jan. 2023, Noisy-le-Grand (93).</p>
+        <p class="subtitle">Vente en boulangerie-pâtisserie</p>
+        <p class="desc">Assurer l'accueil, faire tourner l'attraction BTM et assurer la sécurité des visiteurs.</p>
       </div>
     </div>
   </section>
@@ -406,7 +457,7 @@
       <div class="contact-row" style="margin-top:0;">
         <a class="pill" href="mailto:evan.lison@outlook.com">evan.lison@outlook.com</a>
         <a class="pill" href="tel:+33771651708">+33 (0)7 71 65 17 08</a>
-        <a class="pill" href="https://evanlison.com" target="_blank" rel="noopener">evanlison.com</a>
+        <a class="pill pill-linkedin" href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a>
       </div>
       <p>Disponible pour un stage de 4 à 6 mois au printemps 2027, autour des mobilités, des transports et du diagnostic territorial.</p>
     </div>
