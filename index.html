@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evan LISON — Portfolio</title>
+<title>Evan Lison — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
     font-family:'Bricolage Grotesque', sans-serif;
     color:var(--ink);
   }
-  a{color:inherit;} 
+  a{color:inherit;}
   ::selection{ background:var(--orange); color:#fff; }
   :focus-visible{ outline:2.5px solid var(--orange); outline-offset:3px; }
 
@@ -40,7 +40,6 @@
     .sheet{ margin:0; border:none; padding:36px 22px 28px; box-shadow:none; }
   }
 
-  /* ===== HEADER ===== */
   .head-row{
     display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap;
   }
@@ -96,7 +95,6 @@
     margin:38px 0;
   }
 
-  /* ===== SECTION HEADERS ===== */
   .sec-title{
     color:var(--orange);
     font-weight:800;
@@ -112,7 +110,6 @@
     margin-bottom:4px;
   }
 
-  /* ===== COMPETENCES ===== */
   .comp-grid{
     display:grid;
     grid-template-columns: 1.5fr 1fr;
@@ -129,7 +126,6 @@
   .comp-side p{ margin:0; font-size:14px; line-height:1.5; color:var(--ink); }
   @media (max-width:640px){ .comp-grid{grid-template-columns:1fr;} }
 
-  /* ===== GRID CARDS (formations / projets / experiences) ===== */
   .grid-3{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
@@ -163,7 +159,6 @@
   .card p.desc.todo{ color:var(--muted); font-style:italic; }
   .card .subtitle.todo{ color:var(--muted); font-style:italic; font-weight:500; }
 
-  /* ===== PROJETS — lignes avec zone média ===== */
   .project-row{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -250,7 +245,7 @@
       <p class="role">Étudiant urbaniste</p>
       <p class="place">Paris, France</p>
     </div>
-    <p class="intro">Étudiant M2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME) à l'École d'Urbanisme de Paris.</p>
+    <p class="intro">Étudiant en M2 TRAME à l'École d'Urbanisme de Paris, je travaille sur les mobilités, le diagnostic territorial et la géographie administrative française, entre outils de géomatique et contribution en source ouverte sur Wikipédia.</p>
   </div>
 
   <div class="contact-row">
@@ -309,14 +304,9 @@
   <section>
     <h2 class="sec-title">Projets</h2>
 
-    <!-- Pour chaque projet : remplacez le contenu de .project-media par
-         <img src="votre-photo.jpg" alt="..."> ou
-         <video src="votre-video.mp4" controls></video>
-         Le cadre en pointillés (media-placeholder) disparaît dès qu'il est remplacé. -->
-
     <div class="project-row">
       <div class="project-media">
-        <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
+        <iframe src="https://www.youtube.com/embed/wgp-_W0dSjU" title="Réorganisation du Grand Paris" style="width:100%;height:100%;border:0;display:block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <div class="project-text">
         <h3>Réorganisation du Grand Paris</h3>
