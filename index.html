@@ -144,14 +144,14 @@
     grid-template-columns: 1.5fr 1fr;
     gap:var(--sp-4);
   }
-  .comp-grid p{
+ .comp-grid > p{
   text-align:justify;
   font-size:26px;
   line-height:1.5;
-  font-weight:6000;
+  font-weight:800;
   margin:0;
 }
-  .comp-side div{ margin-bottom:var(--sp-2); }
+  .comp-side p{ margin:0; font-size:16px; line-height:1.5; font-weight:400; color:var(--ink); }
   .comp-side div:last-child{ margin-bottom:0; }
   .comp-side p{ margin:0; font-size:16px; line-height:1.5; color:var(--ink); }
   @media (max-width:640px){ .comp-grid{grid-template-columns:1fr;} }
