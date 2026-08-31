@@ -37,7 +37,6 @@
   a{ color:inherit; }
   ::selection{ background:var(--orange); color:#fff; }
   :focus-visible{ outline:2.5px solid var(--orange); outline-offset:3px; }
-
   /* ---------- Structure générale ---------- */
   .sheet{
     width:100%;
@@ -60,7 +59,6 @@
     margin:0 0 var(--sp-2);
     letter-spacing:-0.01em;
   }
-
   /* ---------- En-tête (identité + résumé) ---------- */
   .head-row{
     display:flex;
@@ -99,7 +97,6 @@
   }
   .eup-logo-link{ display:inline-block; }
   .eup-logo-link:focus-visible{ outline:2.5px solid var(--orange); outline-offset:3px; }
-
 .intro-block{
   width:80%;
   text-align:justify;
@@ -113,7 +110,6 @@
 .resume + .resume{
   margin-top:6px;
 }
-
   .contact-row{
     display:flex;
     flex-wrap:wrap;
@@ -135,7 +131,6 @@
   }
   .pill:hover{ background:var(--orange); color:var(--paper); }
   .pill-linkedin:hover{ background:#0A66C2; color:#fff; border-color:#0A66C2; }
-
   /* ---------- Compétences ---------- */
   .comp-grid{
     display:grid;
@@ -164,37 +159,31 @@
   }
   .comp-side div{ margin-bottom:var(--sp-2); }
   .comp-side div:last-child{ margin-bottom:0; }
-
   /* ---------- Grille à 3 colonnes (Formations, Expériences) ---------- */
-.grid-2{
-  display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:var(--sp-4);
-}
-@media (max-width:640px){ .grid-2{ grid-template-columns:1fr; } }
-
-.card .sub-entry{ margin-bottom:var(--sp-2); }
-.card .sub-entry:last-child{ margin-bottom:0; }
-
+  .grid-3{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:var(--sp-4);
+  }
+  @media (max-width:760px){ .grid-3{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .grid-3{ grid-template-columns:1fr; } }
+  .card .sub-entry{ margin-bottom:var(--sp-2); }
+  .card .sub-entry:last-child{ margin-bottom:0; }
   /* ---------- Bloc de texte partagé : fiches (.card) et projets (.project-text) ---------- */
   .card h3, .project-text h3{ font-weight:700; margin:0 0 var(--sp-1); line-height:1.25; }
   .card h3{ font-size:16.5px; }
   .project-text h3{ font-size:20px; }
-
   .card .when, .project-text .when{ color:var(--muted); margin-bottom:var(--sp-1); }
   .card .when{ font-size:12.5px; }
   .project-text .when{ font-size:13px; }
-
   .card .subtitle, .project-text .subtitle{ font-weight:600; margin-bottom:var(--sp-1); }
   .card .subtitle{ font-size:13.5px; }
   .project-text .subtitle{ font-size:15px; }
   .card .subtitle.todo, .project-text .subtitle.todo{ color:var(--muted); font-style:italic; font-weight:500; }
-
   .card p.desc, .project-text p.desc{ color:var(--ink); margin:0; }
   .card p.desc{ font-size:13px; line-height:1.55; }
   .project-text p.desc{ font-size:14.5px; line-height:1.6; }
   .card p.desc.todo, .project-text p.desc.todo{ color:var(--muted); font-style:italic; }
-
   /* ---------- Projets ---------- */
   .project-row{
     display:grid;
@@ -256,7 +245,6 @@
     .project-row{ grid-template-columns:1fr; gap:var(--sp-2); padding:var(--sp-3) 0; }
     .project-row:nth-child(even) .project-media{ order:0; }
   }
-
   .full-video{
     aspect-ratio:16/9;
     border-radius:2px;
@@ -265,7 +253,6 @@
     width:50%;
   }
   .full-video iframe{ width:100%; height:100%; border:0; display:block; }
-
   /* ---------- Panneau de contact (pleine largeur) ---------- */
 .contact-panel{
   width:100vw;
@@ -303,7 +290,6 @@
 </head>
 <body>
 <div class="sheet">
-
   <div class="head-row">
     <div class="id-block">
       <h1>Evan LISON</h1>
@@ -321,15 +307,12 @@
   <p class="resume">Je suis aujourd'hui à la recherche d'un stage de fin d'études de 4 à 6 mois dès le printemps 2027, dans le cadre de mon mémoire de M2.</p>
 </div>
   </div>
-
   <div class="contact-row">
     <a class="pill" href="mailto:evan.lison@outlook.com">evan.lison@outlook.com</a>
     <a class="pill" href="tel:+33771651708">+33 (0)7 71 65 17 08</a>
     <a class="pill pill-linkedin" href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a>
   </div>
-
   <hr>
-
   <section>
     <h2 class="sec-title">Compétences</h2>
     <div class="comp-grid">
@@ -346,9 +329,7 @@
       </div>
     </div>
   </section>
-
   <hr>
-
   <section>
     <h2 class="sec-title">Formations</h2>
     <div class="grid-3">
@@ -372,15 +353,12 @@
       </div>
     </div>
   </section>
-
   <hr>
-
   <section>
     <h2 class="sec-title">Projets</h2>
     <!-- Pour chaque projet : dans .media-frame, remplacer le .media-placeholder par
          <img src="images/nom-fichier.jpg" alt="Description"> (ou une vidéo).
          Pour ajouter une vidéo YouTube pleine largeur sous une fiche, dupliquer le bloc .full-video. -->
-
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
@@ -399,7 +377,6 @@
     <div class="full-video">
       <iframe src="https://www.youtube.com/embed/wgp-_W0dSjU" title="Réorganisation du Grand Paris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
-
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
@@ -415,7 +392,6 @@
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
     </div>
-
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
@@ -431,7 +407,6 @@
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
     </div>
-
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
@@ -450,7 +425,6 @@
     <div class="full-video">
       <iframe src="https://www.youtube.com/embed/Uso24MKVhKY" title="Chaque regard révèle le Marais" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
-
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
@@ -466,7 +440,6 @@
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
     </div>
-
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
@@ -483,39 +456,36 @@
       </div>
     </div>
   </section>
-
   <hr>
-
-<section>
-  <h2 class="sec-title">Expériences</h2>
-  <div class="grid-2">
-    <div class="card">
-      <h3>Disneyland Paris</h3>
-      <div class="sub-entry">
-        <p class="when">Depuis 2026, Chessy.</p>
-        <p class="subtitle">Opérateur d'attraction — Big Thunder Mountain</p>
-        <p class="desc">Exploitation et sécurité de l'attraction, accueil et gestion des flux de visiteurs.</p>
+  <section>
+    <h2 class="sec-title">Expériences</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Disneyland Paris</h3>
+        <div class="sub-entry">
+          <p class="when">Depuis 2026, Chessy.</p>
+          <p class="subtitle">Opérateur d'attraction — Big Thunder Mountain</p>
+          <p class="desc">Exploitation et sécurité de l'attraction, accueil et gestion des flux de visiteurs.</p>
+        </div>
+        <div class="sub-entry">
+          <p class="when">2023–2026, Chessy.</p>
+          <p class="subtitle">Vendeur en boutique — Thunder Mesa</p>
+          <p class="desc">Vente et conseil client dans une boutique thématique western, gestion de la caisse et des stocks.</p>
+        </div>
+        <div class="sub-entry">
+          <p class="when">2023, Chessy.</p>
+          <p class="subtitle">Vendeur en restauration</p>
+          <p class="desc">Accueil, prise de commande et service en point de restauration rapide au sein du parc.</p>
+        </div>
       </div>
-      <div class="sub-entry">
-        <p class="when">2023–2026, Chessy.</p>
-        <p class="subtitle">Vendeur en boutique — Thunder Mesa</p>
-        <p class="desc">Vente et conseil client dans une boutique thématique western, gestion de la caisse et des stocks.</p>
-      </div>
-      <div class="sub-entry">
-        <p class="when">2023, Chessy.</p>
-        <p class="subtitle">Vendeur en restauration</p>
-        <p class="desc">Accueil, prise de commande et service en point de restauration rapide au sein du parc.</p>
+      <div class="card">
+        <h3>Carrefour Arcades</h3>
+        <p class="when">déc. 2022-jan. 2023, Noisy-le-Grand (93).</p>
+        <p class="subtitle">Vente en boulangerie-pâtisserie</p>
+        <p class="desc todo">Résumé à compléter.</p>
       </div>
     </div>
-    <div class="card">
-      <h3>Carrefour Arcades</h3>
-      <p class="when">déc. 2022-jan. 2023, Noisy-le-Grand (93).</p>
-      <p class="subtitle">Vente en boulangerie-pâtisserie</p>
-      <p class="desc todo">Résumé à compléter.</p>
-    </div>
-  </div>
-</section>
-
+  </section>
   <section>
     <div class="contact-panel">
       <div class="contact-panel-inner">
@@ -532,7 +502,6 @@
       </div>
     </div>
   </section>
-
 </div>
 </body>
 </html>
