@@ -166,13 +166,15 @@
   .comp-side div:last-child{ margin-bottom:0; }
 
   /* ---------- Grille à 3 colonnes (Formations, Expériences) ---------- */
-  .grid-3{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:var(--sp-4);
-  }
-  @media (max-width:760px){ .grid-3{ grid-template-columns:1fr 1fr; } }
-  @media (max-width:520px){ .grid-3{ grid-template-columns:1fr; } }
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:var(--sp-4);
+}
+@media (max-width:640px){ .grid-2{ grid-template-columns:1fr; } }
+
+.card .sub-entry{ margin-bottom:var(--sp-2); }
+.card .sub-entry:last-child{ margin-bottom:0; }
 
   /* ---------- Bloc de texte partagé : fiches (.card) et projets (.project-text) ---------- */
   .card h3, .project-text h3{ font-weight:700; margin:0 0 var(--sp-1); line-height:1.25; }
@@ -484,23 +486,35 @@
 
   <hr>
 
-  <section>
-    <h2 class="sec-title">Expériences</h2>
-    <div class="grid-3">
-      <div class="card">
-        <h3>Disneyland Paris</h3>
-        <p class="when">Depuis 2023, Chessy.</p>
-        <p class="subtitle">Thunder Mesa → Big Thunder Mountain</p>
-        <p class="desc">Contrat étudiant sur trois ans dans une boutique thématique western, actuellement en transition vers une attraction voisine.</p>
+<section>
+  <h2 class="sec-title">Expériences</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Disneyland Paris</h3>
+      <div class="sub-entry">
+        <p class="when">Depuis 2026, Chessy.</p>
+        <p class="subtitle">Opérateur d'attraction — Big Thunder Mountain</p>
+        <p class="desc">Exploitation et sécurité de l'attraction, accueil et gestion des flux de visiteurs.</p>
       </div>
-      <div class="card">
-        <h3>Carrefour Arcades</h3>
-        <p class="when">déc. 2022-jan. 2023, Noisy-le-Grand (93).</p>
-        <p class="subtitle">Vente en boulangerie-pâtisserie</p>
-        <p class="desc">Assurer l'accueil, faire tourner l'attraction BTM et assurer la sécurité des visiteurs.</p>
+      <div class="sub-entry">
+        <p class="when">2023–2026, Chessy.</p>
+        <p class="subtitle">Vendeur en boutique — Thunder Mesa</p>
+        <p class="desc">Vente et conseil client dans une boutique thématique western, gestion de la caisse et des stocks.</p>
+      </div>
+      <div class="sub-entry">
+        <p class="when">2023, Chessy.</p>
+        <p class="subtitle">Vendeur en restauration</p>
+        <p class="desc">Accueil, prise de commande et service en point de restauration rapide au sein du parc.</p>
       </div>
     </div>
-  </section>
+    <div class="card">
+      <h3>Carrefour Arcades</h3>
+      <p class="when">déc. 2022-jan. 2023, Noisy-le-Grand (93).</p>
+      <p class="subtitle">Vente en boulangerie-pâtisserie</p>
+      <p class="desc todo">Résumé à compléter.</p>
+    </div>
+  </div>
+</section>
 
   <section>
     <div class="contact-panel">
