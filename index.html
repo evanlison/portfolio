@@ -14,8 +14,6 @@
     --orange:#F04525;
     --muted:#77726A;
     --hairline:#D8D2C6;
-
-    /* échelle d'espacement unique, utilisée partout */
     --sp-1:8px;
     --sp-2:16px;
     --sp-3:24px;
@@ -38,7 +36,6 @@
   a{color:inherit;}
   ::selection{ background:var(--orange); color:#fff; }
   :focus-visible{ outline:2.5px solid var(--orange); outline-offset:3px; }
-
   .sheet{
     width:100%;
     max-width:980px;
@@ -48,7 +45,6 @@
   @media (max-width:720px){
     .sheet{ padding:var(--sp-4) var(--sp-2) 0; }
   }
-
   .head-row{
     display:flex; justify-content:space-between; gap:var(--sp-5); flex-wrap:wrap;
   }
@@ -119,12 +115,10 @@
   }
   .pill:hover{ background:var(--orange); color:var(--paper); }
   .pill-linkedin:hover{ background:#0A66C2; color:#fff; border-color:#0A66C2; }
-
   hr{
     border:none; border-top:1px solid var(--hairline);
     margin:var(--sp-5) 0;
   }
-
   .sec-title{
     color:var(--orange);
     font-weight:800;
@@ -139,7 +133,6 @@
     text-transform:none;
     margin-bottom:var(--sp-1);
   }
-
   .comp-grid{
     display:grid;
     grid-template-columns: 1.5fr 1fr;
@@ -156,7 +149,6 @@
   .comp-side div:last-child{ margin-bottom:0; }
   .comp-side p{ margin:0; font-size:16px; line-height:1.5; color:var(--ink); }
   @media (max-width:640px){ .comp-grid{grid-template-columns:1fr;} }
-
   .grid-3{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
@@ -164,7 +156,6 @@
   }
   @media (max-width:760px){ .grid-3{grid-template-columns:1fr 1fr;} }
   @media (max-width:520px){ .grid-3{grid-template-columns:1fr;} }
-
   .card h3{
     font-size:16.5px;
     font-weight:700;
@@ -189,7 +180,6 @@
   }
   .card p.desc.todo{ color:var(--muted); font-style:italic; }
   .card .subtitle.todo{ color:var(--muted); font-style:italic; font-weight:500; }
-
   .project-row{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -201,7 +191,6 @@
   .project-row:first-child{ padding-top:0; }
   .project-row:last-child{ border-bottom:none; padding-bottom:0; }
   .project-row:nth-child(even) .project-media{ order:2; }
-
   .project-media{
     display:flex;
     flex-direction:column;
@@ -241,7 +230,6 @@
     color:var(--orange);
     margin-bottom:var(--sp-1);
   }
-
   .project-text h3{
     font-size:20px;
     font-weight:700;
@@ -262,12 +250,10 @@
     text-decoration:none;
   }
   .project-link a:hover{ text-decoration:underline; }
-
   @media (max-width:680px){
     .project-row{ grid-template-columns:1fr; gap:var(--sp-2); padding:var(--sp-3) 0; }
     .project-row:nth-child(even) .project-media{ order:0; }
   }
-
 .full-video{
   aspect-ratio:16/9;
   border-radius:2px;
@@ -278,7 +264,6 @@
   .full-video iframe{
     width:100%; height:100%; border:0; display:block;
   }
-
   .contact-panel{
     width:100vw;
     margin-left:calc(-50vw + 50%);
@@ -307,13 +292,10 @@
   .contact-panel .pill{ background:var(--ink); }
   .contact-panel .pill:hover{ background:var(--orange); border-color:var(--orange); }
   .contact-panel .pill-linkedin:hover{ background:#0A66C2; border-color:#0A66C2; }
-
 </style>
 </head>
 <body>
-
 <div class="sheet">
-
   <div class="head-row">
     <div class="id-block">
       <h1>Evan <span class="surname">LISON</span></h1>
@@ -328,15 +310,12 @@
       <a class="resume">Étudiant en Master 2 TRAME (Territoires, Réseaux, Aménagement, Mobilités, Environnement), mention Transports, Mobilités, Réseaux, à l'École d'Urbanisme de Paris, je bénéficie d'une formation d'excellence adossée à un partenariat avec l'École nationale des ponts et chaussées, qui me permet d'approfondir mes compétences sur les grands enjeux de la fabrique urbaine contemporaine (aménagement des territoires, mobilités, transition environnementale et gouvernance des réseaux urbains).<br/>Mon parcours en géographie et urbanisme m'a permis de développer une approche rigoureuse du diagnostic territorial, du montage de projet ainsi que de l'analyse statistique et cartographique, et une réelle aisance avec les outils du métier tels que QGIS.<br/>En parallèle de mes études, j'occupe depuis trois ans un emploi étudiant à Disneyland Paris, où j'ai développé une réelle capacité d'adaptation et de travail en équipe au sein d'un environnement multiculturel et à forte affluence, ainsi qu'un usage courant de l'anglais au quotidien.<br/>Je suis aujourd'hui à la recherche d'un stage de fin d'études de 4 à 6 mois dès le printemps 2027, dans le cadre de mon mémoire de M2.</a>
     </div>
   </div>
-
   <div class="contact-row">
     <a class="pill" href="mailto:evan.lison@outlook.com">evan.lison@outlook.com</a>
     <a class="pill" href="tel:+33771651708">+33 (0)7 71 65 17 08</a>
     <a class="pill pill-linkedin" href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a>
   </div>
-
   <hr>
-
   <section>
     <h2 class="sec-title">Compétences</h2>
     <div class="comp-grid">
@@ -353,9 +332,7 @@
       </div>
     </div>
   </section>
-
   <hr>
-
   <section>
     <h2 class="sec-title">Formations</h2>
     <div class="grid-3">
@@ -379,12 +356,9 @@
       </div>
     </div>
   </section>
-
   <hr>
-
   <section>
     <h2 class="sec-title">Projets</h2>
-
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
@@ -401,11 +375,9 @@
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
     </div>
-
     <div class="full-video">
       <iframe src="https://www.youtube.com/embed/wgp-_W0dSjU" title="Réorganisation du Grand Paris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
-
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
@@ -422,7 +394,6 @@
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
     </div>
-
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
@@ -439,7 +410,14 @@
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
     </div>
-
+    <div class="project-row">
+      <div class="project-media">
+        <div class="media-frame">
+          <!-- Remplacez la ligne ci-dessous par : <img src="images/nom-fichier.jpg" alt="Description"> -->
+          <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
+        </div>
+        <p class="media-caption">Légende à ajouter</p>
+      </div>
       <div class="project-text">
         <h3>Diagnostic sensible</h3>
         <p class="when">2026, Paris 3e et 4e.</p>
@@ -451,17 +429,6 @@
     <div class="full-video">
       <iframe src="https://www.youtube.com/embed/Uso24MKVhKY" title="Chaque regard révèle le Marais" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
-    <div class="project-row">
-      <div class="project-media">
-        <div class="media-frame">
-          <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
-        </div>
-        <p class="media-caption">Légende à ajouter</p>
-      </div>
-      <div class="project-text">
-        <h3>Diagnostic sensible</h3>
-        <p class="when">2026, Paris le marais</p>
-
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
@@ -478,7 +445,6 @@
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
     </div>
-
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
@@ -495,11 +461,8 @@
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
     </div>
-
   </section>
-
   <hr>
-
   <section>
     <h2 class="sec-title">Expériences</h2>
     <div class="grid-3">
@@ -518,7 +481,6 @@
     </div>
   </section>
 
-  
 <section>
   <div class="contact-panel">
     <div class="contact-panel-inner">
@@ -535,8 +497,6 @@
       </div>
     </div>
   </section>
-
 </div>
-
 </body>
 </html>
