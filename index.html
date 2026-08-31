@@ -14,6 +14,7 @@
     --orange:#F04525;
     --muted:#77726A;
     --hairline:#D8D2C6;
+    /* échelle d'espacement unique, utilisée partout */
     --sp-1:8px;
     --sp-2:16px;
     --sp-3:24px;
@@ -21,9 +22,9 @@
     --sp-5:48px;
     --sp-6:64px;
   }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
   body{
     margin:0;
     background:var(--paper);
@@ -33,9 +34,11 @@
     justify-content:center;
     overflow-x:hidden;
   }
-  a{color:inherit;}
+  a{ color:inherit; }
   ::selection{ background:var(--orange); color:#fff; }
   :focus-visible{ outline:2.5px solid var(--orange); outline-offset:3px; }
+
+  /* ---------- Structure générale ---------- */
   .sheet{
     width:100%;
     max-width:980px;
@@ -45,8 +48,25 @@
   @media (max-width:720px){
     .sheet{ padding:var(--sp-4) var(--sp-2) 0; }
   }
+  hr{
+    border:none;
+    border-top:1px solid var(--hairline);
+    margin:var(--sp-5) 0;
+  }
+  .sec-title{
+    color:var(--orange);
+    font-weight:800;
+    font-size:28px;
+    margin:0 0 var(--sp-2);
+    letter-spacing:-0.01em;
+  }
+
+  /* ---------- En-tête (identité + résumé) ---------- */
   .head-row{
-    display:flex; justify-content:space-between; gap:var(--sp-5); flex-wrap:wrap;
+    display:flex;
+    justify-content:space-between;
+    gap:var(--sp-5);
+    flex-wrap:wrap;
   }
   .id-block h1{
     margin:0;
@@ -55,54 +75,51 @@
     letter-spacing:-0.01em;
     line-height:1;
   }
-  .id-block h1 .surname{ font-weight:800; }
   .id-block .role{
     font-size:20px;
     font-weight:500;
     margin-top:var(--sp-1);
   }
+  .id-block .intro{
+    font-size:14.5px;
+    line-height:1.3;
+    margin:var(--sp-2) 0 0;
+  }
   .id-block .place{
     font-size:14px;
     color:var(--muted);
-    margin-top:var(--sp-1);
+    margin:var(--sp-1) 0 0;
     font-weight:400;
   }
-.intro-block{
-  width:100%;
-  text-align:justify;
-  margin-top:var(--sp-2);
-}
+  .eup-logo{
+    height:50px;
+    width:auto;
+    display:block;
+    margin:20px 0;
+  }
+  .eup-logo-link{ display:inline-block; }
+  .eup-logo-link:focus-visible{ outline:2.5px solid var(--orange); outline-offset:3px; }
+
+  .intro-block{
+    width:100%;
+    text-align:justify;
+    margin-top:var(--sp-2);
+  }
   .resume{
     display:inline-block;
     font-size:13px;
     color:var(--ink);
-    margin-bottom:var(--sp-1);
   }
-.intro{
-  text-align:left;
-  font-size:14.5px;
-  line-height:1.3;
-  margin:var(--sp-2) 0 0;
-}
-.eup-logo{
-  height:50px;
-  width:auto;
-  display:block;
-  margin:20px 0;
-}
-.eup-logo-link{
-  display:inline-block;
-}
-.eup-logo-link:focus-visible{
-  outline:2.5px solid var(--orange);
-  outline-offset:3px;
-}
+
   .contact-row{
-    display:flex; flex-wrap:wrap; gap:var(--sp-1);
+    display:flex;
+    flex-wrap:wrap;
+    gap:var(--sp-1);
     margin-top:var(--sp-4);
   }
   .pill{
-    display:inline-flex; align-items:center;
+    display:inline-flex;
+    align-items:center;
     border:3px solid var(--orange);
     color:var(--orange);
     border-radius:10px;
@@ -115,71 +132,65 @@
   }
   .pill:hover{ background:var(--orange); color:var(--paper); }
   .pill-linkedin:hover{ background:#0A66C2; color:#fff; border-color:#0A66C2; }
-  hr{
-    border:none; border-top:1px solid var(--hairline);
-    margin:var(--sp-5) 0;
-  }
-  .sec-title{
-    color:var(--orange);
-    font-weight:800;
-    font-size:28px;
-    margin:0 0 var(--sp-2);
-    letter-spacing:-0.01em;
-  }
-  .sub-label{
-    color:var(--orange);
-    font-weight:700;
-    font-size:13px;
-    text-transform:none;
-    margin-bottom:var(--sp-1);
-  }
+
+  /* ---------- Compétences ---------- */
   .comp-grid{
     display:grid;
     grid-template-columns: 1.5fr 1fr;
     gap:var(--sp-4);
   }
- .comp-grid > p{
-  text-align:justify;
-  font-size:26px;
-  line-height:1.5;
-  font-weight:800;
-  margin:0;
-}
-  .comp-side p:not(.sub-label){ margin:0; font-size:16px; line-height:1.5; font-weight:400; color:var(--ink); }
+  .comp-grid > p{
+    text-align:justify;
+    font-size:26px;
+    line-height:1.5;
+    font-weight:800;
+    margin:0;
+  }
+  .comp-side p{
+    margin:0;
+    font-size:16px;
+    line-height:1.5;
+    font-weight:400;
+    color:var(--ink);
+  }
+  .comp-side .sub-label{
+    color:var(--orange);
+    font-weight:700;
+    font-size:13px;
+    margin-bottom:var(--sp-1);
+  }
   .comp-side div:last-child{ margin-bottom:0; }
-  .comp-side p{ margin:0; font-size:16px; line-height:1.5; color:var(--ink); }
-  @media (max-width:640px){ .comp-grid{grid-template-columns:1fr;} }
+  @media (max-width:640px){ .comp-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Grille à 3 colonnes (Formations, Expériences) ---------- */
   .grid-3{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
     gap:var(--sp-4);
   }
-  @media (max-width:760px){ .grid-3{grid-template-columns:1fr 1fr;} }
-  @media (max-width:520px){ .grid-3{grid-template-columns:1fr;} }
-  .card h3{
-    font-size:16.5px;
-    font-weight:700;
-    margin:0 0 var(--sp-1);
-    line-height:1.25;
-  }
-  .card .when{
-    font-size:12.5px;
-    color:var(--muted);
-    margin-bottom:var(--sp-1);
-  }
-  .card .subtitle{
-    font-size:13.5px;
-    font-weight:600;
-    margin-bottom:var(--sp-1);
-  }
-  .card p.desc{
-    font-size:13px;
-    line-height:1.55;
-    color:var(--ink);
-    margin:0;
-  }
-  .card p.desc.todo{ color:var(--muted); font-style:italic; }
-  .card .subtitle.todo{ color:var(--muted); font-style:italic; font-weight:500; }
+  @media (max-width:760px){ .grid-3{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px){ .grid-3{ grid-template-columns:1fr; } }
+
+  /* ---------- Bloc de texte partagé : fiches (.card) et projets (.project-text) ---------- */
+  .card h3, .project-text h3{ font-weight:700; margin:0 0 var(--sp-1); line-height:1.25; }
+  .card h3{ font-size:16.5px; }
+  .project-text h3{ font-size:20px; }
+
+  .card .when, .project-text .when{ color:var(--muted); margin-bottom:var(--sp-1); }
+  .card .when{ font-size:12.5px; }
+  .project-text .when{ font-size:13px; }
+
+  .card .subtitle, .project-text .subtitle{ font-weight:600; margin-bottom:var(--sp-1); }
+  .card .subtitle{ font-size:13.5px; }
+  .project-text .subtitle{ font-size:15px; }
+  .card .subtitle.todo, .project-text .subtitle.todo{ color:var(--muted); font-style:italic; font-weight:500; }
+
+  .card p.desc, .project-text p.desc{ color:var(--ink); margin:0; }
+  .card p.desc{ font-size:13px; line-height:1.55; }
+  .project-text p.desc{ font-size:14.5px; line-height:1.6; }
+  .card p.desc.todo, .project-text p.desc.todo{ color:var(--muted); font-style:italic; }
+
+  /* ---------- Projets ---------- */
   .project-row{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -201,12 +212,15 @@
     border:1.5px dashed var(--hairline);
     border-radius:2px;
     background:rgba(20,18,16,0.02);
-    display:flex; align-items:center; justify-content:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     overflow:hidden;
   }
   .media-frame img,
   .media-frame video{
-    width:100%; height:100%;
+    width:100%;
+    height:100%;
     object-fit:cover;
     display:block;
   }
@@ -230,45 +244,30 @@
     color:var(--orange);
     margin-bottom:var(--sp-1);
   }
-  .project-text h3{
-    font-size:20px;
-    font-weight:700;
-    margin:0 0 var(--sp-1);
-  }
-  .project-text .when{ font-size:13px; color:var(--muted); margin-bottom:var(--sp-1); }
-  .project-text .subtitle{ font-size:15px; font-weight:600; margin-bottom:var(--sp-1); }
-  .project-text .subtitle.todo{ color:var(--muted); font-style:italic; font-weight:500; }
-  .project-text p.desc{ font-size:14.5px; line-height:1.6; color:var(--ink); margin:0; }
-  .project-text p.desc.todo{ color:var(--muted); font-style:italic; }
-  .project-link{
-    margin:var(--sp-1) 0 0;
-    font-size:13.5px;
-  }
-  .project-link a{
-    color:var(--orange);
-    font-weight:600;
-    text-decoration:none;
-  }
+  .project-link{ margin:var(--sp-1) 0 0; font-size:13.5px; }
+  .project-link a{ color:var(--orange); font-weight:600; text-decoration:none; }
   .project-link a:hover{ text-decoration:underline; }
   @media (max-width:680px){
     .project-row{ grid-template-columns:1fr; gap:var(--sp-2); padding:var(--sp-3) 0; }
     .project-row:nth-child(even) .project-media{ order:0; }
   }
-.full-video{
-  aspect-ratio:16/9;
-  border-radius:2px;
-  overflow:hidden;
-  margin:0 auto var(--sp-4);
-  width:50%;
-}
-  .full-video iframe{
-    width:100%; height:100%; border:0; display:block;
+
+  .full-video{
+    aspect-ratio:16/9;
+    border-radius:2px;
+    overflow:hidden;
+    margin:0 auto var(--sp-4);
+    width:50%;
   }
+  .full-video iframe{ width:100%; height:100%; border:0; display:block; }
+
+  /* ---------- Panneau de contact (pleine largeur) ---------- */
   .contact-panel{
     width:100vw;
     margin-left:calc(-50vw + 50%);
     margin-right:calc(-50vw + 50%);
     margin-top:var(--sp-3);
+    margin-bottom:0;
     background:var(--ink);
     color:var(--paper);
   }
@@ -281,41 +280,48 @@
     .contact-panel-inner{ padding:var(--sp-4) var(--sp-2); }
   }
   .contact-panel p{ margin:var(--sp-1) 0 0; color:#C9C3B8; font-size:14px; max-width:480px; line-height:1.5; }
+  .contact-panel .pill{ background:var(--ink); }
+  .contact-panel .pill:hover{ background:var(--orange); border-color:var(--orange); }
+  .contact-panel .pill-linkedin:hover{ background:#0A66C2; border-color:#0A66C2; }
   .panel-footer{
     margin-top:var(--sp-4);
     padding-top:var(--sp-2);
     border-top:1px solid rgba(250,246,239,0.15);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--sp-1);
-    font-size:11.5px; color:#C9C3B8;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:var(--sp-1);
+    font-size:11.5px;
+    color:#C9C3B8;
   }
-  .contact-panel{ margin-bottom:0; }
-  .contact-panel .pill{ background:var(--ink); }
-  .contact-panel .pill:hover{ background:var(--orange); border-color:var(--orange); }
-  .contact-panel .pill-linkedin:hover{ background:#0A66C2; border-color:#0A66C2; }
 </style>
 </head>
 <body>
 <div class="sheet">
+
   <div class="head-row">
     <div class="id-block">
-      <h1>Evan <span class="surname">LISON</span></h1>
+      <h1>Evan LISON</h1>
       <p class="role">Étudiant urbaniste</p>
-<p class="intro">Master 2 TRAME (Territoire, Réseaux, Aménagement, Mobilités, Environnement)<br>Mention Transports, Mobilités, Réseaux</p>
+      <p class="intro">Master 2 TRAME (Territoire, Réseaux, Aménagement, Mobilités, Environnement)<br>Mention Transports, Mobilités, Réseaux</p>
       <a class="eup-logo-link" href="https://www.eup.fr" target="_blank" rel="noopener">
-  <img src="https://formations.univ-gustave-eiffel.fr/?type=11&logo=EUP-couleurs-651ffe4076e48.png" alt="École d'urbanisme de Paris" class="eup-logo">
-</a>
+        <img src="https://formations.univ-gustave-eiffel.fr/?type=11&logo=EUP-couleurs-651ffe4076e48.png" alt="École d'urbanisme de Paris" class="eup-logo">
+      </a>
       <p class="place">Paris, France</p>
     </div>
     <div class="intro-block">
-      <a class="resume">Étudiant en Master 2 TRAME (Territoires, Réseaux, Aménagement, Mobilités, Environnement), mention Transports, Mobilités, Réseaux, à l'École d'Urbanisme de Paris, je bénéficie d'une formation d'excellence adossée à un partenariat avec l'École nationale des ponts et chaussées, qui me permet d'approfondir mes compétences sur les grands enjeux de la fabrique urbaine contemporaine (aménagement des territoires, mobilités, transition environnementale et gouvernance des réseaux urbains).<br/>Mon parcours en géographie et urbanisme m'a permis de développer une approche rigoureuse du diagnostic territorial, du montage de projet ainsi que de l'analyse statistique et cartographique, et une réelle aisance avec les outils du métier tels que QGIS.<br/>En parallèle de mes études, j'occupe depuis trois ans un emploi étudiant à Disneyland Paris, où j'ai développé une réelle capacité d'adaptation et de travail en équipe au sein d'un environnement multiculturel et à forte affluence, ainsi qu'un usage courant de l'anglais au quotidien.<br/>Je suis aujourd'hui à la recherche d'un stage de fin d'études de 4 à 6 mois dès le printemps 2027, dans le cadre de mon mémoire de M2.</a>
+      <p class="resume">Étudiant en Master 2 TRAME (Territoires, Réseaux, Aménagement, Mobilités, Environnement), mention Transports, Mobilités, Réseaux, à l'École d'Urbanisme de Paris, je bénéficie d'une formation d'excellence adossée à un partenariat avec l'École nationale des ponts et chaussées, qui me permet d'approfondir mes compétences sur les grands enjeux de la fabrique urbaine contemporaine (aménagement des territoires, mobilités, transition environnementale et gouvernance des réseaux urbains).<br>Mon parcours en géographie et urbanisme m'a permis de développer une approche rigoureuse du diagnostic territorial, du montage de projet ainsi que de l'analyse statistique et cartographique, et une réelle aisance avec les outils du métier tels que QGIS.<br>En parallèle de mes études, j'occupe depuis trois ans un emploi étudiant à Disneyland Paris, où j'ai développé une réelle capacité d'adaptation et de travail en équipe au sein d'un environnement multiculturel et à forte affluence, ainsi qu'un usage courant de l'anglais au quotidien.<br>Je suis aujourd'hui à la recherche d'un stage de fin d'études de 4 à 6 mois dès le printemps 2027, dans le cadre de mon mémoire de M2.</p>
     </div>
   </div>
+
   <div class="contact-row">
     <a class="pill" href="mailto:evan.lison@outlook.com">evan.lison@outlook.com</a>
     <a class="pill" href="tel:+33771651708">+33 (0)7 71 65 17 08</a>
     <a class="pill pill-linkedin" href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a>
   </div>
+
   <hr>
+
   <section>
     <h2 class="sec-title">Compétences</h2>
     <div class="comp-grid">
@@ -332,7 +338,9 @@
       </div>
     </div>
   </section>
+
   <hr>
+
   <section>
     <h2 class="sec-title">Formations</h2>
     <div class="grid-3">
@@ -356,13 +364,18 @@
       </div>
     </div>
   </section>
+
   <hr>
+
   <section>
     <h2 class="sec-title">Projets</h2>
+    <!-- Pour chaque projet : dans .media-frame, remplacer le .media-placeholder par
+         <img src="images/nom-fichier.jpg" alt="Description"> (ou une vidéo).
+         Pour ajouter une vidéo YouTube pleine largeur sous une fiche, dupliquer le bloc .full-video. -->
+
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
-          <!-- Remplacez la ligne ci-dessous par : <img src="images/nom-fichier.jpg" alt="Description"> -->
           <div class="media-placeholder"><span class="plus">+</span>Document PDF à ajouter</div>
         </div>
         <p class="media-caption">Légende à ajouter</p>
@@ -378,10 +391,10 @@
     <div class="full-video">
       <iframe src="https://www.youtube.com/embed/wgp-_W0dSjU" title="Réorganisation du Grand Paris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
+
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
-          <!-- Remplacez la ligne ci-dessous par : <img src="images/nom-fichier.jpg" alt="Description"> -->
           <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
         </div>
         <p class="media-caption">Légende à ajouter</p>
@@ -394,10 +407,10 @@
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
     </div>
+
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
-          <!-- Remplacez la ligne ci-dessous par : <img src="images/nom-fichier.jpg" alt="Description"> -->
           <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
         </div>
         <p class="media-caption">Légende à ajouter</p>
@@ -410,10 +423,10 @@
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
     </div>
+
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
-          <!-- Remplacez la ligne ci-dessous par : <img src="images/nom-fichier.jpg" alt="Description"> -->
           <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
         </div>
         <p class="media-caption">Légende à ajouter</p>
@@ -429,10 +442,10 @@
     <div class="full-video">
       <iframe src="https://www.youtube.com/embed/Uso24MKVhKY" title="Chaque regard révèle le Marais" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
+
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
-          <!-- Remplacez la ligne ci-dessous par : <img src="images/nom-fichier.jpg" alt="Description"> -->
           <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
         </div>
         <p class="media-caption">Légende à ajouter</p>
@@ -445,10 +458,10 @@
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
     </div>
+
     <div class="project-row">
       <div class="project-media">
         <div class="media-frame">
-          <!-- Remplacez la ligne ci-dessous par : <img src="images/nom-fichier.jpg" alt="Description"> -->
           <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
         </div>
         <p class="media-caption">Légende à ajouter</p>
@@ -462,7 +475,9 @@
       </div>
     </div>
   </section>
+
   <hr>
+
   <section>
     <h2 class="sec-title">Expériences</h2>
     <div class="grid-3">
@@ -481,11 +496,11 @@
     </div>
   </section>
 
-<section>
-  <div class="contact-panel">
-    <div class="contact-panel-inner">
-      <h2 class="sec-title">Contact</h2>
-      <div class="contact-row" style="margin-top:0;">
+  <section>
+    <div class="contact-panel">
+      <div class="contact-panel-inner">
+        <h2 class="sec-title">Contact</h2>
+        <div class="contact-row" style="margin-top:0;">
           <a class="pill" href="mailto:evan.lison@outlook.com">evan.lison@outlook.com</a>
           <a class="pill" href="tel:+33771651708">+33 (0)7 71 65 17 08</a>
           <a class="pill pill-linkedin" href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a>
@@ -497,6 +512,7 @@
       </div>
     </div>
   </section>
+
 </div>
 </body>
 </html>
