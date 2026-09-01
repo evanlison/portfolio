@@ -170,6 +170,9 @@
   }
   .comp-side div{ margin-bottom:var(--sp-2); }
   .comp-side div:last-child{ margin-bottom:0; }
+  @media (max-width:640px){
+    .comp-grid{ grid-template-columns:1fr; }
+  }
   /* ---------- Grille à 3 colonnes (Formations, Expériences) ---------- */
   .grid-3{
     display:grid;
