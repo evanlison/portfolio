@@ -223,9 +223,8 @@ hr{
   gap:8px;
 }
 .media-frame{
-  width:960px;
-  height:540px;
-  max-width:100%;
+  width:100%;
+  aspect-ratio:16/9;
   overflow:hidden;
   display:flex;
   align-items:center;
