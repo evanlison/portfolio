@@ -30,8 +30,8 @@ p{ text-align:justify; }
 /* ---------- Barre de progression de lecture ---------- */
 .scroll-progress{
   position:fixed;
-  top:-10;
-  left:-10;
+  top:0;
+  left:0;
   width:8px;
   height:100vh;
   background:var(--hairline);
