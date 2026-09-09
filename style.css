@@ -32,7 +32,7 @@ p{ text-align:justify; }
   position:fixed;
   top:0;
   right:0;
-  width:4px;
+  width:6px;
   height:100vh;
   background:var(--hairline);
   z-index:999;
@@ -194,7 +194,7 @@ hr{
 .card .when{ font-size:12.5px; }
 .project-text .when{ font-size:13px; }
 .card .subtitle, .project-text .subtitle{ font-weight:600; margin-bottom:var(--sp-1); }
-.card .subtitle{ font-size:13.5px; }
+.card .subtitle{ font-size:13.5px; text-align:left; }
 .project-text .subtitle{ font-size:15px; }
 .card .subtitle.todo, .project-text .subtitle.todo{ color:var(--muted); font-style:italic; font-weight:500; }
 .card p.desc, .project-text p.desc{ color:var(--ink); margin:0; }
