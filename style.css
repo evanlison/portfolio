@@ -214,6 +214,7 @@ hr{
 .project-card:last-child{ padding-bottom:0; }
 .project-illustrations{
   display:flex;
+  flex-direction:column;
   gap:20px;
 }
 .illu{
@@ -222,8 +223,9 @@ hr{
   gap:8px;
 }
 .media-frame{
-  width:320px;
-  height:180px;
+  width:960px;
+  height:540px;
+  max-width:100%;
   overflow:hidden;
   display:flex;
   align-items:center;
