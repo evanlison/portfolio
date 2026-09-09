@@ -247,6 +247,8 @@
     justify-content:center;
     overflow:hidden;
   }
+  /* Vidéo YouTube : respecte le ratio natif 16:9 (1920×1080) au lieu du cadre 4:3 par défaut */
+  .media-frame.ratio-video{ aspect-ratio:16/9; }
   .media-frame img,
   .media-frame video,
   .media-frame iframe{
@@ -425,7 +427,8 @@
          .project-illustrations (deux emplacements légendés) à droite.
          Dans chaque .media-frame, remplacer le .media-placeholder par l'un des trois formats :
          PHOTO   : <img src="images/nom-fichier.jpg" alt="Description">
-         VIDÉO   : <iframe src="https://www.youtube.com/embed/ID_VIDEO" title="Titre" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+         VIDÉO   : sur le <div class="media-frame">, ajouter la classe ratio-video (ratio 16:9) puis :
+                   <iframe src="https://www.youtube.com/embed/ID_VIDEO" title="Titre" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
          PDF     : <a class="pdf-tile" href="documents/nom-fichier.pdf" target="_blank" rel="noopener"><span class="pdf-icon">PDF</span><span class="pdf-name">Nom du document</span></a> -->
     <div class="project-card">
       <div class="project-text">
@@ -443,7 +446,7 @@
           <p class="media-caption">Légende à ajouter</p>
         </div>
         <div class="illu">
-          <div class="media-frame">
+          <div class="media-frame ratio-video">
             <iframe src="https://www.youtube.com/embed/wgp-_W0dSjU" title="Réorganisation du Grand Paris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
           <p class="media-caption">Légende à ajouter</p>
@@ -512,7 +515,7 @@
           <p class="media-caption">Légende à ajouter</p>
         </div>
         <div class="illu">
-          <div class="media-frame">
+          <div class="media-frame ratio-video">
             <iframe src="https://www.youtube.com/embed/Uso24MKVhKY" title="Chaque regard révèle le Marais" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
           <p class="media-caption">Légende à ajouter</p>
