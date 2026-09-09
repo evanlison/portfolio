@@ -182,7 +182,7 @@ hr{
 .card .subtitle{ font-size:13.5px; }
 .project-text .subtitle{ font-size:15px; }
 .card .subtitle.todo, .project-text .subtitle.todo{ color:var(--muted); font-style:italic; font-weight:500; }
-.card p.desc, .project-text p.desc{ color:var(--ink); margin:0; }
+.card p.desc, .project-text p.desc{ color:var(--ink); margin:0; text-align:justify; }
 .card > p.desc{ margin-bottom:var(--sp-2); }
 /* Logos des causes soutenues (Bénévolat) */
 .cause-logos{
