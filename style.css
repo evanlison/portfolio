@@ -31,11 +31,12 @@ p{ text-align:justify; }
 .scroll-progress{
   position:fixed;
   top:0;
-  right:0;
-  width:4px;
+  left:0;
+  width:8px;
   height:100vh;
   background:var(--hairline);
   z-index:999;
+  border-radius:4px;
   overflow:hidden;
 }
 .scroll-progress-fill{
