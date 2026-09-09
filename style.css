@@ -374,3 +374,18 @@ body.detail-page .sheet{ padding-bottom:var(--sp-6); }
   font-size:11.5px;
   color:var(--paper)
 }
+/* ---------- Barre de progression de lecture ---------- */
+.scroll-progress{
+  position:fixed;
+  top:0;
+  right:0;
+  width:4px;
+  height:100vh;
+  background:var(--hairline);
+  z-index:999;
+}
+.scroll-progress-fill{
+  width:100%;
+  height:0%;
+  background:var(--orange);
+}
