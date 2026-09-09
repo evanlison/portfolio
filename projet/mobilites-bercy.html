@@ -13,7 +13,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
+  <script>
+window.addEventListener('scroll', function(){
+  var scrollTop = window.scrollY;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  document.getElementById('scrollFill').style.height = pct + '%';
+});
+</script>
 <body class="detail-page">
+  <div class="scroll-progress"><div class="scroll-progress-fill" id="scrollFill"></div></div>
 <div class="sheet">
   <p class="back-link"><a href="../index.html">← Retour au portfolio</a></p>
   <div class="detail-header">
