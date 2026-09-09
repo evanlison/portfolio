@@ -36,7 +36,7 @@ p{ text-align:justify; }
   height:100vh;
   background:var(--hairline);
   z-index:999;
-  border-radius:4px;
+  border-radius:10px;
   overflow:hidden;
 }
 .scroll-progress-fill{
@@ -200,8 +200,9 @@ hr{
 .card .subtitle{ font-size:13.5px; text-align:left; }
 .project-text .subtitle{ font-size:15px; }
 .card .subtitle.todo, .project-text .subtitle.todo{ color:var(--muted); font-style:italic; font-weight:500; }
-.card p.desc + p.desc, .project-text p.desc + p.desc{ margin-top:var(--sp-2); }
+.card p.desc, .project-text p.desc{ color:var(--ink); margin:0; }
 .card > p.desc{ margin-bottom:var(--sp-2); }
+.card p.desc + p.desc, .project-text p.desc + p.desc{ margin-top:var(--sp-2); }
 /* Logos des causes soutenues (Bénévolat) */
 .cause-logos{
   display:flex;
