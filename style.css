@@ -25,6 +25,8 @@ body{
   overflow-x:hidden;
 }
 a{ color:inherit; }
+/* Règle unique : tout paragraphe est justifié par défaut (sans effet visible sur une ligne courte/unique) */
+p{ text-align:justify; }
 ::selection{ background:var(--orange); color:#fff; }
 :focus-visible{ outline:2.5px solid var(--orange); outline-offset:3px; }
 /* ---------- Structure générale ---------- */
@@ -98,7 +100,6 @@ hr{
 .logo.logo--large{ height:60px; }
 .intro-block{
   width:100%;
-  text-align:justify;
   margin-top:var(--sp-1);
 }
 .resume{
@@ -137,7 +138,6 @@ hr{
   gap:var(--sp-4);
 }
 .comp-grid > p{
-  text-align:justify;
   font-size:26px;
   line-height:1.5;
   font-weight:800;
@@ -182,7 +182,7 @@ hr{
 .card .subtitle{ font-size:13.5px; }
 .project-text .subtitle{ font-size:15px; }
 .card .subtitle.todo, .project-text .subtitle.todo{ color:var(--muted); font-style:italic; font-weight:500; }
-.card p.desc, .project-text p.desc{ color:var(--ink); margin:0; text-align:justify; }
+.card p.desc, .project-text p.desc{ color:var(--ink); margin:0; }
 .card > p.desc{ margin-bottom:var(--sp-2); }
 /* Logos des causes soutenues (Bénévolat) */
 .cause-logos{
@@ -263,6 +263,7 @@ hr{
 .media-caption{
   font-size:12px;
   margin:0;
+  text-align:center;
 }
 .media-placeholder{
   text-align:center;
@@ -314,7 +315,7 @@ hr{
 @media (max-width:680px){
   .project-card{ grid-template-columns:1fr; gap:var(--sp-2); padding:var(--sp-4) 0; }
 }
-/* ---------- Pages détail projet (dossier /projets/) ---------- */
+/* ---------- Pages détail projet (dossier /projet/) ---------- */
 .back-link{ margin:0 0 var(--sp-3); font-size:14px; }
 .back-link a{ color:var(--orange); font-weight:600; text-decoration:none; }
 .back-link a:hover{ text-decoration:underline; }
@@ -331,7 +332,6 @@ hr{
 .detail-text{
   font-size:15px;
   line-height:1.7;
-  text-align:justify;
 }
 .detail-text.todo{ color:var(--muted); font-style:italic; }
 .detail-text + .detail-text{ margin-top:var(--sp-2); }
