@@ -32,7 +32,7 @@ p{ text-align:justify; }
   position:fixed;
   top:0;
   right:0;
-  width:6px;
+  width:8px;
   height:100vh;
   background:var(--hairline);
   z-index:999;
