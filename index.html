@@ -215,18 +215,24 @@
   .project-text p.desc{ font-size:14.5px; line-height:1.6; }
   .card p.desc.todo, .project-text p.desc.todo{ color:var(--muted); font-style:italic; }
   /* ---------- Projets ---------- */
-  .project-row{
+  /* Fiche universelle : texte (titre, date, description) à gauche,
+     deux illustrations légendées à droite. Chaque illustration accepte
+     une photo, une vidéo YouTube ou un document PDF (voir commentaire HTML plus bas). */
+  .project-card{
     display:grid;
     grid-template-columns: 1fr 1fr;
     gap:var(--sp-5);
-    align-items:center;
-    padding:var(--sp-4) 0;
-    border-bottom:1px solid var(--hairline);
+    align-items:start;
+    padding:var(--sp-5) 0;
   }
-  .project-row:first-child{ padding-top:0; }
-  .project-row:last-child{ border-bottom:none; padding-bottom:0; }
-  .project-row:nth-child(even) .project-media{ order:2; }
-  .project-media{
+  .project-card:first-child{ padding-top:0; }
+  .project-card:last-child{ padding-bottom:0; }
+  .project-illustrations{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:var(--sp-3);
+  }
+  .illu{
     display:flex;
     flex-direction:column;
     gap:var(--sp-1);
@@ -242,11 +248,13 @@
     overflow:hidden;
   }
   .media-frame img,
-  .media-frame video{
+  .media-frame video,
+  .media-frame iframe{
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
+    border:0;
   }
   .media-caption{
     margin:0;
@@ -268,21 +276,43 @@
     color:var(--orange);
     margin-bottom:var(--sp-1);
   }
+  /* Illustration de type PDF : vignette cliquable dans .media-frame */
+  .pdf-tile{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:var(--sp-1);
+    text-decoration:none;
+    color:var(--ink);
+    padding:var(--sp-2);
+    text-align:center;
+  }
+  .pdf-tile .pdf-icon{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--orange);
+    color:var(--paper);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:0.03em;
+    border-radius:3px;
+    padding:4px 8px;
+  }
+  .pdf-tile .pdf-name{
+    font-size:12px;
+    font-weight:600;
+  }
+  .pdf-tile:hover .pdf-icon{ background:var(--ink); }
   .project-link{ margin:var(--sp-1) 0 0; font-size:13.5px; }
   .project-link a{ color:var(--orange); font-weight:600; text-decoration:none; }
   .project-link a:hover{ text-decoration:underline; }
   @media (max-width:680px){
-    .project-row{ grid-template-columns:1fr; gap:var(--sp-2); padding:var(--sp-3) 0; }
-    .project-row:nth-child(even) .project-media{ order:0; }
+    .project-card{ grid-template-columns:1fr; gap:var(--sp-2); padding:var(--sp-4) 0; }
   }
-  .full-video{
-    aspect-ratio:16/9;
-    border-radius:2px;
-    overflow:hidden;
-    margin:0 auto var(--sp-4);
-    width:50%;
-  }
-  .full-video iframe{ width:100%; height:100%; border:0; display:block; }
   /* ---------- Panneau de contact (pleine largeur) ---------- */
   .contact-panel{
     width:100vw;
@@ -391,16 +421,13 @@
   <hr>
   <section>
     <h2 class="sec-title">Projets</h2>
-    <!-- Pour chaque projet : dans .media-frame, remplacer le .media-placeholder par
-         <img src="images/nom-fichier.jpg" alt="Description"> (ou une vidéo).
-         Pour ajouter une vidéo YouTube pleine largeur sous une fiche, dupliquer le bloc .full-video. -->
-    <div class="project-row">
-      <div class="project-media">
-        <div class="media-frame">
-          <div class="media-placeholder"><span class="plus">+</span>Document PDF à ajouter</div>
-        </div>
-        <p class="media-caption">Légende à ajouter</p>
-      </div>
+    <!-- Fiche universelle : .project-text (titre, date, description) à gauche,
+         .project-illustrations (deux emplacements légendés) à droite.
+         Dans chaque .media-frame, remplacer le .media-placeholder par l'un des trois formats :
+         PHOTO   : <img src="images/nom-fichier.jpg" alt="Description">
+         VIDÉO   : <iframe src="https://www.youtube.com/embed/ID_VIDEO" title="Titre" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+         PDF     : <a class="pdf-tile" href="documents/nom-fichier.pdf" target="_blank" rel="noopener"><span class="pdf-icon">PDF</span><span class="pdf-name">Nom du document</span></a> -->
+    <div class="project-card">
       <div class="project-text">
         <h3>Réorganisation du Grand Paris</h3>
         <p class="when">Projet personnel.</p>
@@ -408,17 +435,22 @@
         <p class="desc">Redécoupage des ~154 communes (~7,46 M d'habitants) à partir de données INSEE, avec tableau de bord interactif et classeur Excel cartographié.</p>
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
-    </div>
-    <div class="full-video">
-      <iframe src="https://www.youtube.com/embed/wgp-_W0dSjU" title="Réorganisation du Grand Paris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-    <div class="project-row">
-      <div class="project-media">
-        <div class="media-frame">
-          <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
+      <div class="project-illustrations">
+        <div class="illu">
+          <div class="media-frame">
+            <div class="media-placeholder"><span class="plus">+</span>Document PDF à ajouter</div>
+          </div>
+          <p class="media-caption">Légende à ajouter</p>
         </div>
-        <p class="media-caption">Légende à ajouter</p>
+        <div class="illu">
+          <div class="media-frame">
+            <iframe src="https://www.youtube.com/embed/wgp-_W0dSjU" title="Réorganisation du Grand Paris" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <p class="media-caption">Légende à ajouter</p>
+        </div>
       </div>
+    </div>
+    <div class="project-card">
       <div class="project-text">
         <h3>Infobox de lignes de transport</h3>
         <p class="when">En continu</p>
@@ -426,14 +458,22 @@
         <p class="desc">Paramètres, CSS et logique d'accessibilité des.</p>
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
-    </div>
-    <div class="project-row">
-      <div class="project-media">
-        <div class="media-frame">
-          <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
+      <div class="project-illustrations">
+        <div class="illu">
+          <div class="media-frame">
+            <div class="media-placeholder"><span class="plus">+</span>Illustration à ajouter</div>
+          </div>
+          <p class="media-caption">Légende à ajouter</p>
         </div>
-        <p class="media-caption">Légende à ajouter</p>
+        <div class="illu">
+          <div class="media-frame">
+            <div class="media-placeholder"><span class="plus">+</span>Illustration à ajouter</div>
+          </div>
+          <p class="media-caption">Légende à ajouter</p>
+        </div>
       </div>
+    </div>
+    <div class="project-card">
       <div class="project-text">
         <h3>Analyse de fréquence des bus</h3>
         <p class="when">Diagnostic de desserte.</p>
@@ -441,14 +481,22 @@
         <p class="desc">Formules et graphiques Excel construits pour objectiver la qualité de desserte d'un territoire.</p>
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
-    </div>
-    <div class="project-row">
-      <div class="project-media">
-        <div class="media-frame">
-          <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
+      <div class="project-illustrations">
+        <div class="illu">
+          <div class="media-frame">
+            <div class="media-placeholder"><span class="plus">+</span>Illustration à ajouter</div>
+          </div>
+          <p class="media-caption">Légende à ajouter</p>
         </div>
-        <p class="media-caption">Légende à ajouter</p>
+        <div class="illu">
+          <div class="media-frame">
+            <div class="media-placeholder"><span class="plus">+</span>Illustration à ajouter</div>
+          </div>
+          <p class="media-caption">Légende à ajouter</p>
+        </div>
       </div>
+    </div>
+    <div class="project-card">
       <div class="project-text">
         <h3>Diagnostic sensible</h3>
         <p class="when">2026, Paris 3e et 4e.</p>
@@ -456,23 +504,42 @@
         <p class="desc todo">Résumé à compléter.</p>
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
       </div>
-    </div>
-    <div class="full-video">
-      <iframe src="https://www.youtube.com/embed/Uso24MKVhKY" title="Chaque regard révèle le Marais" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-    <div class="project-row">
-      <div class="project-media">
-        <div class="media-frame">
-          <div class="media-placeholder"><span class="plus">+</span>Photo ou vidéo à ajouter</div>
+      <div class="project-illustrations">
+        <div class="illu">
+          <div class="media-frame">
+            <div class="media-placeholder"><span class="plus">+</span>Illustration à ajouter</div>
+          </div>
+          <p class="media-caption">Légende à ajouter</p>
         </div>
-        <p class="media-caption">Légende à ajouter</p>
+        <div class="illu">
+          <div class="media-frame">
+            <iframe src="https://www.youtube.com/embed/Uso24MKVhKY" title="Chaque regard révèle le Marais" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <p class="media-caption">Légende à ajouter</p>
+        </div>
       </div>
+    </div>
+    <div class="project-card">
       <div class="project-text">
         <h3>Diagnostic mobilités</h3>
         <p class="when">2026, Poissy.</p>
         <p class="subtitle todo">Sous-titre à compléter</p>
         <p class="desc todo">Résumé à compléter.</p>
         <p class="project-link"><a href="#">Voir le projet en détail →</a></p>
+      </div>
+      <div class="project-illustrations">
+        <div class="illu">
+          <div class="media-frame">
+            <div class="media-placeholder"><span class="plus">+</span>Illustration à ajouter</div>
+          </div>
+          <p class="media-caption">Légende à ajouter</p>
+        </div>
+        <div class="illu">
+          <div class="media-frame">
+            <div class="media-placeholder"><span class="plus">+</span>Illustration à ajouter</div>
+          </div>
+          <p class="media-caption">Légende à ajouter</p>
+        </div>
       </div>
     </div>
   </section>
@@ -510,15 +577,14 @@
     <div class="grid-3">
       <div class="card">
         <h3>Disney VoluntEARS</h3>
-        <p class="when">sep. 2023-aujourd'hui, Chessy.</p>
+        <p class="when">Cast members bénévoles, Disneyland Paris.</p>
         <p class="desc">Programme de bénévolat des cast members de Disneyland Paris, engagés pour des causes de tous horizons.</p>
-        <!-- Remplacer chaque src par le logo correspondant (images/logo-xxx.png ou .svg) -->
-         <div class="cause-logos">
+        <div class="cause-logos">
           <img src="https://thumb.wikimedia.org/wikipedia/fr/thumb/a/ad/Pieces-jaunes-2025.svg/500px-Pieces-jaunes-2025.svg.png?utm_source=fr.wikipedia.org&utm_campaign=index&utm_content=thumbnail&_=20250124140700" alt="Pièces Jaunes">
           <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/MAW_Standard_RGB.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail_unscaled&_=20180905215053" alt="Make-A-Wish">
           <img src="https://images.secourspopulaire.fr/app/uploads/sites/3/2025/04/logo-desktop.svg" alt="Secours Populaire">
           <img src="https://www.restosducoeur.org/wp-content/uploads/2016/04/cropped-logo.png" alt="Restos du Cœur">
-         </div>
+        </div>
       </div>
     </div>
   </section>
