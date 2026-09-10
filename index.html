@@ -3,7 +3,7 @@
 <head>
 <script>
 if (window.location.pathname === '/index.html') {
-  window.location.replace('/');
+  window.location.replace('/' + window.location.search + window.location.hash);
 }
 </script>
 <link rel="icon" type="image/png" href="favicon.png">
