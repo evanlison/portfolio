@@ -43,6 +43,9 @@ p{ text-align:justify; }
   height:0%;
   background:var(--orange);
 }
+@media (max-width:720px){
+  .scroll-progress{ width:4px; }
+}
 ::selection{ background:var(--orange); color:#fff; }
 :focus-visible{ outline:2.5px solid var(--orange); outline-offset:3px; }
 /* ---------- Structure générale ---------- */
