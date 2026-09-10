@@ -31,9 +31,9 @@ p{ text-align:justify; }
 .scroll-progress{
   position:fixed;
   top:0;
+  bottom:0;
   left:0;
   width:8px;
-  height:100vh;
   background:var(--hairline);
   z-index:999;
   border-radius:4px;
