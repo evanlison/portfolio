@@ -23,23 +23,22 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 
 /* Titres et textes : mêmes classes partout sur le site */
 .titre1{ margin:0; font-size:40px; font-weight:800; letter-spacing:-.01em; line-height:1.1; }
-.titre2{ color:var(--orange); font-weight:800; font-size:28px; margin:0 0 24px; letter-spacing:-.01em; }
+.titre2{ color:var(--orange); font-weight:800; font-size:28px; margin:0 0 16px; letter-spacing:-.01em; }
 .titre3{ font-size:18px; font-weight:700; margin:0 0 12px; line-height:1.25; }
-.sous-titre{ font-size:14px; font-weight:600; margin:12px 0 0; text-align:left; }
+.sous-titre{ font-size:16px; font-weight:600; margin:12px 0 0; text-align:left; }
 .date{ font-size:13px; color:var(--muted); margin:12px 0 0; }
-.texte{ font-size:14px; line-height:1.6; margin:12px 0 0; }
+.texte{ font-size:14px; line-height:1.45; margin:12px 0 0; }
 .texte + .texte{ margin-top:20px; }
 .todo{ color:var(--muted); font-style:italic; font-weight:500; }
 
 /* En-tête */
-.head-row{ display:flex; justify-content:space-between; gap:64px; flex-wrap:wrap; }
-.intro-block{ width:100%; margin-top:8px; }
+.head-row{ display:flex; justify-content:space-between; gap:24px 64px; flex-wrap:wrap; }
+.intro-block{ width:100%; margin-top:0; }
 .logos-row{ display:flex; flex-wrap:wrap; align-items:center; gap:32px; margin:24px 0; }
 .logo{ height:50px; width:auto; display:block; }
 .logo--large{ height:60px; }
-.cause-logos{ display:flex; align-items:center; flex-wrap:wrap; gap:16px; }
+.cause-logos{ display:flex; align-items:center; flex-wrap:wrap; gap:16px; margin:16px 0; }
 .cause-logos img{ height:22px; width:auto; display:block; }
-.project-text .cause-logos{ margin-bottom:12px; }
 .project-text .cause-logos img{ height:32px; }
 
 /* Boutons de contact */
