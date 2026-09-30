@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<script>
-if (window.location.pathname === '/index.html') {
-  window.location.replace('/' + window.location.search + window.location.hash);
-}
-</script>
-<link rel="icon" type="image/png" href="favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Evan Lison — Portfolio</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="canonical" href="https://evanlison.fr/">
 <meta property="og:title" content="Evan Lison — Portfolio">
 <meta property="og:image" content="https://evanlison.fr/preview.png">
@@ -18,213 +13,153 @@ if (window.location.pathname === '/index.html') {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>if (location.pathname === '/index.html') location.replace('/' + location.search + location.hash);</script>
 </head>
 <body>
-<div class="scroll-progress"><div class="scroll-progress-fill" id="scrollFill"></div></div>
-<div class="sheet">
-  <div class="head-row">
-    <div class="id-block">
+<div class="bar"><i id="fill"></i></div>
+<main>
+
+<header class="stack">
+  <div class="grid two">
+    <div class="stack">
       <h1>Evan LISON</h1>
       <p class="role">Étudiant urbaniste</p>
-      <p class="program"><a href="https://www.eup.fr/formations/m2-territoire-reseaux-amenagement-mobilite-environnement" target="_blank" rel="noopener" style="text-decoration:none;">Master 2 TRAME (Territoire, Réseaux, Aménagement, Mobilités, Environnement)<br>Mention Transports, Mobilités, Réseaux</a></p>
-      <div class="logos-row">
-        <a class="logo-link" href="https://www.eup.fr" target="_blank" rel="noopener">
-          <img src="https://www.eup.fr/fileadmin/common/logos/EUP-couleurs.svg" alt="École d'Urbanisme de Paris" class="logo">
-        </a>
-        <a class="logo-link" href="https://ecoledesponts.fr" target="_blank" rel="noopener">
-          <img src="https://ecoledesponts.fr/sites/default/files/pages/Ecole/Logo-ENPC-IP-RVB.png" alt="École nationale des ponts et chaussées" class="logo logo--large">
-        </a>
+      <p><a href="https://www.eup.fr/formations/m2-territoire-reseaux-amenagement-mobilite-environnement" target="_blank" rel="noopener">Master 2 TRAME (Territoire, Réseaux, Aménagement, Mobilités, Environnement)<br>Mention Transports, Mobilités, Réseaux</a></p>
+      <div class="logos school">
+        <a href="https://www.eup.fr" target="_blank" rel="noopener"><img src="https://www.eup.fr/fileadmin/common/logos/EUP-couleurs.svg" alt="École d'Urbanisme de Paris"></a>
+        <a href="https://ecoledesponts.fr" target="_blank" rel="noopener"><img class="large" src="https://ecoledesponts.fr/sites/default/files/pages/Ecole/Logo-ENPC-IP-RVB.png" alt="École nationale des ponts et chaussées"></a>
       </div>
-      <p class="place">Paris, France</p>
+      <p class="when">Paris, France</p>
     </div>
-    <div class="intro-block">
-      <p class="resume">Étudiant en Master 2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME), mention Transports, Mobilités, Réseaux, à l'École d'Urbanisme de Paris, je bénéficie d'une formation d'excellence adossée à un partenariat avec l'École nationale des ponts et chaussées, qui me permet d'approfondir mes compétences sur les grands enjeux de la fabrique urbaine contemporaine (aménagement des territoires, mobilités, transition environnementale et gouvernance des réseaux urbains).</p>
-      <p class="resume">Mon parcours en géographie et urbanisme m'a permis de développer une approche rigoureuse du diagnostic territorial, du montage de projet ainsi que de l'analyse statistique et cartographique, et une réelle aisance avec les outils du métier tels que QGIS.</p>
-      <p class="resume">En parallèle de mes études, j'occupe depuis trois ans un emploi étudiant à Disneyland Paris, où j'ai développé une réelle capacité d'adaptation et de travail en équipe au sein d'un environnement multiculturel et à forte affluence, ainsi qu'un usage courant de l'anglais au quotidien.</p>
-      <p class="resume">Je suis aujourd'hui à la recherche d'un stage de fin d'études de 4 à 6 mois dès le mois de mars 2027, dans le cadre de mon mémoire de M2.</p>
+    <div class="stack">
+      <p>Étudiant en Master 2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME), mention Transports, Mobilités, Réseaux, à l'École d'Urbanisme de Paris, je bénéficie d'une formation d'excellence adossée à un partenariat avec l'École nationale des ponts et chaussées, qui me permet d'approfondir mes compétences sur les grands enjeux de la fabrique urbaine contemporaine (aménagement des territoires, mobilités, transition environnementale et gouvernance des réseaux urbains).</p>
+      <p>Mon parcours en géographie et urbanisme m'a permis de développer une approche rigoureuse du diagnostic territorial, du montage de projet ainsi que de l'analyse statistique et cartographique, et une réelle aisance avec les outils du métier tels que QGIS.</p>
+      <p>En parallèle de mes études, j'occupe depuis trois ans un emploi étudiant à Disneyland Paris, où j'ai développé une réelle capacité d'adaptation et de travail en équipe au sein d'un environnement multiculturel et à forte affluence, ainsi qu'un usage courant de l'anglais au quotidien.</p>
+      <p>Je suis aujourd'hui à la recherche d'un stage de fin d'études de 4 à 6 mois dès le mois de mars 2027, dans le cadre de mon mémoire de M2.</p>
     </div>
   </div>
-  <div class="contact-row">
-    <a class="pill" href="mailto:evan.lison@outlook.com">evan.lison@outlook.com</a>
-    <a class="pill" href="tel:+33771651708">+33 (0)7 71 65 17 08</a>
-    <a class="pill pill-linkedin" href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a>
+  <div class="pills">
+    <a href="mailto:evan.lison@outlook.com">evan.lison@outlook.com</a>
+    <a href="tel:+33771651708">+33 (0)7 71 65 17 08</a>
+    <a href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a>
   </div>
-  <hr>
-  <section>
-    <h2 class="sec-title">Compétences</h2>
-    <div class="comp-grid">
-      <p>Géomatique, diagnostic territorial, réglementation d'urbanisme, techniques d'enquête, gestion de projet</p>
-      <div class="comp-side">
-        <div>
-          <p class="sub-label">Outils</p>
-          <p>QGIS, Magrit, PTV Visum, Inkscape, Canva, suite Office</p>
-        </div>
-        <div>
-          <p class="sub-label">Langues</p>
-          <p>Français, Anglais, Espagnol</p>
-        </div>
+</header>
+
+<section>
+  <h2>Compétences</h2>
+  <div class="grid two">
+    <p>Géomatique, diagnostic territorial, réglementation d'urbanisme, techniques d'enquête, gestion de projet</p>
+    <div class="stack">
+      <p><b>Outils</b><br>QGIS, Magrit, PTV Visum, Inkscape, Canva, suite Office</p>
+      <p><b>Langues</b><br>Français, Anglais, Espagnol</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Formations</h2>
+  <div class="grid">
+    <div class="stack">
+      <h3>École d'Urbanisme de Paris</h3>
+      <p class="when">2026-aujourd'hui, Champs-sur-Marne.</p>
+      <h4>M2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME), mention Transports, Mobilités, Réseaux</h4>
+      <p>Répond aux enjeux de la mobilité et de la gestion des réseaux urbains, en croisant sciences humaines et ingénierie autour du diagnostic territorial et de la conduite de projet, pour préparer à des fonctions de maîtrise d'ouvrage et de pilotage de projets territoriaux.</p>
+    </div>
+    <div class="stack">
+      <h3>Université Paris-Nanterre</h3>
+      <p class="when">2025–2026, Nanterre.</p>
+      <h4>M1 Urbanisme et aménagement, parcours Projet Urbain et Montage d'Opérations (PUMO)</h4>
+      <p>S'inscrit dans les enjeux de la fabrique urbaine et de la transition écologique des villes, avec des enseignements sur le droit de l'urbanisme, l'économie de l'aménagement et le projet urbain, pour préparer aux métiers d'aménageur et d'urbaniste en collectivité.</p>
+    </div>
+    <div class="stack">
+      <h3>Université Paris-Cité</h3>
+      <p class="when">2022–2025, Paris 13e.</p>
+      <h4>Licence Géographie et aménagement, parcours Environnement et Développement (GAED)</h4>
+      <p>Traite des enjeux liés à la manière dont les sociétés aménagent leur territoire, en croisant géographie physique et humaine avec des outils comme la cartographie et les SIG, pour préparer à des métiers de l'urbanisme, de l'aménagement ou de la gestion des risques.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Projets</h2>
+  <!-- Nouveau projet : dupliquer tout le bloc <article>.
+       Dans <div class="media">, laisser vide pour afficher "+ Illustration à ajouter", ou mettre :
+       une photo <img src="images/fichier.jpg" alt="Description">
+       ou une vidéo <iframe src="https://www.youtube.com/embed/ID" allowfullscreen></iframe> -->
+  <article class="project" id="mobilites-bercy">
+    <div class="stack">
+      <h3>Enquête sur la typologie des mobilités dans le 12e arrondissement de Paris</h3>
+      <p class="when">jan.–avr. 2024</p>
+      <div class="logos"><img src="images/paris-cite.png" alt="Université Paris Cité"></div>
+      <h4>Bercy, porte d'entrée des voyageurs</h4>
+      <p>Le projet étudie les mobilités à Bercy, dans le 12e arrondissement de Paris, à partir de l'observation d'un flux constant de voyageurs et de valises dans ce quartier où se concentrent la gare SNCF Paris-Bercy, la gare routière et la ligne 14 du métro.</p>
+      <p>La question centrale est de comprendre quelles motivations sous-tendent les choix de mobilité des usagers entre train, bus et métro, à travers une méthode combinant observation de terrain, questionnaire et entretiens semi-directifs. L'analyse distingue des voyageurs de passage motivés par le coût du billet, des navetteurs domicile-travail, une clientèle d'affaires et des usagers du métro séduits par sa rapidité, chaque mode ayant ses forces et faiblesses, la gare routière restant le maillon le plus fragile. Bercy apparaît ainsi comme une porte d'entrée des mobilités plutôt qu'une destination touristique.</p>
+      <p class="more"><a href="projet/mobilites-bercy.html">Voir le projet en détail →</a></p>
+    </div>
+    <div class="illus">
+      <figure><div class="media"></div><figcaption>Légende à ajouter</figcaption></figure>
+      <figure><div class="media"></div><figcaption>Légende à ajouter</figcaption></figure>
+    </div>
+  </article>
+</section>
+
+<section>
+  <h2>Expériences</h2>
+  <div class="grid">
+    <div class="stack">
+      <h3>Disneyland Paris</h3>
+      <p class="when">mai 2023-aujourd'hui, Chessy.</p>
+      <h4>Opérateur-Animateur d'attractions</h4>
+      <p>Accueil, exploitation de l'attraction, sécurité et gestion des flux de visiteurs.</p>
+      <h4>Vente en boutique et<br>Duty-Support caisse</h4>
+      <p>Vente, conseil client et gestion de la caisse. Gestion du coffre et apport en numéraire.</p>
+      <h4>Vente en kiosques de restauration</h4>
+      <p>Prise de commande et service en kiosques extérieurs au sein du parc.</p>
+    </div>
+    <div class="stack">
+      <h3>Carrefour Arcades</h3>
+      <p class="when">déc. 2022-jan. 2023, Noisy-le-Grand.</p>
+      <h4>Vente en boulangerie-pâtisserie</h4>
+      <p>Préparation, emballage et mise en rayon.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Bénévolat</h2>
+  <div class="grid">
+    <div class="stack">
+      <h3>Disney VoluntEARS</h3>
+      <p class="when">oct 2023-aujourd'hui, Chessy.</p>
+      <p>Programme de bénévolat des cast members de Disneyland Paris, engagés pour des causes de tous horizons.</p>
+      <div class="logos">
+        <img src="https://thumb.wikimedia.org/wikipedia/fr/thumb/a/ad/Pieces-jaunes-2025.svg/500px-Pieces-jaunes-2025.svg.png" alt="Pièces Jaunes">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/MAW_Standard_RGB.png" alt="Make-A-Wish">
+        <img src="https://images.secourspopulaire.fr/app/uploads/sites/3/2025/04/logo-desktop.svg" alt="Secours Populaire">
+        <img src="https://www.restosducoeur.org/wp-content/uploads/2016/04/cropped-logo.png" alt="Restos du Cœur">
       </div>
     </div>
-  </section>
-  <hr>
-  <section>
-    <h2 class="sec-title">Formations</h2>
-    <div class="grid-3">
-      <div class="card">
-        <h3>École d'Urbanisme de Paris</h3>
-        <p class="when">2026-aujourd'hui, Champs-sur-Marne.</p>
-        <p class="subtitle">M2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME), mention Transports, Mobilités, Réseaux</p>
-        <p class="desc">Répond aux enjeux de la mobilité et de la gestion des réseaux urbains, en croisant sciences humaines et ingénierie autour du diagnostic territorial et de la conduite de projet, pour préparer à des fonctions de maîtrise d'ouvrage et de pilotage de projets territoriaux.</p>
-      </div>
-      <div class="card">
-        <h3>Université Paris-Nanterre</h3>
-        <p class="when">2025–2026, Nanterre.</p>
-        <p class="subtitle">M1 Urbanisme et aménagement, parcours Projet Urbain et Montage d'Opérations (PUMO)</p>
-        <p class="desc">S'inscrit dans les enjeux de la fabrique urbaine et de la transition écologique des villes, avec des enseignements sur le droit de l'urbanisme, l'économie de l'aménagement et le projet urbain, pour préparer aux métiers d'aménageur et d'urbaniste en collectivité.</p>
-      </div>
-      <div class="card">
-        <h3>Université Paris-Cité</h3>
-        <p class="when">2022–2025, Paris 13e.</p>
-        <p class="subtitle">Licence Géographie et aménagement, parcours Environnement et Développement (GAED)</p>
-        <p class="desc">Traite des enjeux liés à la manière dont les sociétés aménagent leur territoire, en croisant géographie physique et humaine avec des outils comme la cartographie et les SIG, pour préparer à des métiers de l'urbanisme, de l'aménagement ou de la gestion des risques.</p>
-      </div>
-    </div>
-  </section>
-  <hr>
-    <section>
-    <h2 class="sec-title">Projets</h2>
-    <!-- Fiche universelle : .project-text (titre, date, description) à gauche,
-         .project-illustrations (deux emplacements légendés) à droite.
-         Dans chaque .media-frame, remplacer le .media-placeholder par l'un des trois formats :
-         PHOTO   : <img src="images/nom-fichier.jpg" alt="Description">
-         VIDÉO   : sur le <div class="media-frame">, ajouter la classe ratio-video (ratio 16:9) puis :
-                   <iframe src="https://www.youtube.com/embed/ID_VIDEO" title="Titre" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-         PDF     : <a class="pdf-tile" href="documents/nom-fichier.pdf" target="_blank" rel="noopener"><span class="pdf-icon">PDF</span><span class="pdf-name">Nom du document</span></a> -->
-<div class="project-card" id="mobilites-bercy">
-      <div class="project-text">
-        <h3>Enquête sur la typologie des mobilités dans le 12e arrondissement de Paris</h3>
-        <p class="when">jan.–avr. 2024</p>
-        <p class="subtitle">Bercy, porte d'entrée des voyageurs</p>
-        <p class="desc">Le projet étudie les mobilités à Bercy, dans le 12e arrondissement de Paris, à partir de l'observation d'un flux constant de voyageurs et de valises dans ce quartier où se concentrent la gare SNCF Paris-Bercy, la gare routière et la ligne 14 du métro.</p>
-        <p class="desc">La question centrale est de comprendre quelles motivations sous-tendent les choix de mobilité des usagers entre train, bus et métro, à travers une méthode combinant observation de terrain, questionnaire et entretiens semi-directifs. L'analyse distingue des voyageurs de passage motivés par le coût du billet, des navetteurs domicile-travail, une clientèle d'affaires et des usagers du métro séduits par sa rapidité, chaque mode ayant ses forces et faiblesses, la gare routière restant le maillon le plus fragile. Bercy apparaît ainsi comme une porte d'entrée des mobilités plutôt qu'une destination touristique.</p>
-        <p class="project-link"><a href="projet/mobilites-bercy.html">Voir le projet en détail →</a></p>
-      </div>
-      <div class="project-illustrations">
-        <div class="illu">
-          <div class="media-frame">
-            <div class="media-placeholder"><span class="plus">+</span>Illustration à ajouter</div>
-          </div>
-          <p class="media-caption">Légende à ajouter</p>
-        </div>
-        <div class="illu">
-          <div class="media-frame">
-            <div class="media-placeholder"><span class="plus">+</span>Illustration à ajouter</div>
-          </div>
-          <p class="media-caption">Légende à ajouter</p>
-        </div>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="project-text">
-        <h3>Titre du projet</h3>
-        <p class="when">Date ou contexte.</p>
-        <p class="subtitle">Sous-titre</p>
-        <p class="desc">Description à ajouter.</p>
-        <p class="project-link"><a href="nom-du-projet.html">Voir le projet en détail →</a></p>
-      </div>
-      <div class="project-illustrations">
-        <div class="illu">
-          <div class="media-frame">
-            <div class="media-placeholder"><span class="plus">+</span>Illustration à ajouter</div>
-          </div>
-          <p class="media-caption">Légende à ajouter</p>
-        </div>
-        <div class="illu">
-          <div class="media-frame">
-            <div class="media-placeholder"><span class="plus">+</span>Illustration à ajouter</div>
-          </div>
-          <p class="media-caption">Légende à ajouter</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <hr>
-  <section>
-    <h2 class="sec-title">Expériences</h2>
-    <div class="grid-3">
-      <div class="card">
-        <h3>Disneyland Paris</h3>
-       <p class="when">mai 2023-aujourd'hui, Chessy.</p>
-        <div class="sub-entry">
-          <p class="subtitle">Opérateur-Animateur d'attractions</p>
-          <p class="desc">Accueil, exploitation de l'attraction, sécurité et gestion des flux de visiteurs.</p>
-        </div>
-        <div class="sub-entry">
-          <p class="subtitle">Vente en boutique et<br/>Duty-Support caisse</p>
-          <p class="desc">Vente, conseil client et gestion de la caisse. Gestion du coffre et apport en numéraire.</p>
-        </div>
-        <div class="sub-entry">
-          <p class="subtitle">Vente en kiosques de restauration</p>
-          <p class="desc">Prise de commande et service en kiosques extérieurs au sein du parc.</p>
-        </div>
-      </div>
-      <div class="card">
-        <h3>Carrefour Arcades</h3>
-        <p class="when">déc. 2022-jan. 2023, Noisy-le-Grand.</p>
-        <p class="subtitle">Vente en boulangerie-pâtisserie</p>
-       <p class="desc">Préparation, emballage et mise en rayon.</p>
-      </div>
-    </div>
-  </section>
-  <hr>
-  <section>
-    <h2 class="sec-title">Bénévolat</h2>
-    <div class="grid-3">
-      <div class="card">
-        <h3>Disney VoluntEARS</h3>
-        <p class="when">oct 2023-aujourd'hui, Chessy.</p>
-        <p class="desc">Programme de bénévolat des cast members de Disneyland Paris, engagés pour des causes de tous horizons.</p>
-        <div class="cause-logos">
-          <img src="https://thumb.wikimedia.org/wikipedia/fr/thumb/a/ad/Pieces-jaunes-2025.svg/500px-Pieces-jaunes-2025.svg.png?utm_source=fr.wikipedia.org&utm_campaign=index&utm_content=thumbnail&_=20250124140700" alt="Pièces Jaunes">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/MAW_Standard_RGB.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail_unscaled&_=20180905215053" alt="Make-A-Wish">
-          <img src="https://images.secourspopulaire.fr/app/uploads/sites/3/2025/04/logo-desktop.svg" alt="Secours Populaire">
-          <img src="https://www.restosducoeur.org/wp-content/uploads/2016/04/cropped-logo.png" alt="Restos du Cœur">
-        </div>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="contact-panel">
-      <div class="contact-panel-inner">
-        <h2 class="sec-title">Contact</h2>
-        <div class="contact-row" style="margin-top:0;">
-          <a class="pill" href="mailto:evan.lison@outlook.com">evan.lison@outlook.com</a>
-          <a class="pill" href="tel:+33771651708">+33 (0)7 71 65 17 08</a>
-          <a class="pill pill-linkedin" href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-        <p>Étudiant en Master 2 TRAME (Territoires, Réseaux, Aménagement, Mobilités, Environnement), mention Transports, Mobilités, Réseaux à l'École d'Urbanisme de Paris. Je suis à la recherche d'un stage de fin d'études de 4 à 6 mois dès le mois de mars 2027, dans le cadre de mon mémoire de M2.</p>
-        <div class="logos-row">
-          <a class="logo-link" href="https://www.eup.fr" target="_blank" rel="noopener">
-            <img src="https://www.eup.fr/fileadmin/common/logos/EUP-blanc.svg" alt="École d'Urbanisme de Paris" class="logo">
-          </a>
-          <a class="logo-link" href="https://ecoledesponts.fr" target="_blank" rel="noopener">
-            <img src="https://ecoledesponts.fr/sites/default/files/pages/Ecole/Logo-ENPC-IP-RVB_Blanc.png" alt="École nationale des ponts et chaussées" class="logo logo--large">
-          </a>
-        </div>
-        <div class="panel-footer">
-          <span>Evan LISON (2026-2027)</span>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
+  </div>
+</section>
+
+<footer class="stack">
+  <h2>Contact</h2>
+  <div class="pills">
+    <a href="mailto:evan.lison@outlook.com">evan.lison@outlook.com</a>
+    <a href="tel:+33771651708">+33 (0)7 71 65 17 08</a>
+    <a href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <p>Étudiant en Master 2 TRAME (Territoires, Réseaux, Aménagement, Mobilités, Environnement), mention Transports, Mobilités, Réseaux à l'École d'Urbanisme de Paris. Je suis à la recherche d'un stage de fin d'études de 4 à 6 mois dès le mois de mars 2027, dans le cadre de mon mémoire de M2.</p>
+  <div class="logos school">
+    <a href="https://www.eup.fr" target="_blank" rel="noopener"><img src="https://www.eup.fr/fileadmin/common/logos/EUP-blanc.svg" alt="École d'Urbanisme de Paris"></a>
+    <a href="https://ecoledesponts.fr" target="_blank" rel="noopener"><img class="large" src="https://ecoledesponts.fr/sites/default/files/pages/Ecole/Logo-ENPC-IP-RVB_Blanc.png" alt="École nationale des ponts et chaussées"></a>
+  </div>
+  <p class="when">Evan LISON (2026-2027)</p>
+</footer>
+
+</main>
 <script>
-window.addEventListener('scroll', function(){
-  var scrollTop = window.scrollY;
-  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  document.getElementById('scrollFill').style.height = pct + '%';
-});
+addEventListener('scroll', () => fill.style.height = (scrollY / (document.documentElement.scrollHeight - innerHeight) || 0) * 100 + '%');
 </script>
 </body>
 </html>
