@@ -63,7 +63,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 
 /* Projets */
 .project-card{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; padding:56px 0; }
-.project-card:first-child{ padding-top:0; }
+.project-card:first-of-type{ padding-top:0; }
 .project-card:last-child{ padding-bottom:0; }
 .project-illustrations{ display:flex; flex-direction:column; gap:24px; }
 .illu{ display:flex; flex-direction:column; gap:8px; }
