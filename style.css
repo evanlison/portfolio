@@ -27,7 +27,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:48px 0; }
 .titre3{ font-size:18px; font-weight:700; margin:0 0 8px; line-height:1.25; }
 .sous-titre{ font-size:14px; font-weight:600; margin:8px 0 0; text-align:left; }
 .date{ font-size:13px; color:var(--muted); margin:8px 0 0; }
-.texte{ font-size:14px; line-height:1.6; margin:0; }
+.texte{ font-size:14px; line-height:1.6; margin:8px 0 0; }
 .texte + .texte{ margin-top:16px; }
 .todo{ color:var(--muted); font-style:italic; font-weight:500; }
 
