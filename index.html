@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="scroll-progress"><div class="scroll-progress-fill" id="scrollFill"></div></div>
 <div class="sheet">
   <div class="head-row">
     <div class="id-block">
@@ -125,6 +124,7 @@
         </div>
       </div>
     </div>
+    <div class="projects-progress"><div class="projects-progress-fill" id="projectsProgressFill"></div></div>
   </section>
   <hr>
   <section>
@@ -190,19 +190,24 @@
   </div>
 </div>
 <script>
-addEventListener('scroll', () => {
-  const h = document.documentElement.scrollHeight - innerHeight;
-  scrollFill.style.height = (h > 0 ? scrollY / h * 100 : 0) + '%';
-});
-
 const scroller = document.getElementById('projectsScroll');
 if (scroller) {
   const card = scroller.querySelector('.project-card');
   const gap = parseFloat(getComputedStyle(scroller).gap) || 0;
   const step = card ? card.getBoundingClientRect().width + gap : scroller.clientWidth;
+  const fill = document.getElementById('projectsProgressFill');
+
+  const updateFill = () => {
+    const max = scroller.scrollWidth - scroller.clientWidth;
+    fill.style.width = (max > 0 ? scroller.scrollLeft / max * 100 : 0) + '%';
+  };
+  scroller.addEventListener('scroll', updateFill);
+
   const autoAdvance = setInterval(() => {
     const max = scroller.scrollWidth - scroller.clientWidth;
-    const next = scroller.scrollLeft + step >= max - 5 ? 0 : scroller.scrollLeft + step;
+    if (max <= 0) return;
+    const atEnd = scroller.scrollLeft >= max - 5;
+    const next = atEnd ? 0 : Math.min(scroller.scrollLeft + step, max);
     scroller.scrollTo({ left: next, behavior: 'smooth' });
   }, 1500);
   const stopAutoAdvance = () => clearInterval(autoAdvance);
@@ -210,3 +215,6 @@ if (scroller) {
   scroller.addEventListener('wheel', stopAutoAdvance, { once: true });
   scroller.addEventListener('touchstart', stopAutoAdvance, { once: true });
 }
+</script>
+</body>
+</html>
