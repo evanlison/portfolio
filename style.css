@@ -64,6 +64,10 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 
 /* Projets : défilement horizontal, un projet par écran, illustrations réservées à la page détail */
 .projects-scroll{ display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:56px; margin-top:24px; padding-bottom:16px; }
+.projects-scroll{ scrollbar-width:thin; scrollbar-color:var(--orange) var(--paper); }
+.projects-scroll::-webkit-scrollbar{ height:6px; }
+.projects-scroll::-webkit-scrollbar-track{ background:var(--paper); }
+.projects-scroll::-webkit-scrollbar-thumb{ background:var(--orange); border-radius:4px; }
 .project-card{ flex:0 0 400px; scroll-snap-align:start; }
 .project-link{ margin:12px 0 0; font-size:13.5px; }
 .project-link a{ color:var(--orange); font-weight:600; text-decoration:none; }
