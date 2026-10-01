@@ -197,9 +197,12 @@ addEventListener('scroll', () => {
 
 const scroller = document.getElementById('projectsScroll');
 if (scroller) {
+  const card = scroller.querySelector('.project-card');
+  const gap = parseFloat(getComputedStyle(scroller).gap) || 0;
+  const step = card ? card.getBoundingClientRect().width + gap : scroller.clientWidth;
   const autoAdvance = setInterval(() => {
     const max = scroller.scrollWidth - scroller.clientWidth;
-    const next = scroller.scrollLeft + scroller.clientWidth >= max - 5 ? 0 : scroller.scrollLeft + scroller.clientWidth;
+    const next = scroller.scrollLeft + step >= max - 5 ? 0 : scroller.scrollLeft + step;
     scroller.scrollTo({ left: next, behavior: 'smooth' });
   }, 1500);
   const stopAutoAdvance = () => clearInterval(autoAdvance);
@@ -207,6 +210,3 @@ if (scroller) {
   scroller.addEventListener('wheel', stopAutoAdvance, { once: true });
   scroller.addEventListener('touchstart', stopAutoAdvance, { once: true });
 }
-</script>
-</body>
-</html>
