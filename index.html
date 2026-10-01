@@ -201,7 +201,7 @@ if (scroller) {
     const max = scroller.scrollWidth - scroller.clientWidth;
     const next = scroller.scrollLeft + scroller.clientWidth >= max - 5 ? 0 : scroller.scrollLeft + scroller.clientWidth;
     scroller.scrollTo({ left: next, behavior: 'smooth' });
-  }, 3000);
+  }, 1500);
   const stopAutoAdvance = () => clearInterval(autoAdvance);
   scroller.addEventListener('pointerdown', stopAutoAdvance, { once: true });
   scroller.addEventListener('wheel', stopAutoAdvance, { once: true });
