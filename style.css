@@ -36,11 +36,11 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .intro-block{ width:100%; margin-top:0; }
 .logos-row{ display:flex; flex-wrap:wrap; align-items:center; gap:32px; margin:24px 0; }
 .logo{ height:50px; width:auto; display:block; }
-.logo--large{ height:60px; }
-.cause-logos{ display:flex; align-items:center; flex-wrap:wrap; gap:16px; margin:16px 0; }
-.cause-logos img{ height:22px; width:auto; display:block; }
-.logo-separator{ width:1px; height:28px; background:var(--hairline); }
-.project-text .cause-logos img{ height:32px; }
+.logo-grand{ height:60px; }
+.logos-ligne{ display:flex; align-items:center; flex-wrap:wrap; gap:16px; margin:16px 0; }
+.logos-ligne img{ height:22px; width:auto; display:block; }
+.logo-separator{ width:2px; height:28px; background:var(--muted); flex-shrink:0; }
+.project-text .logos-ligne img{ height:32px; }
 
 /* Boutons de contact */
 .contact-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:40px; }
@@ -62,10 +62,9 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .card .sub-entry:last-child{ margin-bottom:0; }
 .card > .texte{ margin-bottom:20px; }
 
-/* Projets */
-.project-card{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; padding:56px 0; }
-.project-card:first-of-type{ padding-top:0; }
-.project-card:last-child{ padding-bottom:0; }
+/* Projets : défilement horizontal, un projet par écran */
+.projects-scroll{ display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:56px; margin-top:24px; padding-bottom:16px; }
+.project-card{ display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; flex:0 0 100%; scroll-snap-align:start; }
 .project-illustrations{ display:flex; flex-direction:column; gap:24px; }
 .illu{ display:flex; flex-direction:column; gap:8px; }
 .media-caption{ font-size:12px; margin:0; text-align:center; }
@@ -111,6 +110,6 @@ body.detail-page .sheet{ padding-bottom:80px; }
   .sheet{ padding:32px 16px 0; }
   .contact-panel-inner{ padding:32px 16px; }
 }
-@media (max-width:680px){ .project-card{ grid-template-columns:1fr; gap:24px; padding:40px 0; } }
+@media (max-width:680px){ .projects-scroll{ gap:24px; } .project-card{ grid-template-columns:1fr; gap:24px; } }
 @media (max-width:640px){ .comp-grid{ grid-template-columns:1fr; } }
 @media (max-width:520px){ .grid-3{ grid-template-columns:1fr; } .detail-gallery{ grid-template-columns:1fr; } .titre1{ font-size:30px; } }
