@@ -39,6 +39,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .logo--large{ height:60px; }
 .cause-logos{ display:flex; align-items:center; flex-wrap:wrap; gap:16px; margin:16px 0; }
 .cause-logos img{ height:22px; width:auto; display:block; }
+.logo-separator{ width:1px; height:28px; background:var(--hairline); }
 .project-text .cause-logos img{ height:32px; }
 
 /* Boutons de contact */
