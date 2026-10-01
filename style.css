@@ -59,7 +59,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .card > .texte{ margin-bottom:20px; }
 
 /* Projets : défilement horizontal, un projet par écran, illustrations réservées à la page détail */
-.projects-scroll{ scrollbar-width:none; }
+.projects-scroll{ display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:56px; margin-top:24px; padding-bottom:16px; scrollbar-width:none; }
 .projects-scroll::-webkit-scrollbar{ display:none; }
 .project-card{ flex:0 0 400px; scroll-snap-align:start; }
 .projects-progress{ height:4px; background:var(--hairline); border-radius:2px; margin-top:12px; overflow:hidden; }
