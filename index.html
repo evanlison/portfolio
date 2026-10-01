@@ -83,7 +83,7 @@
   <hr>
   <section>
     <h2 class="titre2">Projets</h2>
-    <div class="projects-scroll">
+    <div class="projects-scroll" id="projectsScroll">
       <div class="project-card">
         <div class="project-text">
           <h3 class="titre3">Stratégie des bornes de recharge électriques IRVE en Île-de-France</h3>
@@ -110,10 +110,6 @@
           <p class="texte">La question centrale est de comprendre quelles motivations sous-tendent les choix de mobilité des usagers entre train, bus et métro, à travers une méthode combinant observation de terrain, questionnaire et entretiens semi-directifs. L'analyse distingue des voyageurs de passage motivés par le coût du billet, des navetteurs domicile-travail, une clientèle d'affaires et des usagers du métro séduits par sa rapidité, chaque mode ayant ses forces et faiblesses, la gare routière restant le maillon le plus fragile. Bercy apparaît ainsi comme une porte d'entrée des mobilités plutôt qu'une destination touristique.</p>
           <p class="project-link"><a href="projet/mobilites-bercy.html">Voir le projet en détail →</a></p>
         </div>
-        <div class="project-illustrations">
-          <div class="illu"><div class="media-frame"></div><p class="media-caption">Légende à ajouter</p></div>
-          <div class="illu"><div class="media-frame"></div><p class="media-caption">Légende à ajouter</p></div>
-        </div>
       </div>
       <div class="project-card">
         <div class="project-text">
@@ -126,10 +122,6 @@
           <p class="sous-titre">Sous-titre</p>
           <p class="texte">Description à ajouter.</p>
           <p class="project-link"><a href="nom-du-projet.html">Voir le projet en détail →</a></p>
-        </div>
-        <div class="project-illustrations">
-          <div class="illu"><div class="media-frame"></div><p class="media-caption">Légende à ajouter</p></div>
-          <div class="illu"><div class="media-frame"></div><p class="media-caption">Légende à ajouter</p></div>
         </div>
       </div>
     </div>
@@ -202,6 +194,19 @@ addEventListener('scroll', () => {
   const h = document.documentElement.scrollHeight - innerHeight;
   scrollFill.style.height = (h > 0 ? scrollY / h * 100 : 0) + '%';
 });
+
+const scroller = document.getElementById('projectsScroll');
+if (scroller) {
+  const autoAdvance = setInterval(() => {
+    const max = scroller.scrollWidth - scroller.clientWidth;
+    const next = scroller.scrollLeft + scroller.clientWidth >= max - 5 ? 0 : scroller.scrollLeft + scroller.clientWidth;
+    scroller.scrollTo({ left: next, behavior: 'smooth' });
+  }, 3000);
+  const stopAutoAdvance = () => clearInterval(autoAdvance);
+  scroller.addEventListener('pointerdown', stopAutoAdvance, { once: true });
+  scroller.addEventListener('wheel', stopAutoAdvance, { once: true });
+  scroller.addEventListener('touchstart', stopAutoAdvance, { once: true });
+}
 </script>
 </body>
 </html>
