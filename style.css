@@ -39,7 +39,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .logo-grand{ height:60px; }
 .logos-ligne{ display:flex; align-items:center; flex-wrap:wrap; gap:16px; margin:16px 0; }
 .logos-ligne img{ height:22px; width:auto; display:block; }
-.logo-separator{ width:2px; height:28px; background:var(--muted); flex-shrink:0; }
+.logo-separator{ width:1px; height:28px; background:var(--hairline); flex-shrink:0; }
 .project-text .logos-ligne img{ height:32px; }
 
 /* Boutons de contact */
@@ -64,7 +64,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 
 /* Projets : défilement horizontal, un projet par écran, illustrations réservées à la page détail */
 .projects-scroll{ display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:56px; margin-top:24px; padding-bottom:16px; }
-.project-card{ flex:0 0 100%; scroll-snap-align:start; }
+.project-card{ flex:0 0 400px; scroll-snap-align:start; }
 .project-link{ margin:12px 0 0; font-size:13.5px; }
 .project-link a{ color:var(--orange); font-weight:600; text-decoration:none; }
 .project-link a:hover{ text-decoration:underline; }
@@ -107,6 +107,6 @@ body.detail-page .sheet{ padding-bottom:80px; }
   .sheet{ padding:32px 16px 0; }
   .contact-panel-inner{ padding:32px 16px; }
 }
-@media (max-width:680px){ .projects-scroll{ gap:24px; } }
+@media (max-width:680px){ .projects-scroll{ gap:24px; } .project-card{ flex-basis:100%; } }
 @media (max-width:640px){ .comp-grid{ grid-template-columns:1fr; } }
 @media (max-width:520px){ .grid-3{ grid-template-columns:1fr; } .detail-gallery{ grid-template-columns:1fr; } .titre1{ font-size:30px; } }
