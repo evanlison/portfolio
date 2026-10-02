@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<link rel="icon" type="image/png" href="../favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evan Lison — Portfolio</title>
+<meta property="og:title" content="Evan Lison — Portfolio">
+<meta property="og:description" content="Poissy, entre inégalités d'accessibilité et vécu de la gare">
+<meta property="og:url" content="https://evanlison.fr/projet/diagnostic-poissy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<script>
+window.addEventListener('scroll', function(){
+  var scrollTop = window.scrollY;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  document.getElementById('scrollFill').style.height = pct + '%';
+});
+</script>
+<body class="detail-page">
+  <div class="scroll-progress"><div class="scroll-progress-fill" id="scrollFill"></div></div>
+<div class="sheet">
+<p class="back-link"><a href="../index.html#diag-poissy">← Retour au portfolio</a></p>
+  <div class="detail-header">
+    <h1 class="titre1">Diagnostic territorial autour du pôle multimodal de la gare de Poissy</h1>
+    <p class="date">jan.–avr. 2026</p>
+    <p class="sous-titre">Un territoire fragmenté face aux inégalités d'accessibilité vécues au quotidien dans la gare comme espace d'intermodalité</p>
+  </div>
+  <hr>
+  <section>
+    <p class="texte">Le projet, réalisé dans le cadre de l'atelier de diagnostic territorial du Master 1 Urbanisme et Aménagement de l'Université Paris-Nanterre par Sarah Hami, Farah Iaali, Evan Lison, Sephina Merakchi et Briana Techer, porte sur le territoire formé par les communes de Poissy, Carrières-sous-Poissy et Villennes-sur-Seine, dans les Yvelines. Il se structure en deux temps complémentaires : un diagnostic quantitatif mené sous la direction d'Hadrien Herrault, puis un diagnostic qualitatif resserré sur la gare de Poissy, encadré par Olivier Ratouis.</p>
+      <div class="detail-gallery">
+      <div class="illu">
+        <div class="media-frame"></div>
+        <p class="media-caption">Légende à ajouter</p>
+      </div>
+      <div class="illu">
+        <div class="media-frame"></div>
+        <p class="media-caption">Légende à ajouter</p>
+      </div>
+    </div>
+    <p class="texte">La première phase part du constat d'un territoire marqué à la fois par une mixité socio-économique et par la présence de zones enclavées, et s'interroge sur la manière dont la morphologie urbaine, la structure sociodémographique, la localisation des services et les transformations de l'offre de mobilité contribuent à produire, transformer ou maintenir des inégalités d'accessibilité entre les habitants. Elle s'appuie sur des données INSEE, des cartographies SIG et une revue de littérature sur les inégalités de mobilité, pour analyser les profils démographiques contrastés des trois communes, la hiérarchisation du réseau de transports en commun et de la tarification, ainsi que la pression foncière croissante autour de la gare. L'analyse montre que si la gare de Poissy, desservie par le RER A et la ligne J, structure une accessibilité métropolitaine forte, les quartiers périphériques ou enclavés, notamment ceux situés au-delà des coupures formées par les autoroutes A13 et A14 ou par les voies ferrées, restent largement dépendants de l'automobile, faute d'une offre de mobilités douces suffisamment développée dans les documents d'urbanisme locaux.</p>
+    <p class="texte">La seconde phase resserre l'échelle d'étude sur le parvis de la gare de Poissy et sa gare routière attenante, considérés comme un espace singulier où se concentrent les enjeux d'intermodalité. La question posée devient alors de comprendre dans quelle mesure l'organisation et les aménagements autour de la gare structurent les pratiques et les expériences des usagers, telles qu'elles sont révélées par leurs perceptions et leurs récits. La méthode combine observation de terrain, entretiens semi-directifs menés auprès d'usagers, d'un médiateur SNCF et de commerçants, ainsi que des relevés photographiques et cartographiques des flux, des fonctions et des stationnements autour du parvis. Les résultats mettent en évidence un pôle multimodal globalement fonctionnel et apprécié pour la qualité de sa desserte, mais fragilisé par un manque de lisibilité de l'offre, notamment autour des arrêts de bus provisoires, par des conflits d'usage sur un parvis très minéral et peu équipé, et par un sentiment d'insécurité ou d'inconfort exprimé en soirée par certains usagers.</p>
+    <p class="texte">Les rendus prennent la forme de deux dossiers écrits structurés, comprenant cartographies, croquis de synthèse, organigrammes d'acteurs, graphiques statistiques et retranscriptions d'entretiens, qui articulent diagnostic quantitatif à l'échelle intercommunale et lecture qualitative à l'échelle du parvis.</p>
+    <p class="texte">Le diagnostic conclut que l'amélioration de la gare de Poissy ne peut reposer sur le seul renforcement de l'offre de transport, à l'image des projets RER E et Tram T13 actuellement engagés, mais doit intégrer une requalification des espaces eux-mêmes : une meilleure signalétique, une hiérarchisation plus claire des circulations entre piétons, bus et automobiles, davantage de végétalisation et de confort d'attente, ainsi qu'une vigilance particulière sur la question foncière, pour que la modernisation du pôle ne renforce pas les inégalités d'accessibilité qu'elle est censée corriger.</p>
+  </section>
+</div>
+</body>
+</html>
