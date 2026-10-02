@@ -62,11 +62,11 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .skills-marquee-track{ display:flex; width:max-content; white-space:nowrap; animation:marquee linear infinite; }
 .skills-marquee-track span{ margin-right:48px; flex-shrink:0; font-weight:700; }
 
-.skills-marquee:nth-of-type(1) .skills-marquee-track{ animation-duration:20s; }
-.skills-marquee:nth-of-type(2) .skills-marquee-track{ animation-duration:32s; }
-.skills-marquee:nth-of-type(3) .skills-marquee-track{ animation-duration:25s; }
-.skills-marquee:nth-of-type(4) .skills-marquee-track{ animation-duration:38s; }
-.skills-marquee:nth-of-type(5) .skills-marquee-track{ animation-duration:22s; }
+.skills-marquee:nth-of-type(1) .skills-marquee-track{ animation-duration:80s; }
+.skills-marquee:nth-of-type(2) .skills-marquee-track{ animation-duration:130s; }
+.skills-marquee:nth-of-type(3) .skills-marquee-track{ animation-duration:100s; }
+.skills-marquee:nth-of-type(4) .skills-marquee-track{ animation-duration:150s; }
+.skills-marquee:nth-of-type(5) .skills-marquee-track{ animation-duration:90s; }
 
 /* Grille 3 colonnes (Formations, Expériences, Bénévolat) */
 .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
