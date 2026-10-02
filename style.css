@@ -37,9 +37,10 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .logos-ligne img{ height:22px; width:auto; display:block; }
 .logo-separator{ width:1px; height:28px; background:var(--hairline); flex-shrink:0; }
 .project-text .logos-ligne img{ height:32px; }
-.logos-marquee{ overflow:hidden; width:100%; margin:16px 0; }
-.logos-marquee-track{ display:flex; align-items:center; gap:96px; width:max-content; animation:marquee 18s linear infinite; }
-.logos-marquee img{ height:32px; width:auto; display:block; flex-shrink:0; }
+.logos-marquee{ overflow:hidden; width:100%; margin:24px 0; }
+.logos-marquee-track{ display:flex; align-items:center; gap:24px; width:max-content; animation:marquee 14s linear infinite; }
+.logo-item{ width:140px; height:90px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.logo-item img{ max-height:90px; max-width:100%; width:auto; display:block; object-fit:contain; }
 @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
 
 /* Boutons de contact */
