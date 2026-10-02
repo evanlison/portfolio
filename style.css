@@ -56,6 +56,9 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .comp-side .sub-label{ color:var(--orange); font-weight:700; font-size:13px; margin-bottom:8px; }
 .comp-side div{ margin-bottom:20px; }
 .comp-side div:last-child{ margin-bottom:0; }
+.skills-marquee{ overflow:hidden; width:100%; }
+.skills-marquee-track{ display:flex; width:max-content; white-space:nowrap; animation:marquee 16s linear infinite; }
+.skills-marquee-track span{ margin-right:48px; flex-shrink:0; }
 
 /* Grille 3 colonnes (Formations, Expériences, Bénévolat) */
 .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
