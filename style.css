@@ -58,6 +58,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 
 /* Grille 3 colonnes (Formations, Expériences, Bénévolat) */
 .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
+.card{ min-width:0; }
 .card .sub-entry{ margin-bottom:20px; }
 .card .sub-entry:last-child{ margin-bottom:0; }
 .card > .texte{ margin-bottom:20px; }
