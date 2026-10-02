@@ -59,8 +59,23 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .comp-side div:last-child{ margin-bottom:0; }
 .skills-marquee-group{ display:flex; flex-direction:column; gap:16px; min-width:0; }
 .skills-marquee{ overflow:hidden; width:100%; }
-.skills-marquee-track{ display:flex; width:max-content; white-space:nowrap; animation:marquee 38s linear infinite; }
-.skills-marquee-track span{ margin-right:48px; flex-shrink:0; font-size:22px; font-weight:700; }
+.skills-marquee-track{ display:flex; width:max-content; white-space:nowrap; animation:marquee linear infinite; }
+.skills-marquee-track span{ margin-right:48px; flex-shrink:0; font-weight:700; }
+
+.skills-marquee:nth-of-type(1) .skills-marquee-track{ animation-duration:8s; }
+.skills-marquee:nth-of-type(1) .skills-marquee-track span{ font-size:34px; }
+
+.skills-marquee:nth-of-type(2) .skills-marquee-track{ animation-duration:13s; }
+.skills-marquee:nth-of-type(2) .skills-marquee-track span{ font-size:20px; }
+
+.skills-marquee:nth-of-type(3) .skills-marquee-track{ animation-duration:10s; }
+.skills-marquee:nth-of-type(3) .skills-marquee-track span{ font-size:28px; }
+
+.skills-marquee:nth-of-type(4) .skills-marquee-track{ animation-duration:15s; }
+.skills-marquee:nth-of-type(4) .skills-marquee-track span{ font-size:18px; }
+
+.skills-marquee:nth-of-type(5) .skills-marquee-track{ animation-duration:9s; }
+.skills-marquee:nth-of-type(5) .skills-marquee-track span{ font-size:26px; }
 
 /* Grille 3 colonnes (Formations, Expériences, Bénévolat) */
 .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; }
