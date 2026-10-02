@@ -52,13 +52,14 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 /* Compétences */
 .comp-grid{ display:grid; grid-template-columns:1.5fr 1fr; gap:40px; }
 .comp-grid > p{ font-size:26px; line-height:1.5; font-weight:800; margin:0; }
-.comp-grid{ align-items:center; }
+.comp-grid{ align-items:flex-start; }
 .comp-side p{ margin:0; font-size:16px; line-height:1.5; font-weight:400; }
 .comp-side .sub-label{ color:var(--orange); font-weight:700; font-size:13px; margin-bottom:8px; }
 .comp-side div{ margin-bottom:20px; }
 .comp-side div:last-child{ margin-bottom:0; }
+.skills-marquee-group{ display:flex; flex-direction:column; gap:16px; }
 .skills-marquee{ overflow:hidden; width:100%; }
-.skills-marquee-track{ display:flex; width:max-content; white-space:nowrap; animation:marquee 30s linear infinite; }
+.skills-marquee-track{ display:flex; width:max-content; white-space:nowrap; animation:marquee 38s linear infinite; }
 .skills-marquee-track span{ margin-right:48px; flex-shrink:0; font-size:22px; font-weight:700; }
 
 /* Grille 3 colonnes (Formations, Expériences, Bénévolat) */
