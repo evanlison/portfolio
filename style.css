@@ -36,7 +36,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .logos-ligne{ display:flex; align-items:center; flex-wrap:wrap; gap:16px; margin:16px 0; }
 .logos-ligne img{ height:20px; width:auto; display:block; }
 .logo-separator{ width:1px; height:28px; background:var(--hairline); flex-shrink:0; }
-.project-text .logos-ligne img{ height:32px; }
+.project-text .logos-ligne img{ height:26px; }
 .logos-marquee{ overflow:hidden; width:100%; margin:24px 0; }
 .logos-marquee-track{ display:flex; align-items:center; width:max-content; animation:marquee 21s linear infinite; }
 .logo-item{ width:60px; height:22px; margin-right:24px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
