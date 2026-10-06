@@ -34,7 +34,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .logo{ height:50px; width:auto; display:block; }
 .logo-grand{ height:60px; }
 .logos-ligne{ display:flex; align-items:center; flex-wrap:wrap; gap:16px; margin:16px 0; }
-.logos-ligne img{ height:22px; width:auto; display:block; }
+.logos-ligne img{ height:20px; width:auto; display:block; }
 .logo-separator{ width:1px; height:28px; background:var(--hairline); flex-shrink:0; }
 .project-text .logos-ligne img{ height:32px; }
 .logos-marquee{ overflow:hidden; width:100%; margin:24px 0; }
