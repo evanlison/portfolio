@@ -38,7 +38,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .logo-separator{ width:1px; height:28px; background:var(--hairline); flex-shrink:0; }
 .project-text .logos-ligne img{ height:26px; }
 .logos-static{ display:flex; flex-wrap:wrap; align-items:center; gap:32px; margin:16px 0; }
-.logos-static img{ height:40px; width:auto; display:block; }
+.logos-static img{ height:17px; width:auto; display:block; }
 @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
 
 /* Boutons de contact */
