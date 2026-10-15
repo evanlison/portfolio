@@ -102,6 +102,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .back-link a:hover{ text-decoration:underline; }
 .detail-header{ margin-bottom:24px; }
 .detail-gallery{ display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+.detail-gallery, .media-frame{ margin-top:32px; }
 body.detail-page .sheet{ padding-bottom:80px; }
 
 /* Panneau de contact (hors de .sheet, prend toute la largeur naturellement) */
