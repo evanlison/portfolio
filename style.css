@@ -114,6 +114,10 @@ body.detail-page .sheet{ padding-bottom:80px; }
 .contact-panel .contact-row{ margin-top:0; }
 .panel-footer{ margin-top:40px; padding-top:20px; border-top:.5px solid var(--paper); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-size:11.5px; color:var(--paper); }
 
+/* Figure avec légende */
+.figure{ margin:0; min-width:0; }
+.legende{ font-size:13px; line-height:1.4; color:var(--muted); margin:8px 0 0; text-align:left; }
+
 /* Responsive */
 @media (max-width:760px){ .grid-3{ grid-template-columns:1fr 1fr; } }
 @media (max-width:720px){
