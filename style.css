@@ -118,6 +118,11 @@ body.detail-page .sheet{ padding-bottom:80px; }
 .figure{ margin:0; min-width:0; }
 .legende{ font-size:13px; line-height:1.4; color:var(--muted); margin:8px 0 0; text-align:left; }
 
+/* Points avec icône et retrait */
+.point{ display:flex; gap:12px; align-items:flex-start; }
+.point-icone{ flex:0 0 1.5em; }
+.texte.point + .texte.point{ margin-top:12px; }
+
 /* Responsive */
 @media (max-width:760px){ .grid-3{ grid-template-columns:1fr 1fr; } }
 @media (max-width:720px){
