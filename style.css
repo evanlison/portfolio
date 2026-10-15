@@ -76,7 +76,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 /* Projets : défilement horizontal, un projet par écran, illustrations réservées à la page détail */
 .projects-scroll{ display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:56px; margin-top:24px; padding-bottom:16px; scrollbar-width:none; }
 .projects-scroll::-webkit-scrollbar{ display:none; }
-.project-card{ flex:0 0 400px; scroll-snap-align:start; }
+.project-card{ flex:0 0 calc((100% - 56px) / 2); scroll-snap-align:start; }
 .projects-progress{ height:4px; background:var(--hairline); border-radius:2px; margin-top:12px; overflow:hidden; }
 .projects-progress-fill{ height:100%; width:0%; background:var(--orange); }
 .project-link{ margin:12px 0 0; font-size:13.5px; }
