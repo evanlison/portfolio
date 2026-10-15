@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<link rel="icon" type="image/png" href="../favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evan Lison — Portfolio</title>
+<meta property="og:title" content="Evan Lison — Portfolio">
+<meta property="og:description" content="Diagnostic territorial autour du pôle multimodal de la gare de Poissy">
+<meta property="og:url" content="https://evanlison.fr/projet/diag-poissy.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<script>
+window.addEventListener('scroll', function(){
+  var scrollTop = window.scrollY;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  document.getElementById('scrollFill').style.height = pct + '%';
+});
+</script>
+<body class="detail-page">
+  <div class="scroll-progress"><div class="scroll-progress-fill" id="scrollFill"></div></div>
+<div class="sheet">
+<p class="back-link"><a href="../index.html#diag-poissy">← Retour au portfolio</a></p>
+  <div class="detail-header">
+    <h1 class="titre1">Diagnostic territorial autour du pôle multimodal de la gare de Poissy</h1>
+    <p class="date">jan.–avr. 2026</p>
+          <div class="logos-ligne">
+            <img src="../images/paris-nanterre.png" alt="Université Paris Nanterre">
+          </div>
+    <p class="sous-titre">Un territoire fragmenté face aux inégalités d'accessibilité vécues au quotidien dans la gare comme espace d'intermodalité.</p>
+  </div>
+  <hr>
+  <section>
+    <p class="texte">texte</p>
+<figure class="figure">
+  <div class="media-frame">
+    <iframe src="https://www.youtube-nocookie.com/embed/wgp-_W0dSjU" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <figcaption class="legende">La gare de Poissy comme espace d’intermodalité vécu</figcaption>
+</figure>
+</div>
+</body>
+</html>
