@@ -120,10 +120,8 @@
     <span class="metro-stop"></span>
     <span class="metro-stop"></span>
   </div>
-  <div class="projects-wrap">
-    <span class="projects-hint projects-hint-left">«</span>
-    <span class="projects-hint projects-hint-right">»</span>
-    <div class="projects-scroll" id="projectsScroll">
+  <div class="projects-scroll" id="projectsScroll">
+  </div>
       <div class="project-card" id="atelier-irve">
         <div class="media-frame taille-originale"><img src="images/atelier-irve-long.png" alt=""></div>
         <h3 class="titre3">Stratégie des bornes de recharge électriques IRVE en Île-de-France</h3>
@@ -172,6 +170,7 @@
         <p class="project-link"><a href="projet/enquete-marais.html">Voir le projet en détail →</a></p>
       </div>
       <div class="project-card" id="enquete-havre">
+          <div class="media-frame taille-originale"><img src="images/enquete-havre-long.png" alt=""></div>
         <h3 class="titre3">Enquête de terrain sur les stratégies d'attractivité touristique au Havre</h3>
                 <p class="sous-titre">Évaluation des stratégies d'attractivité touristique d'une ville industrialo-portuaire en transformation.</p>
         <div class="logos-ligne">
@@ -182,6 +181,7 @@
         <p class="project-link"><a href="projet/enquete-havr.html">Voir le projet en détail →</a></p>
       </div>
       <div class="project-card" id="teledetection-australie">
+          <div class="media-frame taille-originale"><img src="images/teledetection-australie-long.png" alt=""></div>
         <h3 class="titre3">Dynamiques de régénération post-incendie dans le parc national de Kosciuszko (2019–2022)</h3>
                 <p class="sous-titre">Comment les types de sol et les conditions environnementales locales influencent-ils la dynamique de revégétalisation après les feux du Black Summer ?</p>
         <div class="logos-ligne">
@@ -192,6 +192,7 @@
         <p class="project-link"><a href="projet/teledetection-australie.html">Voir le projet en détail →</a></p>
       </div>
       <div class="project-card" id="reamenagement-pythonduvernois">
+                  <div class="media-frame taille-originale"><img src="images/reamenagement-pythonduvernois-long.png" alt=""></div>
         <h3 class="titre3">Réaménagement du quartier Python-Duvernois (Paris 20<sup>e</sup>)</h3>
                 <p class="sous-titre">Comment désenclaver un quartier perçu en marge depuis les années 1950 ? Entre repli urbain et opportunités de renouvellement.</p>
         <div class="logos-ligne">
@@ -201,21 +202,23 @@
           <span class="logo-separator"></span>
           <img src="images/semapa.png" alt="Société d'étude, de maîtrise d'ouvrage et d'aménagement parisienne">
         </div>
-                          <p class="date">sep.–déc. 2024</p>
+             <p class="date">sep.–déc. 2024</p>
         <p class="texte">La SEMAPA et la mairie du 20e arrondissement de Paris nous ont commandé des études préliminaires portant sur des intentions de projet pour l'avenir du quartier Python-Duvernois. Situé à l'extrémité est du 20e arrondissement de Paris, en bordure du périphérique et de la frontière avec Bagnolet, ce quartier souffre d'un enclavement persistant depuis les années 1950. Tout d'abord, nous avons réalisé un diagnostic territorial du quartier portant sur son bâti, ses circulations et ses usages. Puis nous avons élaboré un projet urbain visant à répondre aux dysfonctionnements identifiés et à recréer une continuité avec le reste de l'arrondissement.</p>
         <p class="project-link"><a href="projet/reamenagement-pythonduvernois.html">Voir le projet en détail →</a></p>
       </div>
       <div class="project-card" id="sig-nantes">
+   <div class="media-frame taille-originale"><img src="images/sig-nantes-long.png" alt=""></div>
         <h3 class="titre3">Analyse de l'accessibilité des espaces verts à Nantes</h3>
                 <p class="sous-titre">Existe-t-il des disparités d'accès aux espaces verts entre les quartiers de Nantes, via les transports en commun et les pistes cyclables ?</p>
         <div class="logos-ligne">
           <img src="images/paris-cite.png" alt="Université Paris Cité">
         </div>
-                          <p class="date">sep.–déc. 2024</p>
+     <p class="date">sep.–déc. 2024</p>
         <p class="texte">Ce micro-projet SIG analyse la répartition et l'accessibilité des espaces verts à Nantes, à partir des données ouvertes de Nantes Métropole. L'objectif est d'identifier d'éventuelles disparités d'accès aux espaces végétalisés entre quartiers, selon la desserte en transports en commun et en pistes cyclables.</p>
         <p class="project-link"><a href="projet/sig-nantes.html">Voir le projet en détail →</a></p>
       </div>
       <div class="project-card" id="enquete-bercy">
+           <div class="media-frame taille-originale"><img src="images/enquete-bercy-long.png" alt=""></div>
         <h3 class="titre3">Enquête sur la typologie des mobilités dans le 12e arrondissement de Paris</h3>
                 <p class="sous-titre">Bercy, porte d'entrée des voyageurs : quelles motivations déterminent le choix entre train, bus et métro ?</p>
         <div class="logos-ligne">
@@ -293,7 +296,8 @@
 </div>
 <script>
 const scroller = document.getElementById('projectsScroll');
-if (scroller) {
+const metroLine = document.getElementById('metroLine');
+if (scroller && metroLine) {
   const card = scroller.querySelector('.project-card');
   const gap = parseFloat(getComputedStyle(scroller).gap) || 0;
   const step = card ? card.getBoundingClientRect().width + gap : scroller.clientWidth;
@@ -308,7 +312,7 @@ if (scroller) {
   scroller.addEventListener('scroll', updateMetro);
   updateMetro();
 
-  const autoAdvance = setInterval(() => {
+  let autoAdvance = setInterval(() => {
     const max = scroller.scrollWidth - scroller.clientWidth;
     if (max <= 0) return;
     const atEnd = scroller.scrollLeft >= max - 5;
@@ -319,6 +323,32 @@ if (scroller) {
   scroller.addEventListener('pointerdown', stopAutoAdvance, { once: true });
   scroller.addEventListener('wheel', stopAutoAdvance, { once: true });
   scroller.addEventListener('touchstart', stopAutoAdvance, { once: true });
+
+  let dragging = false;
+  const scrollToRatio = (clientX) => {
+    const rect = metroLine.getBoundingClientRect();
+    const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+    const max = scroller.scrollWidth - scroller.clientWidth;
+    scroller.scrollLeft = ratio * max;
+  };
+  metroLine.addEventListener('pointerdown', (e) => {
+    dragging = true;
+    metroLine.classList.add('dragging');
+    stopAutoAdvance();
+    scrollToRatio(e.clientX);
+    metroLine.setPointerCapture(e.pointerId);
+  });
+  metroLine.addEventListener('pointermove', (e) => {
+    if (dragging) scrollToRatio(e.clientX);
+  });
+  metroLine.addEventListener('pointerup', () => {
+    dragging = false;
+    metroLine.classList.remove('dragging');
+  });
+  metroLine.addEventListener('pointercancel', () => {
+    dragging = false;
+    metroLine.classList.remove('dragging');
+  });
 }
 </script>
 </body>
