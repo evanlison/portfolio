@@ -112,6 +112,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .projects-scroll{ display:flex; align-items:flex-start; overflow-x:auto; scroll-snap-type:x mandatory; gap:56px; margin-top:24px; padding-bottom:16px; scrollbar-width:none; }
 .projects-scroll::-webkit-scrollbar{ display:none; }
 .project-card{ flex:0 0 calc((100% - 56px) / 2); scroll-snap-align:start; }
+.project-card .media-frame{ margin-top:0; }
 .project-link{ margin:12px 0 0; font-size:13.5px; }
 .project-link a{ color:var(--orange); font-weight:600; text-decoration:none; }
 .project-link a:hover{ text-decoration:underline; }
