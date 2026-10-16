@@ -16,88 +16,10 @@ p{ text-align:justify; }
 /* Structure */
 .sheet{ width:100%; max-width:980px; margin:64px auto 0; padding:64px 64px 0; }
 hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
-.metro-line{
-  position:relative;
-  display:flex;
-  align-items:center;
-  margin:28px 0 72px;
-}
-
-.metro-track{
-  position:relative;
-  flex:1;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  height:110px;
-  min-width:0;
-}
-
-.metro-rail{
-  position:absolute;
-  left:0;
-  right:0;
-  top:50%;
-  height:5px;
-  background:var(--orange);
-  border-radius:3px;
-  transform:translateY(-50%);
-  z-index:0;
-}
-
-.metro-stop-wrap{
-  position:relative;
-  z-index:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
-}
-
-.metro-stop{
-  width:11px;
-  height:11px;
-  border-radius:50%;
-  background:var(--paper);
-  border:3px solid var(--orange);
-  transition:transform .2s ease, border-color .2s ease, background .2s ease;
-}
-.metro-stop.major{
-  width:17px;
-  height:17px;
-  border-width:4px;
-}
-.metro-stop.active{
-  border-color:var(--ink);
-  background:var(--ink);
-  transform:scale(1.25);
-}
-
-.metro-label{
-  position:absolute;
-  left:9px;
-  white-space:nowrap;
-  font-weight:800;
-  font-size:12px;
-  letter-spacing:.1px;
-  color:var(--ink);
-  pointer-events:none;
-}
-.metro-label.above{
-  bottom:8px;
-  transform-origin:left bottom;
-  transform:rotate(-38deg);
-}
-.metro-label.below{
-  top:8px;
-  transform-origin:left top;
-  transform:rotate(38deg);
-}
-
-@media (max-width:768px){
-  .metro-track{ height:86px; }
-  .metro-label{ font-size:10px; }
-}
+.metro-line{ position:relative; display:flex; justify-content:space-between; align-items:center; margin-top:24px; height:20px; }
+.metro-line::before{ content:""; position:absolute; left:0; right:0; top:50%; height:3px; background:var(--hairline); transform:translateY(-50%); z-index:0; }
+.metro-stop{ position:relative; z-index:1; width:12px; height:12px; border-radius:50%; background:var(--paper); border:3px solid var(--hairline); transition:border-color .2s ease, background .2s ease, transform .2s ease; }
+.metro-stop.active{ border-color:var(--orange); background:var(--orange); transform:scale(1.3); }
 
 /* Titres et textes : mêmes classes partout sur le site */
 .titre1{ margin:0; font-size:40px; font-weight:800; letter-spacing:-.01em; line-height:1.1; }
