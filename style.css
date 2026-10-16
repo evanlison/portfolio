@@ -44,6 +44,7 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
   border-radius:50%;
   background:var(--paper);
   border:3px solid var(--hairline);
+  cursor:pointer;
   transition:border-color .2s ease, background .2s ease, transform .2s ease;
 }
 .metro-stop.active{
