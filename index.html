@@ -227,7 +227,19 @@
         </div>
       </div>
     </div>
-    <div class="projects-progress"><div class="projects-progress-fill" id="projectsProgressFill"></div></div>
+    </div>
+    <div class="metro-line" id="metroLine">
+      <span class="metro-stop active"></span>
+      <span class="metro-stop"></span>
+      <span class="metro-stop"></span>
+      <span class="metro-stop"></span>
+      <span class="metro-stop"></span>
+      <span class="metro-stop"></span>
+      <span class="metro-stop"></span>
+      <span class="metro-stop"></span>
+      <span class="metro-stop"></span>
+    </div>
+  </section>
   </section>
   <hr>
   <section>
@@ -298,13 +310,16 @@ if (scroller) {
   const card = scroller.querySelector('.project-card');
   const gap = parseFloat(getComputedStyle(scroller).gap) || 0;
   const step = card ? card.getBoundingClientRect().width + gap : scroller.clientWidth;
-  const fill = document.getElementById('projectsProgressFill');
+  const metroStops = document.querySelectorAll('#metroLine .metro-stop');
 
-  const updateFill = () => {
+  const updateMetro = () => {
     const max = scroller.scrollWidth - scroller.clientWidth;
-    fill.style.width = (max > 0 ? scroller.scrollLeft / max * 100 : 0) + '%';
+    const ratio = max > 0 ? scroller.scrollLeft / max : 0;
+    const index = Math.round(ratio * (metroStops.length - 1));
+    metroStops.forEach((stop, i) => stop.classList.toggle('active', i === index));
   };
-  scroller.addEventListener('scroll', updateFill);
+  scroller.addEventListener('scroll', updateMetro);
+  updateMetro();
 
   const autoAdvance = setInterval(() => {
     const max = scroller.scrollWidth - scroller.clientWidth;
