@@ -121,6 +121,8 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 .media-frame img,.media-frame video,.media-frame iframe{ width:100%; height:100%; display:block; border:none; object-fit:cover; }
 .media-frame:empty,.media-placeholder,.pdf-tile{ flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:16px; }
 .media-frame:empty,.media-placeholder{ display:flex; gap:6px; color:var(--muted); font-size:12.5px; line-height:1.6; }
+.media-frame.taille-originale{ aspect-ratio:auto; }
+.media-frame.taille-originale img{ height:auto; object-fit:contain; }
 .media-placeholder{ width:100%; height:100%; }
 .media-frame:empty::before,.media-placeholder .plus{ content:"+"; display:block; font-size:22px; color:var(--orange); margin-bottom:8px; }
 .media-frame:empty::after{ content:"Illustration à ajouter"; }
