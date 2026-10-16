@@ -291,7 +291,8 @@
 <script>
 const scroller = document.getElementById('projectsScroll');
 if (scroller) {
-  const card = scroller.querySelector('.project-card');
+  const cards = scroller.querySelectorAll('.project-card');
+  const card = cards[0];
   const gap = parseFloat(getComputedStyle(scroller).gap) || 0;
   const step = card ? card.getBoundingClientRect().width + gap : scroller.clientWidth;
   const metroStops = document.querySelectorAll('#metroLine .metro-stop');
@@ -316,6 +317,14 @@ if (scroller) {
   scroller.addEventListener('pointerdown', stopAutoAdvance, { once: true });
   scroller.addEventListener('wheel', stopAutoAdvance, { once: true });
   scroller.addEventListener('touchstart', stopAutoAdvance, { once: true });
+
+  metroStops.forEach((stop, i) => {
+    stop.addEventListener('click', () => {
+      stopAutoAdvance();
+      const target = cards[i];
+      if (target) scroller.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+    });
+  });
 }
 </script>
 </body>
