@@ -103,12 +103,19 @@ hr{ border:none; border-top:1px solid var(--hairline); margin:64px 0; }
 
 /* Boutons de contact */
 .contact-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:40px; }
-.pill{ display:inline-flex; align-items:center; border:3px solid var(--orange); color:var(--orange); border-radius:10px; padding:9px 20px; font-size:16px; font-weight:500; text-decoration:none; background:var(--paper); transition:background .15s ease,color .15s ease; }
-.pill:hover{ background:var(--orange); color:var(--paper); }
+.pill{ display:inline-flex; align-items:center; border:3px solid var(--pill-color, var(--orange)); color:var(--pill-color, var(--orange)); border-radius:10px; padding:9px 20px; font-size:16px; font-weight:500; text-decoration:none; background:var(--paper); transition:background .15s ease,color .15s ease; }
+.pill:hover{ background:var(--pill-color, var(--orange)); color:var(--paper); }
 .pill-linkedin:hover{ background:#0A66C2; border-color:#0A66C2; color:#fff; }
-.pill-youtube{ border-color:#E63946; color:#E63946; }
-.pill-youtube:hover{ background:#E63946; border-color:#E63946; color:var(--paper); }
-.pill-sm{ padding:5px 12px; font-size:13px; border-width:2px; border-radius:8px; }
+
+.pill-sm{ padding:4px 10px; font-size:12px; border-width:1.5px; border-radius:7px; }
+
+.project-link-row{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:12px; flex-wrap:wrap; }
+.project-link-row .project-link{ margin:0; }
+
+.pill-sm{ padding:4px 10px; font-size:12px; border-width:1.5px; border-radius:7px; }
+
+.project-link-row{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:12px; flex-wrap:wrap; }
+.project-link-row .project-link{ margin:0; }
 
 /* Compétences */
 .comp-grid{ display:grid; grid-template-columns:1.5fr 1fr; gap:40px; align-items:flex-start; }
