@@ -329,11 +329,11 @@
 const scroller = document.getElementById('projectsScroll');
 const metroLine = document.getElementById('metroLine');
 if (scroller && metroLine) {
-  const card = scroller.querySelector('.project-card');
-  const gap = parseFloat(getComputedStyle(scroller).gap) || 0;
-  const step = card ? card.getBoundingClientRect().width + gap : scroller.clientWidth;
-  const metroStops = document.querySelectorAll('#metroLine .metro-stop');
   const projectCards = scroller.querySelectorAll('.project-card');
+  const metroStops = document.querySelectorAll('#metroLine .metro-stop');
+  const gap = parseFloat(getComputedStyle(scroller).gap) || 0;
+  const firstCard = projectCards[0];
+  const step = firstCard ? firstCard.getBoundingClientRect().width + gap : scroller.clientWidth;
 
   const updateMetro = () => {
     const max = scroller.scrollWidth - scroller.clientWidth;
@@ -361,30 +361,12 @@ if (scroller && metroLine) {
   scroller.addEventListener('wheel', stopAutoAdvance, { once: true });
   scroller.addEventListener('touchstart', stopAutoAdvance, { once: true });
 
-  let dragging = false;
-  const scrollToRatio = (clientX) => {
-    const rect = metroLine.getBoundingClientRect();
-    const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
-    const max = scroller.scrollWidth - scroller.clientWidth;
-    scroller.scrollLeft = ratio * max;
-  };
-  metroLine.addEventListener('pointerdown', (e) => {
-    dragging = true;
-    metroLine.classList.add('dragging');
-    stopAutoAdvance();
-    scrollToRatio(e.clientX);
-    metroLine.setPointerCapture(e.pointerId);
-  });
-  metroLine.addEventListener('pointermove', (e) => {
-    if (dragging) scrollToRatio(e.clientX);
-  });
-  metroLine.addEventListener('pointerup', () => {
-    dragging = false;
-    metroLine.classList.remove('dragging');
-  });
-  metroLine.addEventListener('pointercancel', () => {
-    dragging = false;
-    metroLine.classList.remove('dragging');
+  metroStops.forEach((stop, i) => {
+    stop.addEventListener('click', () => {
+      stopAutoAdvance();
+      const target = projectCards[i];
+      if (target) scroller.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+    });
   });
 }
 </script>
