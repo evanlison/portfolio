@@ -365,7 +365,7 @@ if (scroller && metroLine) {
     stop.addEventListener('click', () => {
       stopAutoAdvance();
       const target = projectCards[i];
-      if (target) scroller.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+      if (target) target.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
     });
   });
 }
