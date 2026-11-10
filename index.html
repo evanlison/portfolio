@@ -17,15 +17,15 @@
   <style>
 /* ───────── Base ───────── */
 :root{
-  --night:#0A0F24;
-  --paper:#F4F3EE;
+  --night:#15171B;
+  --paper:#F4F3EF;
   --card:#FFFFFF;
-  --ink:#0A0F24;
-  --ink-2:#4B5066;
-  --hair:#DBDAD2;
-  --line:#FFCF1F;
-  --sun:#FFCF1F;
-  --stop-idle:#CFD0D4;
+  --ink:#15171B;
+  --ink-2:#5B5F66;
+  --hair:#DFDDD6;
+  --line:#E2B33C;
+  --sun:#E2B33C;
+  --stop-idle:#D2D1CB;
   --maxw:1240px;
   --gutter:clamp(18px,4vw,56px);
   --rail-gap:clamp(30px,8vw,120px);
@@ -60,7 +60,7 @@ h2,h3,.p-question,.status p{text-wrap:balance;}
 .wrap{position:relative;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);}
 .col{position:relative;margin-left:var(--rail-gap);}
 .zone .wrap{padding-block:clamp(48px,6.2vw,88px);}
-.dark{background:var(--night);color:#fff;--stop-idle:#373C50;--bg:var(--night);}
+.dark{background:var(--night);color:#fff;--stop-idle:#34373D;--bg:var(--night);}
 section[id],footer[id]{scroll-margin-top:72px;}
 
 .label{
@@ -72,7 +72,7 @@ section[id],footer[id]{scroll-margin-top:72px;}
 
 /* ───────── La ligne (rail + stations) ───────── */
 .rail-track,.rail-fill{position:absolute;width:6px;border-radius:3px;pointer-events:none;}
-.rail-track{z-index:1;background:#8A8FA3;opacity:.35;}
+.rail-track{z-index:1;background:#8C8E93;opacity:.35;}
 .rail-fill{z-index:2;background:var(--line);transform-origin:top;transform:scaleY(0);}
 html:not(.js) .rail-track,html:not(.js) .rail-fill{display:none;}
 .stop{
@@ -98,12 +98,12 @@ html:not(.js) .stop{display:none;}
   transition:background .3s,color .3s,box-shadow .3s;
 }
 .top.is-solid{
-  background:rgba(244,243,238,.84);
+  background:rgba(244,243,239,.86);
   -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   color:var(--ink);
   box-shadow:0 1px 0 var(--hair);
 }
-.top.is-night{background:rgba(10,15,36,.82);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.12);}
+.top.is-night{background:rgba(21,23,27,.86);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.12);}
 .top-brand{
   font-stretch:125%;font-weight:800;font-size:15.5px;letter-spacing:-.01em;
   opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .3s;
@@ -125,27 +125,6 @@ html:not(.js) .stop{display:none;}
 
 /* ───────── Ouverture ───────── */
 .hero{position:relative;overflow:hidden;--h1:clamp(40px,8.4vw,112px);}
-.hero::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(620px circle at var(--mx,72%) var(--my,28%),rgba(255,207,31,.13),transparent 62%),
-    radial-gradient(900px circle at 85% 110%,rgba(108,123,255,.22),transparent 60%);
-}
-.net{
-  position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
-  -webkit-mask-image:linear-gradient(90deg,transparent 20%,#000 60%),linear-gradient(180deg,transparent 3%,#000 17%,#000 44%,transparent 69%);
-  mask-image:linear-gradient(90deg,transparent 20%,#000 60%),linear-gradient(180deg,transparent 3%,#000 17%,#000 44%,transparent 69%);
-  -webkit-mask-composite:source-in;mask-composite:intersect;
-}
-.net path{fill:none;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;}
-.net .st{fill:var(--night);stroke:#fff;stroke-width:4;}
-.js .net path{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s var(--ease) forwards;}
-.js .net path:nth-of-type(2){animation-delay:.25s;}
-.js .net path:nth-of-type(3){animation-delay:.5s;}
-.js .net path:nth-of-type(4){animation-delay:.75s;}
-.js .net .st,.js .net .train{opacity:0;animation:fade .6s 2.2s forwards;}
-@keyframes draw{to{stroke-dashoffset:0;}}
-@keyframes fade{to{opacity:1;}}
 
 .hero .wrap{
   min-height:100vh;min-height:100svh;
@@ -198,7 +177,7 @@ html:not(.js) .stop{display:none;}
   transition:background .2s,color .2s,border-color .2s,transform .2s var(--ease);
 }
 .pill:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);}
-.dark .pill{border-color:rgba(255,255,255,.38);background:rgba(10,15,36,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+.dark .pill{border-color:rgba(255,255,255,.38);background:transparent;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
 .dark .pill:hover{background:#fff;border-color:#fff;color:var(--night);}
 
 @media (max-width:860px){
@@ -207,7 +186,6 @@ html:not(.js) .stop{display:none;}
 @media (max-width:640px){
   .hero{--h1:17.5vw;}
   .hero h1 span{display:block;}
-  .net{opacity:.3;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 40%,transparent 72%);mask-image:linear-gradient(180deg,#000 0,#000 40%,transparent 72%);-webkit-mask-composite:source-over;mask-composite:add;}
   .logos img{height:38px;}
   .logos img.logo-grand{height:48px;}
 }
@@ -340,7 +318,7 @@ h3{margin:0;font-stretch:108%;font-weight:700;font-size:var(--h3);line-height:1.
   box-shadow:0 0 0 1px var(--hair);
   transition:transform .45s var(--ease),box-shadow .45s var(--ease);
 }
-.project:hover .project-in{transform:translateY(-5px);box-shadow:0 0 0 1px var(--hair),0 22px 38px -24px rgba(10,15,36,.4);}
+.project:hover .project-in{transform:translateY(-5px);box-shadow:0 0 0 1px var(--hair),0 22px 38px -24px rgba(21,23,27,.35);}
 .p-banner{margin:0;overflow:hidden;background:var(--hair);aspect-ratio:560/100;}
 .p-banner img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease);}
 .project:hover .p-banner img{transform:scale(1.05);}
@@ -400,9 +378,6 @@ h3{margin:0;font-stretch:108%;font-weight:700;font-size:var(--h3);line-height:1.
   .js [data-reveal]{opacity:1;transform:none;}
   .js h2[data-reveal]{font-stretch:125%;}
   .js .p-banner{clip-path:none;}
-  .js .net path{stroke-dashoffset:0;}
-  .js .net .st{opacity:1;}
-  .net .train{display:none;}
   .marquee-track{flex-wrap:wrap;width:auto;}
   .marquee ul[aria-hidden]{display:none;}
   .marquee ul{flex-wrap:wrap;}
@@ -429,23 +404,6 @@ h3{margin:0;font-stretch:108%;font-weight:700;font-size:var(--h3);line-height:1.
 
   <!-- ═════════ OUVERTURE ═════════ -->
   <section class="hero zone dark" id="accueil">
-    <svg class="net" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <path pathLength="1" stroke="#FFCF1F" d="M1500 150H1250L1050 350H900L760 490V960"/>
-      <path pathLength="1" stroke="#6C7BFF" stroke-opacity=".75" d="M900 -60V350L1110 560V700L1250 840H1500"/>
-      <path pathLength="1" stroke="#FF6B4A" stroke-opacity=".7" d="M1500 420H1340L1220 300H1010L890 180H540"/>
-      <path pathLength="1" stroke="#34D3A6" stroke-opacity=".65" d="M1180 -60V220L1340 380V560L1420 640V960"/>
-      <circle class="st" cx="1250" cy="150" r="10"/>
-      <circle class="st" cx="1180" cy="220" r="13"/>
-      <circle class="st" cx="1100" cy="300" r="13"/>
-      <circle class="st" cx="1050" cy="350" r="10"/>
-      <circle class="st" cx="900" cy="350" r="13"/>
-      <circle class="st" cx="900" cy="190" r="13"/>
-      <circle class="st" cx="1340" cy="420" r="13"/>
-      <circle class="st" cx="720" cy="180" r="10"/>
-      <circle class="train" r="7" fill="#FFCF1F"><animateMotion dur="16s" repeatCount="indefinite" path="M1500 150H1250L1050 350H900L760 490V960"/></circle>
-      <circle class="train" r="7" fill="#8E9AFF"><animateMotion dur="21s" begin="-6s" repeatCount="indefinite" path="M900 -60V350L1110 560V700L1250 840H1500"/></circle>
-      <circle class="train" r="7" fill="#FF6B4A"><animateMotion dur="19s" begin="-11s" repeatCount="indefinite" path="M1500 420H1340L1220 300H1010L890 180H540"/></circle>
-    </svg>
 
     <div class="wrap"><div class="col">
       <p class="hero-loc label">Paris, France</p>
@@ -966,6 +924,16 @@ h3{margin:0;font-stretch:108%;font-weight:700;font-size:var(--h3);line-height:1.
   };
   const pMove = dir => pTrack.scrollBy({ left: dir * pStep(), behavior: reduce ? 'auto' : 'smooth' });
   pArrows.forEach(a => a.addEventListener('click', () => pMove(+a.dataset.dir)));
+
+  /* Le texte de chaque carte s'arrête au même niveau : le dégradé tombe partout à la même hauteur */
+  const alignCards = () => {
+    const bodies = pCards.map(c => c.querySelector('.p-text .fold-body'));
+    bodies.forEach(b => b.style.removeProperty('--fold-h'));
+    const lh = parseFloat(getComputedStyle(bodies[0]).lineHeight) || 24;
+    const tops = pCards.map((c, i) => bodies[i].getBoundingClientRect().top - c.getBoundingClientRect().top);
+    const bottom = Math.max(...tops) + lh * 4;
+    bodies.forEach((b, i) => b.style.setProperty('--fold-h', Math.round(bottom - tops[i]) + 'px'));
+  };
   pTrack.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') { e.preventDefault(); pMove(1); }
     if (e.key === 'ArrowLeft') { e.preventDefault(); pMove(-1); }
@@ -1036,7 +1004,7 @@ h3{margin:0;font-stretch:108%;font-weight:700;font-size:var(--h3);line-height:1.
     ticking = true;
     requestAnimationFrame(() => { update(); ticking = false; });
   };
-  const refresh = () => { layout(); update(); syncProjects(); };
+  const refresh = () => { alignCards(); checkFolds(); layout(); update(); syncProjects(); };
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', () => { checkFolds(); refresh(); });
   if ('ResizeObserver' in window) new ResizeObserver(refresh).observe(page);
@@ -1045,14 +1013,6 @@ h3{margin:0;font-stretch:108%;font-weight:700;font-size:var(--h3);line-height:1.
   checkFolds();
   refresh();
 
-  /* ── Halo qui suit la souris dans l'ouverture ── */
-  if (!reduce && matchMedia('(hover: hover)').matches) {
-    hero.addEventListener('pointermove', e => {
-      const r = hero.getBoundingClientRect();
-      hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
-      hero.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
-    });
-  }
 })();
 </script>
 </body>
