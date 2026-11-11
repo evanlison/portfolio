@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>if (location.pathname === '/index.html') location.replace('/' + location.search + location.hash);</script>
   <script>document.documentElement.classList.add('js');</script>
-  <!-- APERÇU : la ligne <base> ci-dessous sert uniquement à charger tes images depuis evanlison.fr dans l'aperçu. À SUPPRIMER avant la mise en ligne. -->
-  <base href="https://evanlison.fr/">
   <link rel="icon" type="image/png" href="favicon.png">
   <title>Evan Lison — Portfolio</title>
   <link rel="canonical" href="https://evanlison.fr/">
@@ -50,17 +48,11 @@ h1,h2,h3{margin:0;font-family:var(--display);text-wrap:balance;}
 .bar.is-scrolled{border-color:var(--hair);}
 .bar .wrap{display:flex;align-items:center;gap:24px;height:58px;}
 .brand{font:600 15px/1 var(--display);letter-spacing:-.01em;}
-.nav{display:flex;gap:clamp(12px,1.8vw,26px);margin-left:auto;font-size:13.5px;}
-.nav a{position:relative;display:flex;gap:6px;align-items:baseline;color:var(--ink-2);transition:color .2s;}
-.nav a .mono{font-size:10.5px;}
-.nav a:hover,.nav a.on{color:var(--ink);}
-.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-19px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);}
-.nav a.on::after{transform:scaleX(1);}
 .clock{font-size:11.5px;color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums;}
 .clock i{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--accent);vertical-align:1px;animation:blink 2s steps(1) infinite;}
 @keyframes blink{50%{opacity:.25;}}
 .progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--accent);transform-origin:left;transform:scaleX(0);}
-@media (max-width:980px){.nav{display:none;}.clock{margin-left:auto;}}
+.clock{margin-left:auto;}
 
 /* Ouverture */
 .hero{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:100vh;min-height:100svh;padding:clamp(80px,11vh,120px) 0 clamp(64px,9vh,96px);}
@@ -241,6 +233,20 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
 .next svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s var(--ease);}
 .next.up svg{transform:rotate(180deg);}
 @media (max-width:860px){.next{width:42px;height:42px;}}
+.here{position:fixed;left:var(--pad);bottom:clamp(16px,3vh,28px);z-index:35;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .3s,transform .3s var(--ease);}
+.here.show{opacity:1;transform:none;pointer-events:auto;}
+.here-btn{display:flex;align-items:center;gap:9px;height:40px;padding:0 16px 0 14px;border:0;border-radius:999px;background:var(--ink);color:#fff;font:500 14px/1 var(--display);letter-spacing:-.005em;cursor:pointer;}
+.here-btn i{flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent);}
+.here-lbl{position:relative;display:block;overflow:hidden;height:1.15em;}
+.here-lbl span{display:block;line-height:1.15;transition:transform .4s var(--ease),opacity .4s;}
+.here-lbl span.out{transform:translateY(-100%);opacity:0;}
+.here-lbl span.in{transform:translateY(100%);opacity:0;}
+.here-menu{position:absolute;left:0;bottom:calc(100% + 8px);min-width:190px;margin:0;padding:6px;list-style:none;border:1px solid var(--hair);border-radius:16px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 10px 30px rgba(0,0,0,.08);opacity:0;transform:translateY(6px) scale(.98);transform-origin:bottom left;pointer-events:none;transition:opacity .25s,transform .25s var(--ease);}
+.here.open .here-menu{opacity:1;transform:none;pointer-events:auto;}
+.here-menu a{display:flex;align-items:baseline;gap:10px;padding:9px 12px;border-radius:10px;color:var(--ink);font:500 15px/1.2 var(--display);text-decoration:none;}
+.here-menu a small{font:400 11px/1 var(--mono);color:var(--accent);}
+.here-menu a:hover,.here-menu a.on{background:rgba(0,0,0,.05);}
+@media (max-width:860px){.here-btn{height:38px;font-size:13.5px;}}
 /* Aperçu qui suit le curseur */
 .peek{position:fixed;left:0;top:0;z-index:30;display:grid;place-items:center;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 1px var(--hair),0 18px 36px -16px rgba(0,0,0,.35);pointer-events:none;opacity:0;transition:opacity .25s;}
 .peek.on{opacity:1;}
@@ -279,7 +285,6 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
 <header class="bar">
   <div class="wrap">
     <a class="brand" href="#top">Evan LISON</a>
-    <nav class="nav" aria-label="Sections"><a href="#competences"><span class="mono">01</span>Compétences</a><a href="#formations"><span class="mono">02</span>Formations</a><a href="#projets"><span class="mono">03</span>Projets</a><a href="#experiences"><span class="mono">04</span>Expériences</a><a href="#benevolat"><span class="mono">05</span>Bénévolat</a><a href="#contact"><span class="mono">06</span>Contact</a></nav>
     <p class="clock mono" aria-label="Heure à Paris"><i></i><span>--:--:--</span></p>
   </div>
   <div class="progress" aria-hidden="true"></div>
@@ -610,6 +615,10 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
   </section>
 </main>
 
+<nav class="here" aria-label="Partie en cours">
+  <ul class="here-menu" id="here-menu"><li><a href="#presentation"><small>00</small>Présentation</a></li><li><a href="#competences"><small>01</small>Compétences</a></li><li><a href="#formations"><small>02</small>Formations</a></li><li><a href="#projets"><small>03</small>Projets</a></li><li><a href="#experiences"><small>04</small>Expériences</a></li><li><a href="#benevolat"><small>05</small>Bénévolat</a></li><li><a href="#contact"><small>06</small>Contact</a></li></ul>
+  <button class="here-btn" type="button" aria-expanded="false" aria-controls="here-menu"><i></i><span class="here-lbl"><span>Présentation</span></span></button>
+</nav>
 <button class="next" type="button" aria-label="Partie suivante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button>
 
 <footer class="wrap">
@@ -729,9 +738,36 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
   addEventListener('scroll', updateNext, { passive: true });
   updateNext();
 
+  /* Bulle « vous êtes ici » : nom de la partie en cours, menu au clic */
+  const here = document.querySelector('.here');
+  const hereBtn = here.querySelector('.here-btn');
+  const hereLbl = here.querySelector('.here-lbl');
+  const hereLinks = [...here.querySelectorAll('.here-menu a')];
+  let hereCur = '';
+  const setHere = id => {
+    here.classList.toggle('show', !!id);
+    if (!id) here.classList.remove('open');
+    hereLinks.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + id));
+    if (!id || id === hereCur) return;
+    const a = hereLinks.find(l => l.getAttribute('href') === '#' + id);
+    const txt = a ? a.lastChild.textContent : '';
+    const old = hereLbl.lastElementChild;
+    [...hereLbl.children].forEach(c => { if (c !== old) c.remove(); });
+    if (hereCur && !reduce) {
+      const nw = document.createElement('span'); nw.textContent = txt; nw.className = 'in';
+      old.classList.add('out'); old.style.position = 'absolute';
+      hereLbl.appendChild(nw); void nw.offsetWidth; nw.classList.remove('in');
+      setTimeout(() => { if (old.parentNode) old.remove(); }, 400);
+    } else old.textContent = txt;
+    hereCur = id;
+  };
+  hereBtn.addEventListener('click', () => { const o = here.classList.toggle('open'); hereBtn.setAttribute('aria-expanded', o); });
+  hereLinks.forEach(a => a.addEventListener('click', () => { here.classList.remove('open'); hereBtn.setAttribute('aria-expanded', false); }));
+  document.addEventListener('click', e => { if (!here.contains(e.target)) { here.classList.remove('open'); hereBtn.setAttribute('aria-expanded', false); } });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { here.classList.remove('open'); hereBtn.setAttribute('aria-expanded', false); } });
+
   /* Barre : progression + section active */
   const secs = [...document.querySelectorAll('.sec[id]')];
-  const links = [...document.querySelectorAll('.nav a')];
   let ticking = false;
   const update = () => {
     const max = document.documentElement.scrollHeight - innerHeight;
@@ -739,7 +775,7 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
     bar.classList.toggle('is-scrolled', scrollY > 8);
     let on = null;
     secs.forEach(s => { if (s.getBoundingClientRect().top < innerHeight * .4) on = s.id; });
-    links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + on));
+    setHere(on);
     ticking = false;
   };
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
