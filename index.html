@@ -145,8 +145,6 @@ html:not(.js) .fold-btn{display:none;}
 .row-date{color:var(--ink-2);padding-top:6px;}
 .row h3{font-weight:500;font-size:clamp(21px,1.9vw,26px);line-height:1.15;letter-spacing:-.025em;}
 .row-sub{margin-top:8px;max-width:40em;}
-.row-top{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;}
-.row-logo{height:34px;width:auto;flex:none;}
 .roles{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px;}
 .role-t{font-weight:500;}
 .role-d{margin-top:4px;color:var(--ink-2);font-size:15px;}
@@ -175,16 +173,14 @@ html:not(.js) .fold-btn{display:none;}
 .proj-head:hover .proj-n,.proj.open .proj-n{color:var(--accent);}
 .proj.open .proj-x{transform:rotate(180deg);}
 .proj.open .proj-x::after{transform:rotate(0);}
-.proj-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease);}
-.proj.open .proj-body{grid-template-rows:1fr;}
-.proj-body > .proj-in{min-height:0;overflow:hidden;visibility:hidden;transition:visibility 0s .6s;}
-.proj.open .proj-body > .proj-in{visibility:visible;transition:none;}
-html:not(.js) .proj-body > .proj-in{visibility:visible;}
-html:not(.js) .proj-body{grid-template-rows:1fr;}
-.proj-in{display:grid;grid-template-columns:52px minmax(0,1fr) 170px 22px;column-gap:16px;}
-.proj-ban,.proj-side,.proj-txt{grid-column:2/4;}
-.proj-ban{margin:4px 0 0;aspect-ratio:560/100;background:var(--hair);overflow:hidden;}
-.proj-ban img{width:100%;height:100%;object-fit:cover;}
+.proj-body{height:0;overflow:hidden;transition:height .55s var(--ease);}
+.proj.open .proj-body{height:auto;}
+html:not(.js) .proj-body{height:auto;}
+.proj-in{padding:4px 38px 0 68px;opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s;}
+.proj.open .proj-in{opacity:1;transform:none;transition:opacity .45s .18s,transform .55s .18s var(--ease);}
+html:not(.js) .proj-in{opacity:1;transform:none;}
+.proj-ban{margin:0;background:var(--hair);overflow:hidden;}
+.proj-ban img{display:block;width:100%;height:auto;}
 .proj-side{margin-top:18px;}
 .proj-logos{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;}
 .proj-logos img{height:30px;width:auto;}
@@ -198,9 +194,8 @@ html:not(.js) .proj-body{grid-template-rows:1fr;}
   .proj-head{grid-template-columns:34px minmax(0,1fr) 22px;row-gap:4px;}
   .proj-d{grid-column:2;grid-row:2;text-align:left;}
   .proj-x{grid-column:3;grid-row:1;}
-  .proj-in{grid-template-columns:34px minmax(0,1fr);}
   .proj-row{grid-template-columns:34px minmax(0,1fr) 22px;}
-  .proj-ban,.proj-side,.proj-txt{grid-column:2;}
+  .proj-in{padding:4px 0 0 50px;}
 }
 /* Aperçu qui suit le curseur */
 .peek{position:fixed;left:0;top:0;z-index:30;display:grid;place-items:center;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 1px var(--hair),0 18px 36px -16px rgba(0,0,0,.35);pointer-events:none;opacity:0;transition:opacity .25s;}
@@ -297,15 +292,15 @@ html:not(.js) .proj-body{grid-template-rows:1fr;}
       <div class="sec-r rows">
           <article class="row" data-reveal>
             <p class="row-date mono">2026-aujourd'hui, Champs-sur-Marne (77)</p>
-            <div class="row-main"><div class="row-top"><h3>École d'Urbanisme de Paris</h3><img class="row-logo" src="images/eup-couleur.png" alt="École d'Urbanisme de Paris" loading="lazy"></div><p class="row-sub">M2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME), spécialité Transports et mobilités</p></div>
+            <div class="row-main"><h3>École d'Urbanisme de Paris</h3><p class="row-sub">M2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME), spécialité Transports et mobilités</p></div>
           </article>
           <article class="row" data-reveal>
             <p class="row-date mono">2025–2026, Nanterre (92)</p>
-            <div class="row-main"><div class="row-top"><h3>Université Paris-Nanterre</h3><img class="row-logo" src="images/paris-nanterre.png" alt="Université Paris Nanterre" loading="lazy"></div><p class="row-sub">M1 Urbanisme et aménagement, parcours Projet Urbain et Montage d'Opérations (PUMO)</p></div>
+            <div class="row-main"><h3>Université Paris-Nanterre</h3><p class="row-sub">M1 Urbanisme et aménagement, parcours Projet Urbain et Montage d'Opérations (PUMO)</p></div>
           </article>
           <article class="row" data-reveal>
             <p class="row-date mono">2022–2025, Paris 13e arr.</p>
-            <div class="row-main"><div class="row-top"><h3>Université Paris-Cité</h3><img class="row-logo" src="images/paris-cite.png" alt="Université Paris Cité" loading="lazy"></div><p class="row-sub">Licence Géographie et aménagement, parcours Environnement et Développement (GAED)</p></div>
+            <div class="row-main"><h3>Université Paris-Cité</h3><p class="row-sub">Licence Géographie et aménagement, parcours Environnement et Développement (GAED)</p></div>
           </article>
       </div>
     </div>
@@ -328,7 +323,7 @@ html:not(.js) .proj-body{grid-template-rows:1fr;}
             </div>
             <div class="proj-body" id="pb-atelier-irve" role="region" aria-label="Stratégie des bornes de recharge électriques IRVE en Île-de-France">
               <div class="proj-in">
-                <figure class="proj-ban"><img src="images/atelier-irve-long.png" alt="" loading="lazy"></figure>
+                <figure class="proj-ban"><img src="images/atelier-irve-long.png" alt="" width="560" height="100" decoding="async"></figure>
                 <div class="proj-side">
                   <div class="proj-logos"><img src="images/eup-couleur.png" alt="École d'Urbanisme de Paris" loading="lazy"><img src="images/idfm.png" alt="Île-de-France Mobilités" loading="lazy"></div>
                 </div>
@@ -351,7 +346,7 @@ html:not(.js) .proj-body{grid-template-rows:1fr;}
             </div>
             <div class="proj-body" id="pb-reamenagement-vallees" role="region" aria-label="Réaménagement du secteur des Vallées à La Garenne-Colombes (Le fil vert de la jeunesse)">
               <div class="proj-in">
-                <figure class="proj-ban"><img src="images/reamenagement-vallees-long.png" alt="" loading="lazy"></figure>
+                <figure class="proj-ban"><img src="images/reamenagement-vallees-long.png" alt="" width="560" height="100" decoding="async"></figure>
                 <div class="proj-side">
                   <div class="proj-logos"><img src="images/paris-nanterre.png" alt="Université Paris Nanterre" loading="lazy"><img src="images/caue92.png" alt="Conseil d'architecture, d'urbanisme et de l'environnement des Hauts-de-Seine" loading="lazy"></div>
                 </div>
@@ -374,7 +369,7 @@ html:not(.js) .proj-body{grid-template-rows:1fr;}
             </div>
             <div class="proj-body" id="pb-enquete-marais" role="region" aria-label="Le Marais : pratiques et perceptions de l'espace public (Chaque regard révèle le Marais autrement)">
               <div class="proj-in">
-                <figure class="proj-ban"><img src="images/enquete-marais-long.png" alt="" loading="lazy"></figure>
+                <figure class="proj-ban"><img src="images/enquete-marais-long.png" alt="" width="560" height="100" decoding="async"></figure>
                 <div class="proj-side">
                   <div class="proj-logos"><img src="images/paris-nanterre.png" alt="Université Paris Nanterre" loading="lazy"></div>
                 </div>
@@ -397,7 +392,7 @@ html:not(.js) .proj-body{grid-template-rows:1fr;}
             </div>
             <div class="proj-body" id="pb-diag-poissy" role="region" aria-label="Diagnostic territorial autour du pôle multimodal de la gare de Poissy">
               <div class="proj-in">
-                <figure class="proj-ban"><img src="images/diag-poissy-long.png" alt="" loading="lazy"></figure>
+                <figure class="proj-ban"><img src="images/diag-poissy-long.png" alt="" width="560" height="100" decoding="async"></figure>
                 <div class="proj-side">
                   <div class="proj-logos"><img src="images/paris-nanterre.png" alt="Université Paris Nanterre" loading="lazy"></div>
                 </div>
@@ -420,7 +415,7 @@ html:not(.js) .proj-body{grid-template-rows:1fr;}
             </div>
             <div class="proj-body" id="pb-enquete-havre" role="region" aria-label="Enquête de terrain sur les stratégies d'attractivité touristique au Havre (voyage d'étude)">
               <div class="proj-in">
-                <figure class="proj-ban"><img src="images/enquete-havre-long.png" alt="" loading="lazy"></figure>
+                <figure class="proj-ban"><img src="images/enquete-havre-long.png" alt="" width="560" height="100" decoding="async"></figure>
                 <div class="proj-side">
                   <div class="proj-logos"><img src="images/paris-nanterre.png" alt="Université Paris Nanterre" loading="lazy"></div>
                 </div>
@@ -443,7 +438,7 @@ html:not(.js) .proj-body{grid-template-rows:1fr;}
             </div>
             <div class="proj-body" id="pb-teledetection-australie" role="region" aria-label="Dynamiques de régénération post-incendie dans le parc national de Kosciuszko (2019–2022)">
               <div class="proj-in">
-                <figure class="proj-ban"><img src="images/teledetection-australie-long.png" alt="" loading="lazy"></figure>
+                <figure class="proj-ban"><img src="images/teledetection-australie-long.png" alt="" width="560" height="100" decoding="async"></figure>
                 <div class="proj-side">
                   <div class="proj-logos"><img src="images/paris-cite.png" alt="Université Paris Cité" loading="lazy"></div>
                 </div>
@@ -466,7 +461,7 @@ html:not(.js) .proj-body{grid-template-rows:1fr;}
             </div>
             <div class="proj-body" id="pb-reamenagement-pythonduvernois" role="region" aria-label="Réaménagement du quartier Python-Duvernois (Paris 20e)">
               <div class="proj-in">
-                <figure class="proj-ban"><img src="images/reamenagement-pythonduvernois-long.png" alt="" loading="lazy"></figure>
+                <figure class="proj-ban"><img src="images/reamenagement-pythonduvernois-long.png" alt="" width="560" height="100" decoding="async"></figure>
                 <div class="proj-side">
                   <div class="proj-logos"><img src="images/paris-cite.png" alt="Université Paris Cité" loading="lazy"><img src="images/semapa.png" alt="Société d'étude, de maîtrise d'ouvrage et d'aménagement parisienne" loading="lazy"><img src="images/mairie-20.png" alt="Mairie du 20ᵉ arrondissement de Paris" loading="lazy"></div>
                 </div>
@@ -489,7 +484,7 @@ html:not(.js) .proj-body{grid-template-rows:1fr;}
             </div>
             <div class="proj-body" id="pb-sig-nantes" role="region" aria-label="Analyse de l'accessibilité des espaces verts à Nantes">
               <div class="proj-in">
-                <figure class="proj-ban"><img src="images/sig-nantes-long.png" alt="" loading="lazy"></figure>
+                <figure class="proj-ban"><img src="images/sig-nantes-long.png" alt="" width="560" height="100" decoding="async"></figure>
                 <div class="proj-side">
                   <div class="proj-logos"><img src="images/paris-cite.png" alt="Université Paris Cité" loading="lazy"></div>
                 </div>
@@ -512,7 +507,7 @@ html:not(.js) .proj-body{grid-template-rows:1fr;}
             </div>
             <div class="proj-body" id="pb-enquete-bercy" role="region" aria-label="Enquête sur la typologie des mobilités dans le 12e arrondissement de Paris">
               <div class="proj-in">
-                <figure class="proj-ban"><img src="images/enquete-bercy-long.png" alt="" loading="lazy"></figure>
+                <figure class="proj-ban"><img src="images/enquete-bercy-long.png" alt="" width="560" height="100" decoding="async"></figure>
                 <div class="proj-side">
                   <div class="proj-logos"><img src="images/paris-cite.png" alt="Université Paris Cité" loading="lazy"></div>
                 </div>
@@ -619,11 +614,28 @@ html:not(.js) .proj-body{grid-template-rows:1fr;}
   /* Index des projets : accordéon */
   document.querySelectorAll('.proj').forEach(p => {
     const btn = p.querySelector('.proj-head');
+    const body = p.querySelector('.proj-body');
+    body.hidden = false;
+    body.inert = true;
     btn.addEventListener('click', () => {
       const open = !p.classList.contains('open');
-      p.classList.toggle('open', open);
       btn.setAttribute('aria-expanded', open);
+      body.inert = !open;
       peek.classList.remove('on');
+      if (reduce) { p.classList.toggle('open', open); return; }
+      if (open) {
+        body.style.height = '0px';
+        p.classList.add('open');
+        requestAnimationFrame(() => { body.style.height = body.scrollHeight + 'px'; });
+      } else {
+        body.style.height = body.scrollHeight + 'px';
+        void body.offsetHeight;
+        p.classList.remove('open');
+        body.style.height = '0px';
+      }
+    });
+    body.addEventListener('transitionend', e => {
+      if (e.target === body && e.propertyName === 'height' && p.classList.contains('open')) body.style.height = '';
     });
   });
 
