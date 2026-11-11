@@ -1,95 +1,93 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="/favicon.png">
-<title>404 — Evan Lison</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>404 — Evan Lison</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400..600&family=Inter:wght@400..600&display=swap" rel="stylesheet">
+  <style>
 :root{
-  --night:#15171B;
-  --line:#E2B33C;
-  --idle:#3A3D43;
-  --display:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --bg:#F5F5F2;
+  --ink:#121212;
+  --ink-2:#67676A;
+  --hair:#E3E3DD;
+  --accent:#E35B2E;
+  --maxw:1320px;
+  --pad:clamp(18px,4vw,56px);
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --display:"Inter Tight","Inter",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --ease:cubic-bezier(.2,.8,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box;}
 html,body{height:100%;}
-body{
-  margin:0;
-  background:var(--night);
-  color:#fff;
-  font-family:var(--display);
-  -webkit-font-smoothing:antialiased;
-  overflow:hidden;
-}
-::selection{background:var(--line);color:var(--night);}
-a:focus-visible{outline:3px solid var(--line);outline-offset:4px;}
+body{margin:0;display:flex;flex-direction:column;min-height:100vh;min-height:100svh;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+p{margin:0;}
+::selection{background:var(--accent);color:#fff;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.mono{font-family:var(--mono);font-size:12px;line-height:1.5;letter-spacing:.02em;text-transform:uppercase;}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad);}
 
-main{
-  position:relative;
-  min-height:100vh;min-height:100svh;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:40px 20px;text-align:center;
-}
-h1{
-  margin:0;
-  font-stretch:125%;font-weight:800;
-  font-size:clamp(72px,13vw,150px);line-height:.85;letter-spacing:-.04em;
-  animation:in 1.4s var(--ease) both;
-}
-@keyframes in{from{font-stretch:62%;opacity:0;transform:translateY(.12em);}to{font-stretch:125%;opacity:1;transform:none;}}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:58px;}
+.brand{font:600 15px/1 var(--display);letter-spacing:-.01em;}
+.clock{font-size:11.5px;color:var(--ink-2);font-variant-numeric:tabular-nums;}
+.clock i{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--accent);vertical-align:1px;animation:blink 2s steps(1) infinite;}
+@keyframes blink{50%{opacity:.25;}}
 
-/* la ligne interrompue */
-.track{position:relative;width:min(520px,82vw);height:24px;margin:clamp(28px,4vw,44px) 0 clamp(24px,3vw,34px);}
-.track .done,.track .cut{position:absolute;top:50%;height:6px;margin-top:-3px;border-radius:3px;}
-.track .done{left:0;width:50%;background:var(--line);transform-origin:left;animation:grow 1.1s .3s var(--ease) both;}
-.track .cut{left:50%;right:0;background:repeating-linear-gradient(90deg,var(--idle) 0 14px,transparent 14px 26px);
-  -webkit-mask-image:linear-gradient(90deg,#000 40%,transparent);mask-image:linear-gradient(90deg,#000 40%,transparent);}
-.track .s{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--line);}
-.track .s.a{left:0;}
-.track .s.b{left:25%;}
-.track .here{
-  position:absolute;top:50%;left:50%;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;
-  background:#fff;box-shadow:0 0 0 3px var(--night),0 0 0 6px var(--line);
-  animation:pop .5s 1.25s var(--ease) both;
-}
-.track .here::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--line);animation:pulse 2s 1.8s ease-out infinite;}
-@keyframes grow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
-@keyframes pop{from{transform:scale(0);}to{transform:scale(1);}}
-@keyframes pulse{from{transform:scale(1);opacity:.7;}to{transform:scale(2.2);opacity:0;}}
+main{flex:1;display:flex;align-items:center;}
+.err{padding-block:clamp(40px,8vh,90px);}
+h1{margin:0;font:500 clamp(84px,14vw,170px)/.86 var(--display);letter-spacing:-.055em;}
+h1 .ln{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .12em .06em;margin:0 -.12em -.06em;}
+h1 .ln > span{display:inline-block;}
+h1 .o{color:var(--accent);}
+.js h1 .ln > span{transform:translateY(105%);animation:up 1.1s var(--ease) forwards;}
+@keyframes up{to{transform:none;}}
+.below{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 32px;margin-top:clamp(26px,4vh,40px);padding-top:22px;border-top:1px solid var(--hair);}
+.msg{font:500 clamp(19px,1.7vw,23px)/1.35 var(--display);letter-spacing:-.015em;}
+.back{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-size:14.5px;font-weight:500;transition:background .2s,color .2s;}
+.back:hover{background:var(--accent);color:#fff;}
+.js .below{opacity:0;transform:translateY(12px);animation:fade .8s .35s var(--ease) forwards;}
+@keyframes fade{to{opacity:1;transform:none;}}
 
-.msg{margin:0;font-size:clamp(18px,2vw,24px);font-weight:500;color:rgba(255,255,255,.82);animation:fade .8s .6s both;}
-.back{
-  display:inline-flex;align-items:center;gap:8px;margin-top:clamp(22px,3vw,30px);
-  padding:12px 22px;border-radius:999px;
-  background:var(--line);color:var(--night);
-  font-weight:700;font-size:16px;text-decoration:none;
-  transition:transform .25s var(--ease),box-shadow .25s;
-  animation:fade .8s .8s both;
-}
-.back:hover{transform:translateY(-2px);}
-@keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
-
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important;}}
-</style>
+.foot{padding:22px 0 30px;color:var(--ink-2);border-top:1px solid var(--hair);}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important;}.js h1 .ln > span,.js .below{transform:none;opacity:1;}}
+  </style>
 </head>
 <body>
+  <header class="bar">
+    <div class="wrap">
+      <a class="brand" href="/">Evan LISON</a>
+      <p class="clock mono" aria-label="Heure à Paris"><i></i><span>--:--:--</span></p>
+    </div>
+  </header>
 
-<main>
-  <h1>404</h1>
-  <div class="track" aria-hidden="true">
-    <span class="done"></span>
-    <span class="cut"></span>
-    <span class="s a"></span>
-    <span class="s b"></span>
-    <span class="here"></span>
-  </div>
-  <p class="msg">Oups, cette page n'existe pas !</p>
-  <a class="back" href="/">↻ Retour au portfolio</a>
-</main>
+  <main>
+    <div class="wrap err">
+      <h1 aria-label="404"><span class="ln"><span>4<span class="o">0</span>4</span></span></h1>
+      <div class="below">
+        <p class="msg">Oups, cette page n'existe pas !</p>
+        <a class="back" href="/">↻ Retour au portfolio</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="wrap">
+    <p class="foot mono">Evan LISON (2026-2027)</p>
+  </footer>
+
+<script>
+(() => {
+  const el = document.querySelector('.clock span');
+  const fmt = new Intl.DateTimeFormat('fr-FR', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const tick = () => { el.textContent = fmt.format(new Date()); };
+  tick(); setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>
