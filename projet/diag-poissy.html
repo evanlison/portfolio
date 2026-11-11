@@ -1,49 +1,175 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<link rel="icon" type="image/png" href="../favicon.png">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Evan Lison — Portfolio</title>
-<meta property="og:title" content="Evan Lison — Portfolio">
-<meta property="og:image" content="https://evanlison.fr/preview.png">
-<meta property="og:description" content="Diagnostic territorial autour du pôle multimodal de la gare de Poissy">
-<meta property="og:url" content="https://evanlison.fr/projet/diag-poissy.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <title>Evan Lison — Portfolio</title>
+  <meta property="og:title" content="Evan Lison — Portfolio">
+  <meta property="og:image" content="https://evanlison.fr/preview.png">
+  <meta property="og:description" content="Diagnostic territorial autour du pôle multimodal de la gare de Poissy">
+  <meta property="og:url" content="https://evanlison.fr/projet/diag-poissy.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400..600&family=Inter:wght@400..600&display=swap" rel="stylesheet">
+  <style>
+:root{--bg:#F5F5F2;--paper:#FFFFFF;--ink:#121212;--ink-2:#67676A;--hair:#E3E3DD;--accent:#E35B2E;--maxw:1320px;--pad:clamp(18px,4vw,56px);
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--display:"Inter Tight","Inter",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--ease:cubic-bezier(.2,.8,.2,1);}
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+p{margin:0;text-wrap:pretty;}
+h1,h2{margin:0;font-family:var(--display);text-wrap:balance;}
+::selection{background:var(--accent);color:#fff;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.mono{font-family:var(--mono);font-size:12px;line-height:1.5;letter-spacing:.02em;text-transform:uppercase;}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad);}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(14px,2vw,28px);}
+
+.bar{position:fixed;inset:0 0 auto;z-index:40;background:rgba(245,245,242,.82);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid transparent;transition:border-color .3s;}
+.bar.is-scrolled{border-color:var(--hair);}
+.bar .wrap{display:flex;align-items:center;gap:24px;height:58px;}
+.brand{font:600 15px/1 var(--display);letter-spacing:-.01em;}
+.back{margin-left:auto;font-size:13.5px;color:var(--ink-2);transition:color .2s;}
+.back:hover{color:var(--accent);}
+.clock{font-size:11.5px;color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.clock i{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--accent);vertical-align:1px;animation:blink 2s steps(1) infinite;}
+@keyframes blink{50%{opacity:.25;}}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--accent);transform-origin:left;transform:scaleX(0);}
+@media (max-width:600px){.clock{display:none;}}
+
+.d-hero{padding-top:clamp(110px,15vh,160px);padding-bottom:clamp(40px,6vh,64px);}
+.d-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-bottom:16px;border-bottom:1px solid var(--hair);color:var(--ink-2);}
+.d-logos{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;}
+.d-side .d-logos{flex-direction:column;align-items:flex-start;}
+.d-end{padding-top:12px;}
+.d-logos img{height:30px;width:auto;}
+.d-hero h1{margin-top:clamp(28px,5vh,52px);max-width:17em;font-weight:500;font-size:clamp(34px,5.2vw,74px);line-height:1;letter-spacing:-.045em;}
+.d-hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .1em .08em;margin:0 -.1em -.08em;}
+.d-hero h1 .w > span{display:inline-block;}
+.js .d-hero h1 .w > span{transform:translateY(105%);animation:up 1s var(--ease) forwards;animation-delay:calc(var(--i) * 25ms);}
+@keyframes up{to{transform:none;}}
+.d-q{margin-top:clamp(20px,3vh,30px);max-width:36em;font:400 clamp(19px,1.8vw,25px)/1.35 var(--display);letter-spacing:-.015em;color:var(--ink-2);}
+
+.d-main{padding-bottom:clamp(60px,10vh,120px);}
+.d-side{grid-column:1/4;}
+.d-side .sticky{position:sticky;top:96px;}
+.d-pill{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-size:13.5px;font-weight:500;transition:background .2s,color .2s;}
+.d-pill:hover{background:var(--accent);color:#fff;}
+.d-content{grid-column:4/13;max-width:48em;}
+.d-content > * + *{margin-top:28px;}
+.d-p{font-size:clamp(16.5px,1.3vw,18.5px);line-height:1.7;}
+.d-h{font-weight:500;font-size:clamp(24px,2.4vw,32px);line-height:1.15;letter-spacing:-.03em;padding-top:12px;}
+.d-point{display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;padding-top:28px;border-top:1px solid var(--hair);}
+.d-point + .d-point{margin-top:28px;}
+.d-ico{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 1px var(--hair);font-size:26px;line-height:1;}
+.d-point p{font-size:clamp(16px,1.25vw,17.5px);line-height:1.7;color:var(--ink);}
+.d-list{margin:0;padding-left:1.2em;font-size:17px;line-height:1.7;}
+.d-list li::marker{color:var(--accent);}
+.d-link{color:var(--accent);border-bottom:1px solid currentColor;}
+.d-fig{margin:44px 0 0;}
+.d-fig > * + *{margin-top:12px;}
+.d-video{position:relative;aspect-ratio:16/9;background:#e9e9e4;overflow:hidden;}
+.d-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.d-fig img{width:100%;height:auto;}
+.d-fig figcaption{color:var(--ink-2);}
+@media (max-width:860px){
+  .d-side,.d-content{grid-column:1/-1;}
+  .d-side .sticky{position:static;margin-bottom:30px;}
+  .d-side .d-logos{flex-direction:row;}
+  .d-point{grid-template-columns:44px minmax(0,1fr);gap:14px;}
+  .d-ico{width:44px;height:44px;font-size:21px;}
+}
+.foot{display:flex;justify-content:space-between;gap:16px;padding:22px 0 34px;border-top:1px solid var(--hair);color:var(--ink-2);}
+.foot a:hover{color:var(--accent);}
+
+.js [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.js [data-reveal].in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important;}.js [data-reveal]{opacity:1;transform:none;}.js .d-hero h1 .w > span{transform:none;}}
+</style>
 </head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Evan LISON</a>
+    <a class="back" href="../index.html#diag-poissy">← Retour au portfolio</a>
+    <p class="clock mono" aria-label="Heure à Paris"><i></i><span>--:--:--</span></p>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<main>
+  <section class="wrap d-hero">
+    <div class="d-top"><span class="mono">jan.–avr. 2026</span></div>
+    <h1>Diagnostic territorial autour du pôle multimodal de la gare de Poissy</h1>
+    <p class="d-q">Comment se déplacer sur un territoire dont l'organisation des mobilités produit elle-même des inégalités d'accessibilité ?</p>
+  </section>
+
+  <section class="wrap grid d-main">
+    <aside class="d-side"><div class="sticky d-logos"><img src="../images/paris-nanterre.png" alt="Université Paris Nanterre"></div></aside>
+    <div class="d-content">
+          <p class="d-p" data-reveal>Réalisé dans le cadre d’un atelier de diagnostic territorial, ce travail porte sur le territoire formé par les communes de Poissy, Carrières-sous-Poissy et Villennes-sur-Seine dans les Yvelines. Il se structure en deux temps complémentaires : un diagnostic quantitatif dans un premier temps, puis un diagnostic qualitatif resserré sur la gare de Poissy dans un second temps.</p>
+          <div class="d-point" data-reveal><span class="d-ico" aria-hidden="true">📊</span><p>La première phase interroge la manière dont la morphologie urbaine, la structure sociale des communes et les transformations de l'offre de transport produisent et entretiennent des inégalités d'accessibilité pour les habitants. Les effets des projets Eole du RER E et du tramway T13 ne réduiront pas automatiquement les inégalités des quartiers épinglés, s'ils ne s'accompagnent pas d'une vigilance sur la pression foncière.</p></div>
+          <div class="d-point" data-reveal><span class="d-ico" aria-hidden="true">👀</span><p>La seconde phase recentre l'analyse sur la gare de Poissy, questionnée comme espace d'intermodalité vécu. Elle interroge la manière dont l'organisation et les aménagements autour de la gare structurent les pratiques et les expériences de cet espace, telles que révélées par les perceptions et récits des usagers. Notre travail met en évidence un pôle fonctionnel mais fragmenté, une signalétique défaillante autour des arrêts de bus, des conflits d'usage sur un parvis très minéral et peu équipé, ainsi qu'un sentiment d'insécurité rapporté par certains usagers en soirée.</p></div>
+          <figure class="d-fig" data-reveal><div class="d-video"><iframe src="https://www.youtube-nocookie.com/embed/wgp-_W0dSjU" loading="lazy" title="La gare de Poissy comme espace d’intermodalité vécu (YouTube)." allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><figcaption class="mono">La gare de Poissy comme espace d’intermodalité vécu (YouTube).</figcaption></figure>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot mono"><span>Evan LISON (2026-2027)</span><a href="#top" onclick="scrollTo({top:0,behavior:'smooth'});return false;">↑</a></div>
+</footer>
+
 <script>
-window.addEventListener('scroll', function(){
-  var scrollTop = window.scrollY;
-  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  document.getElementById('scrollFill').style.height = pct + '%';
-});
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clock = document.querySelector('.clock span');
+  const fmt = new Intl.DateTimeFormat('fr-FR', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const tick = () => { clock.textContent = fmt.format(new Date()); };
+  tick(); setInterval(tick, 1000);
+
+  /* Titre : chaque mot monte à son tour */
+  const h1 = document.querySelector('.d-hero h1');
+  let i = 0;
+  const wrapWords = node => {
+    [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(part => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          const w = document.createElement('span'); w.className = 'w';
+          w.innerHTML = '<span style="--i:' + (i++) + '"></span>'; w.firstChild.textContent = part; frag.appendChild(w);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1) wrapWords(n);
+    });
+  };
+  if (!reduce) wrapWords(h1);
+
+  /* Apparitions */
+  const els = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window && !reduce) {
+    const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -6% 0px', threshold: .06 });
+    els.forEach(el => io.observe(el));
+  } else els.forEach(el => el.classList.add('in'));
+
+  /* Barre : progression de lecture */
+  const bar = document.querySelector('.bar'), prog = document.querySelector('.progress');
+  let ticking = false;
+  const update = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+    bar.classList.toggle('is-scrolled', scrollY > 8);
+    ticking = false;
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', update);
+  update();
+})();
 </script>
-<body class="detail-page">
-  <div class="scroll-progress"><div class="scroll-progress-fill" id="scrollFill"></div></div>
-<div class="sheet">
-<p class="back-link"><a href="../index.html#diag-poissy">← Retour au portfolio</a></p>
-  <div class="detail-header">
-    <h1 class="titre1">Diagnostic territorial autour du pôle multimodal de la gare de Poissy</h1>
-        <p class="sous-titre">Comment se déplacer sur un territoire dont l'organisation des mobilités produit elle-même des inégalités d'accessibilité ?</p>
-          <div class="logos-ligne">
-            <img src="../images/paris-nanterre.png" alt="Université Paris Nanterre">
-          </div>
-        <p class="date">jan.–avr. 2026</p>
-  </div>
-  <section>
-    <p class="texte">Réalisé dans le cadre d’un atelier de diagnostic territorial, ce travail porte sur le territoire formé par les communes de Poissy, Carrières-sous-Poissy et Villennes-sur-Seine dans les Yvelines. Il se structure en deux temps complémentaires : un diagnostic quantitatif dans un premier temps, puis un diagnostic qualitatif resserré sur la gare de Poissy dans un second temps.</p>
-    <p class="texte point"><span class="point-icone">📊</span><span>La première phase interroge la manière dont la morphologie urbaine, la structure sociale des communes et les transformations de l'offre de transport produisent et entretiennent des inégalités d'accessibilité pour les habitants. Les effets des projets Eole du RER E et du tramway T13 ne réduiront pas automatiquement les inégalités des quartiers épinglés, s'ils ne s'accompagnent pas d'une vigilance sur la pression foncière.</p>
-    <p class="texte point"><span class="point-icone">👀</span><span>La seconde phase recentre l'analyse sur la gare de Poissy, questionnée comme espace d'intermodalité vécu. Elle interroge la manière dont l'organisation et les aménagements autour de la gare structurent les pratiques et les expériences de cet espace, telles que révélées par les perceptions et récits des usagers. Notre travail met en évidence un pôle fonctionnel mais fragmenté, une signalétique défaillante autour des arrêts de bus, des conflits d'usage sur un parvis très minéral et peu équipé, ainsi qu'un sentiment d'insécurité rapporté par certains usagers en soirée.</p>
-  <figure class="figure">
-  <div class="media-frame">
-    <iframe src="https://www.youtube-nocookie.com/embed/wgp-_W0dSjU" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  <figcaption class="legende">La gare de Poissy comme espace d’intermodalité vécu (YouTube).</figcaption>
-</figure>
-</div>
 </body>
 </html>
