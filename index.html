@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>if (location.pathname === '/index.html') location.replace('/' + location.search + location.hash);</script>
   <script>document.documentElement.classList.add('js');</script>
+  <!-- APERÇU : la ligne <base> ci-dessous sert uniquement à charger tes images depuis evanlison.fr dans l'aperçu. À SUPPRIMER avant la mise en ligne. -->
+  <base href="https://evanlison.fr/">
   <link rel="icon" type="image/png" href="favicon.png">
   <title>Evan Lison — Portfolio</title>
   <link rel="canonical" href="https://evanlison.fr/">
@@ -13,1006 +15,657 @@
   <meta property="og:url" content="https://evanlison.fr">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400..600&family=Inter:wght@400..600&display=swap" rel="stylesheet">
   <style>
-/* ───────── Base ───────── */
 :root{
-  --night:#15171B;
-  --paper:#F4F3EF;
-  --card:#FFFFFF;
-  --ink:#15171B;
-  --ink-2:#5B5F66;
-  --hair:#DFDDD6;
-  --line:#E2B33C;
-  --sun:#E2B33C;
-  --stop-idle:#D2D1CB;
-  --maxw:1240px;
-  --gutter:clamp(18px,4vw,56px);
-  --rail-gap:clamp(30px,8vw,120px);
-  --rail-off:clamp(8px,1vw,11px);
-  --h2:clamp(29px,4.9vw,66px);
-  --h3:clamp(20px,2.05vw,27px);
-  --row-pad:clamp(20px,2.5vw,30px);
-  --display:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --bg:#F5F5F2;
+  --paper:#FFFFFF;
+  --ink:#121212;
+  --ink-2:#67676A;
+  --hair:#E3E3DD;
+  --accent:#E35B2E;
+  --maxw:1320px;
+  --pad:clamp(18px,4vw,56px);
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --display:"Inter Tight","Inter",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --ease:cubic-bezier(.2,.8,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box;}
 html{-webkit-text-size-adjust:100%;}
-body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--display);
-  font-size:16px;
-  line-height:1.62;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-img{max-width:100%;}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","cv11";}
+img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
 p{margin:0;text-wrap:pretty;}
-h2,h3,.p-question,.status p{text-wrap:balance;}
-::selection{background:var(--sun);color:var(--ink);}
-:focus-visible{outline:3px solid var(--line);outline-offset:3px;border-radius:4px;}
+h1,h2,h3{margin:0;font-family:var(--display);text-wrap:balance;}
+::selection{background:var(--accent);color:#fff;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.mono{font-family:var(--mono);font-size:12px;line-height:1.5;letter-spacing:.02em;text-transform:uppercase;}
+.muted{color:var(--ink-2);}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad);}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(14px,2vw,28px);}
 
-.page{position:relative;overflow-x:clip;}
-.wrap{position:relative;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);}
-.col{position:relative;margin-left:var(--rail-gap);}
-.zone .wrap{padding-block:clamp(48px,6.2vw,88px);}
-.dark{background:var(--night);color:#fff;--stop-idle:#34373D;--bg:var(--night);}
-section[id],footer[id]{scroll-margin-top:72px;}
+/* Barre */
+.bar{position:fixed;inset:0 0 auto;z-index:40;background:rgba(245,245,242,.82);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid transparent;transition:border-color .3s;}
+.bar.is-scrolled{border-color:var(--hair);}
+.bar .wrap{display:flex;align-items:center;gap:24px;height:58px;}
+.brand{font:600 15px/1 var(--display);letter-spacing:-.01em;}
+.nav{display:flex;gap:clamp(12px,1.8vw,26px);margin-left:auto;font-size:13.5px;}
+.nav a{position:relative;display:flex;gap:6px;align-items:baseline;color:var(--ink-2);transition:color .2s;}
+.nav a .mono{font-size:10.5px;}
+.nav a:hover,.nav a.on{color:var(--ink);}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-19px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);}
+.nav a.on::after{transform:scaleX(1);}
+.clock{font-size:11.5px;color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.clock i{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--accent);vertical-align:1px;animation:blink 2s steps(1) infinite;}
+@keyframes blink{50%{opacity:.25;}}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--accent);transform-origin:left;transform:scaleX(0);}
+@media (max-width:980px){.nav{display:none;}.clock{margin-left:auto;}}
 
-.label{
-  font:500 12.5px/1.5 var(--mono);
-  text-transform:uppercase;letter-spacing:.07em;
-  color:var(--ink-2);
-}
-.dark .label{color:rgba(255,255,255,.6);}
+/* Ouverture */
+.hero{padding:clamp(110px,16vh,170px) 0 clamp(40px,7vh,80px);}
+.hero-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;color:var(--ink-2);padding-bottom:18px;border-bottom:1px solid var(--hair);}
+.hero h1{grid-column:1/-1;margin:clamp(28px,5vh,56px) 0 clamp(30px,5vh,60px);font-weight:500;font-size:clamp(58px,12.4vw,182px);line-height:.86;letter-spacing:-.055em;white-space:nowrap;}
+.hero h1 .ln{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .12em .06em;margin:0 -.12em -.06em;}
+.hero h1 .ln > span{display:inline-block;}
+.js .hero h1 .ln > span{transform:translateY(105%);animation:up 1.2s var(--ease) forwards;}
+.js .hero h1 .ln + .ln > span{animation-delay:.08s;}
+@keyframes up{to{transform:none;}}
+.hero-a{grid-column:1/6;}
+.hero-b{grid-column:7/13;}
+.role{font:500 clamp(22px,2.2vw,30px)/1.15 var(--display);letter-spacing:-.02em;color:var(--accent);}
+.prog{margin-top:12px;color:var(--ink-2);max-width:30em;}
+.prog a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .4s var(--ease),color .2s;}
+.prog a:hover{color:var(--accent);background-size:100% 1px;}
+.schools{display:flex;align-items:center;gap:24px;margin-top:26px;}
+.schools img{height:44px;width:auto;}
+.schools img.big{height:54px;}
+.status{display:flex;gap:12px;padding:18px 20px;background:var(--paper);border:1px solid var(--hair);border-radius:4px;font:500 clamp(16px,1.35vw,18.5px)/1.4 var(--display);letter-spacing:-.005em;}
+.status .dot{position:relative;flex:none;width:9px;height:9px;margin-top:.45em;border-radius:50%;background:var(--accent);}
+.status .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:ping 2.2s ease-out infinite;}
+@keyframes ping{from{transform:scale(1);opacity:.6;}to{transform:scale(3.4);opacity:0;}}
+.mail{display:inline-flex;align-items:center;gap:.35em;margin-top:22px;font:500 clamp(20px,2vw,28px)/1.2 var(--display);letter-spacing:-.02em;}
+.mail .ic{width:.8em;height:.8em;}
+.u{background:linear-gradient(var(--accent),var(--accent)) 0 100%/100% 2px no-repeat;padding-bottom:2px;transition:background-size .45s var(--ease);}
+.mail:hover .u,.big-mail:hover .u{background-size:0 2px;background-position:100% 100%;}
+.mail .ic,.big-mail .ic{color:var(--accent);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.chip{display:inline-flex;align-items:center;padding:7px 14px;border:1px solid var(--ink);border-radius:999px;font-size:13.5px;font-weight:500;transition:background .2s,color .2s;}
+.chip:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.ic{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none;}
 
-/* ───────── La ligne (rail + stations) ───────── */
-.rail-track,.rail-fill{position:absolute;width:6px;border-radius:3px;pointer-events:none;}
-.rail-track{z-index:1;background:#8C8E93;opacity:.35;}
-.rail-fill{z-index:2;background:var(--line);transform-origin:top;transform:scaleY(0);}
-html:not(.js) .rail-track,html:not(.js) .rail-fill{display:none;}
-.stop{
-  position:absolute;z-index:3;pointer-events:none;
-  left:calc(var(--rail-off) - var(--rail-gap));
-  top:var(--stop-y,0);
-  width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;
-  background:var(--stop-idle);
-  transition:background .35s,box-shadow .35s,transform .35s var(--ease);
-}
-.stop.major{width:22px;height:22px;margin:-11px 0 0 -11px;}
-.stop.passed{background:var(--line);}
-.stop.current{background:#fff;box-shadow:0 0 0 3px var(--ink);transform:scale(1.2);}
-.dark .stop.current{box-shadow:0 0 0 3px var(--night),0 0 0 6px var(--sun);}
-html:not(.js) .stop{display:none;}
-
-/* ───────── Barre du haut ───────── */
-.top{
-  position:fixed;inset:0 0 auto 0;z-index:50;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-  padding:12px var(--gutter);
-  color:#fff;
-  transition:background .3s,color .3s,box-shadow .3s;
-}
-.top.is-solid{
-  background:rgba(244,243,239,.86);
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  color:var(--ink);
-  box-shadow:0 1px 0 var(--hair);
-}
-.top.is-night{background:rgba(21,23,27,.86);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.12);}
-.top-brand{
-  font-stretch:125%;font-weight:800;font-size:15.5px;letter-spacing:-.01em;
-  opacity:0;transform:translateY(-6px);transition:opacity .3s,transform .3s;
-}
-.top.is-solid .top-brand{opacity:1;transform:none;}
-.top-nav{display:flex;align-items:center;gap:clamp(14px,2.2vw,28px);font-size:14px;font-weight:500;}
-.top-nav a:not(.top-cta){position:relative;padding:6px 0;}
-.top-nav a:not(.top-cta)::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;
-  transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);
-}
-.top-nav a:not(.top-cta):hover::after,.top-nav a.is-active::after{transform:scaleX(1);}
-.top-cta{
-  background:var(--sun);color:var(--ink);font-weight:700;
-  padding:8px 16px;border-radius:999px;transition:transform .2s var(--ease);
-}
-.top-cta:hover{transform:translateY(-2px);}
-@media (max-width:860px){.top-nav a:not(.top-cta){display:none;}}
-
-/* ───────── Ouverture ───────── */
-.hero{position:relative;overflow:hidden;--h1:clamp(40px,8.4vw,112px);}
-
-.hero .wrap{
-  min-height:100vh;min-height:100svh;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding-top:120px;padding-bottom:clamp(36px,6vh,72px);
-}
-.hero-loc{display:flex;align-items:center;gap:10px;margin-bottom:clamp(14px,2vw,22px);}
-.hero-loc::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);}
-.hero-name{position:relative;--stop-y:calc(var(--h1) * .46);}
-.hero h1{
-  margin:0;
-  font-stretch:125%;font-weight:800;font-size:var(--h1);
-  line-height:.92;letter-spacing:-.035em;white-space:nowrap;
-}
-.js .hero h1{animation:name-in 1.5s var(--ease) both;}
-@keyframes name-in{
-  from{font-stretch:62%;opacity:0;transform:translateY(.18em);}
-  to{font-stretch:125%;opacity:1;transform:none;}
-}
-.hero-grid{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);
-  gap:clamp(28px,5vw,72px);align-items:end;
-  margin-top:clamp(26px,3.6vw,52px);
-}
-.hero-role{font-size:clamp(19px,1.95vw,26px);font-weight:700;font-stretch:112%;line-height:1.1;color:var(--sun);letter-spacing:-.01em;}
-.hero-prog{margin-top:12px;font-size:15.5px;line-height:1.5;color:rgba(255,255,255,.8);}
-.hero-prog a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .4s var(--ease),color .2s;}
-.hero-prog a:hover{color:#fff;background-size:100% 1px;}
-.logos{display:flex;align-items:center;gap:22px;margin-top:22px;}
-.logos img{display:block;height:42px;width:auto;transition:opacity .2s;}
-.logos img.logo-grand{height:52px;}
-.logos a:hover img{opacity:.75;}
-
-.status{
-  display:flex;gap:14px;
-  background:var(--sun);color:var(--ink);
-  border-radius:22px;padding:clamp(18px,2vw,24px) clamp(18px,2.2vw,26px);
-  font-size:clamp(15.5px,1.3vw,18px);font-weight:600;line-height:1.36;letter-spacing:-.005em;
-}
-.status-dot{position:relative;flex:none;width:11px;height:11px;margin-top:.42em;border-radius:50%;background:var(--ink);}
-.status-dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ink);animation:pulse 2s ease-out infinite;}
-@keyframes pulse{from{transform:scale(1);opacity:.55;}to{transform:scale(3.2);opacity:0;}}
-
-.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
-.pill{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:9px 16px;border-radius:999px;
-  border:1.5px solid var(--ink);
-  font-size:14px;font-weight:600;line-height:1.3;
-  transition:background .2s,color .2s,border-color .2s,transform .2s var(--ease);
-}
-.pill:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);}
-.dark .pill{border-color:rgba(255,255,255,.38);background:transparent;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
-.dark .pill:hover{background:#fff;border-color:#fff;color:var(--night);}
-
+/* Sections */
+.sec{padding:clamp(56px,9vh,110px) 0;scroll-margin-top:58px;}
+.sec-l{grid-column:1/4;}
+.sec-l .sticky{position:sticky;top:96px;}
+.sec-l .mono{color:var(--accent);}
+.sec h2{margin-top:10px;font-weight:500;font-size:clamp(30px,3.4vw,48px);line-height:1;letter-spacing:-.04em;}
+.sec-r{grid-column:4/13;}
 @media (max-width:860px){
-  .hero-grid{grid-template-columns:1fr;gap:26px;}
-}
-@media (max-width:640px){
-  .hero{--h1:17.5vw;}
-  .hero h1 span{display:block;}
-  .logos img{height:38px;}
-  .logos img.logo-grand{height:48px;}
+  .hero-a,.hero-b,.sec-l,.sec-r{grid-column:1/-1;}
+  .hero-b{margin-top:34px;}
+  .sec-l .sticky{position:static;}
+  .sec-r{margin-top:28px;}
+  .hero h1{white-space:normal;}
 }
 
-/* ───────── Texte repliable (dégradé + bouton) ───────── */
-.fold{--bg:var(--paper);}
+/* Présentation */
+.lead{font:400 clamp(16.5px,1.3vw,19px)/1.65 var(--sans);letter-spacing:-.005em;max-width:42em;}
+.lead p + p{margin-top:.8em;}
 .fold-body{position:relative;}
-.js .fold-body{overflow:hidden;max-height:var(--fold-h,5em);transition:max-height .7s var(--ease);}
-.js .fold-body::after{
-  content:"";position:absolute;inset:auto 0 0 0;height:min(4.2em,70%);pointer-events:none;
-  background:linear-gradient(transparent,var(--bg));
-  transition:opacity .45s;
-}
-.js .fold.is-open .fold-body,.js .fold.is-short .fold-body{max-height:none;}
-.js .fold.is-open .fold-body::after,.js .fold.is-short .fold-body::after{opacity:0;}
-.fold-btn{
-  display:inline-flex;align-items:center;gap:7px;
-  margin-top:12px;padding:4px 11px 4px 4px;
-  border:1.2px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);
-  font:500 10.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.07em;
-  cursor:pointer;transition:background .2s,color .2s;
-}
-.fold-btn:hover{background:var(--ink);color:var(--paper);}
-.fold-ico{position:relative;width:17px;height:17px;border-radius:50%;background:var(--sun);transition:transform .45s var(--ease);}
-.fold-ico::before,.fold-ico::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:1.5px;margin:-.75px 0 0 -3.5px;background:var(--ink);border-radius:1px;}
-.fold-ico::after{transform:rotate(90deg);transition:transform .45s var(--ease);}
-.fold.is-open .fold-ico{transform:rotate(180deg);}
-.fold.is-open .fold-ico::after{transform:rotate(0);}
-.fold.is-short .fold-btn,html:not(.js) .fold-btn{display:none;}
+.js .fold-body{overflow:hidden;max-height:6.6em;transition:max-height .7s var(--ease);}
+.js .fold-body::after{content:"";position:absolute;inset:auto 0 0;height:2.6em;background:linear-gradient(rgba(245,245,242,0),var(--bg));pointer-events:none;transition:opacity .4s;}
+.js .fold.open .fold-body{max-height:none;}
+.js .fold.open .fold-body::after{opacity:0;}
+.fold-btn{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:0;border:0;background:none;color:var(--ink);cursor:pointer;font:500 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.04em;}
+.fold-btn .pm{position:relative;width:22px;height:22px;border:1px solid var(--accent);color:var(--accent);border-radius:50%;transition:background .2s,transform .45s var(--ease);}
+.fold-btn .pm::before,.fold-btn .pm::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:1.4px;margin:-.7px 0 0 -4px;background:currentColor;}
+.fold-btn .pm::after{transform:rotate(90deg);transition:transform .45s var(--ease);}
+.fold.open .fold-btn .pm{transform:rotate(180deg);}
+.fold.open .fold-btn .pm::after{transform:rotate(0);}
+html:not(.js) .fold-btn{display:none;}
 
-/* ───────── Présentation ───────── */
-.about .wrap{padding-bottom:clamp(8px,2vw,24px);}
-.lead .fold-body{
-  --fold-h:6em;
-  font-size:clamp(17px,1.5vw,20.5px);line-height:1.5;font-weight:450;letter-spacing:-.005em;
-  max-width:40em;
-}
-.lead .fold-body p + p{margin-top:.85em;}
-.lead .fold-btn{margin-top:14px;}
+/* Compétences */
+.skills{list-style:none;margin:0;padding:0;}
+.skill:first-child{padding-top:0;}
+.skill{display:flex;align-items:baseline;gap:20px;padding:14px 0;border-bottom:1px solid var(--hair);font:400 clamp(24px,3vw,42px)/1.15 var(--display);letter-spacing:-.035em;transition:padding .45s var(--ease);}
+.skill .n{font:400 11.5px/1 var(--mono);color:var(--accent);letter-spacing:.02em;min-width:2.2em;}
+@media (hover:hover){.skill:hover{padding-left:14px;}}
+.skill:hover .n{color:var(--accent);}
+.kit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:36px;}
+.kit p.mono{color:var(--accent);}
+.kit p + p{margin-top:8px;font-size:17px;}
+@media (max-width:600px){.kit{grid-template-columns:1fr;}}
 
-/* ───────── Titres de section ───────── */
-.sec-head{position:relative;margin-bottom:clamp(22px,3vw,40px);--stop-y:calc(var(--h2) * .47);}
-h2{margin:0;font-stretch:125%;font-weight:800;font-size:var(--h2);line-height:.95;letter-spacing:-.035em;}
-h3{margin:0;font-stretch:108%;font-weight:700;font-size:var(--h3);line-height:1.1;letter-spacing:-.02em;}
+/* Lignes */
+.rows{border-top:0;}
+.rows > .row:first-child{padding-top:0;}
+.rows > .row:last-child,.idx > .proj:last-child,.skill:last-child{border-bottom:0;}
+.row{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,6fr);gap:10px clamp(14px,2vw,28px);padding:26px 0;border-bottom:1px solid var(--hair);}
+.row-date{color:var(--ink-2);padding-top:6px;}
+.row h3{font-weight:500;font-size:clamp(21px,1.9vw,26px);line-height:1.15;letter-spacing:-.025em;}
+.row-sub{margin-top:8px;max-width:40em;}
+.row-top{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;}
+.row-logo{height:34px;width:auto;flex:none;}
+.roles{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px;}
+.role-t{font-weight:500;}
+.role-d{margin-top:4px;color:var(--ink-2);font-size:15px;}
+.causes{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:16px;}
+.causes img{height:22px;width:auto;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s;}
+.causes img:hover{filter:none;opacity:1;}
+@media (max-width:600px){.row{grid-template-columns:1fr;}.row-date{padding-top:0;}}
 
-/* ───────── Compétences ───────── */
-.competences .wrap:first-child{padding-bottom:0;}
-.competences .wrap:last-child{padding-top:clamp(28px,3.6vw,44px);}
-.marquee{
-  --rail-x:calc(max((100vw - var(--maxw)) / 2, 0px) + var(--gutter) + var(--rail-off));
-  overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent calc(var(--rail-x) + 12px),#000 calc(var(--rail-x) + 110px),#000 calc(100% - 60px),transparent);
-  mask-image:linear-gradient(90deg,transparent calc(var(--rail-x) + 12px),#000 calc(var(--rail-x) + 110px),#000 calc(100% - 60px),transparent);
+/* Projets (index) */
+.idx-head{display:grid;grid-template-columns:52px minmax(0,1fr) 170px 22px;gap:16px;padding:0 0 10px;color:var(--ink-2);border-bottom:1px solid var(--hair);}
+.proj.open .proj-x::before,.proj.open .proj-x::after,.proj-head:hover .proj-x::before,.proj-head:hover .proj-x::after{background:var(--accent);}
+.proj{border-bottom:1px solid var(--hair);}
+.proj-row{display:grid;grid-template-columns:52px minmax(0,1fr) 170px 22px;column-gap:16px;}
+.proj-row .proj-head{grid-column:1/-1;grid-row:1;}
+.proj-link{display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:6px 13px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font-size:13.5px;font-weight:500;transition:background .2s,color .2s;}
+.proj-link:hover{background:var(--accent);color:#fff;}
+.proj-head{all:unset;box-sizing:border-box;display:grid;grid-template-columns:52px minmax(0,1fr) 170px 22px;gap:16px;align-items:baseline;width:100%;padding:20px 0;cursor:pointer;}
+.proj-head:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+.proj-n{color:var(--ink-2);transition:color .25s;}
+.proj-t{font-weight:500;font-size:clamp(19px,1.75vw,24px);line-height:1.2;letter-spacing:-.025em;transition:transform .45s var(--ease);}
+.proj-d{color:var(--ink-2);text-align:right;}
+.proj-x{position:relative;align-self:center;width:22px;height:22px;transition:transform .45s var(--ease);}
+.proj-x::before,.proj-x::after{content:"";position:absolute;left:4px;right:4px;top:50%;height:1.4px;margin-top:-.7px;background:var(--ink);}
+.proj-x::after{transform:rotate(90deg);transition:transform .45s var(--ease);}
+@media (hover:hover){.proj-head:hover .proj-t{transform:translateX(10px);}}
+.proj-head:hover .proj-n,.proj.open .proj-n{color:var(--accent);}
+.proj.open .proj-x{transform:rotate(180deg);}
+.proj.open .proj-x::after{transform:rotate(0);}
+.proj-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease);}
+.proj.open .proj-body{grid-template-rows:1fr;}
+.proj-body > .proj-in{min-height:0;overflow:hidden;visibility:hidden;transition:visibility 0s .6s;}
+.proj.open .proj-body > .proj-in{visibility:visible;transition:none;}
+html:not(.js) .proj-body > .proj-in{visibility:visible;}
+html:not(.js) .proj-body{grid-template-rows:1fr;}
+.proj-in{display:grid;grid-template-columns:52px minmax(0,1fr) 170px 22px;column-gap:16px;}
+.proj-ban,.proj-side,.proj-txt{grid-column:2/4;}
+.proj-ban{margin:4px 0 0;aspect-ratio:560/100;background:var(--hair);overflow:hidden;}
+.proj-ban img{width:100%;height:100%;object-fit:cover;}
+.proj-side{margin-top:18px;}
+.proj-logos{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;}
+.proj-logos img{height:30px;width:auto;}
+.proj-txt{padding:18px 0 30px;max-width:46em;}
+.proj-q{font:500 clamp(17px,1.4vw,20px)/1.4 var(--display);letter-spacing:-.01em;}
+.proj-p{margin-top:12px;color:var(--ink-2);}
+.go{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:10px 16px;background:var(--ink);color:var(--bg);font-size:14px;font-weight:500;border-radius:999px;transition:background .25s;}
+.go:hover{background:var(--accent);}
+@media (max-width:700px){
+  .idx-head{display:none;}
+  .proj-head{grid-template-columns:34px minmax(0,1fr) 22px;row-gap:4px;}
+  .proj-d{grid-column:2;grid-row:2;text-align:left;}
+  .proj-x{grid-column:3;grid-row:1;}
+  .proj-in{grid-template-columns:34px minmax(0,1fr);}
+  .proj-row{grid-template-columns:34px minmax(0,1fr) 22px;}
+  .proj-ban,.proj-side,.proj-txt{grid-column:2;}
 }
-.marquee + .marquee{margin-top:clamp(2px,.6vw,8px);}
-.marquee-track{display:flex;width:max-content;animation:marquee 46s linear infinite;}
-.marquee.alt .marquee-track{animation-direction:reverse;animation-duration:58s;}
-.marquee:hover .marquee-track{animation-play-state:paused;}
-.marquee ul{display:flex;flex:none;margin:0;padding:0;list-style:none;}
-.marquee li{
-  display:flex;align-items:center;white-space:nowrap;
-  font-stretch:125%;font-weight:800;font-size:clamp(24px,3.6vw,50px);line-height:1.16;letter-spacing:-.025em;
-}
-.marquee li::after{content:"";flex:none;width:.2em;height:.2em;margin:0 .42em;border-radius:50%;background:var(--line);}
-.marquee.alt li{color:transparent;-webkit-text-stroke:1.2px var(--ink);}
-.marquee.alt li::after{background:transparent;box-shadow:inset 0 0 0 1.5px var(--ink);}
-@keyframes marquee{to{transform:translateX(-50%);}}
-.kit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px clamp(24px,5vw,72px);}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;padding:0;list-style:none;}
-.chips li{
-  padding:7px 16px;border-radius:999px;border:1.5px solid var(--ink);
-  font-size:clamp(15.5px,1.25vw,17px);font-weight:600;line-height:1.3;
-  transition:background .2s,transform .2s var(--ease);
-}
-.chips li:hover{background:var(--sun);transform:translateY(-2px);}
-@media (max-width:700px){.kit{grid-template-columns:1fr;}}
+/* Aperçu qui suit le curseur */
+.peek{position:fixed;left:0;top:0;z-index:30;display:grid;place-items:center;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 1px var(--hair),0 18px 36px -16px rgba(0,0,0,.35);pointer-events:none;opacity:0;transition:opacity .25s;}
+.peek.on{opacity:1;}
+.peek span{font-size:44px;line-height:1;transform:scale(.4) rotate(-20deg);transition:transform .45s cubic-bezier(.34,1.56,.64,1);}
+.peek.on span{transform:none;}
+@media (hover:none),(pointer:coarse){.peek{display:none;}}
 
-/* ───────── Lignes (formations, expériences, bénévolat) ───────── */
-.row{position:relative;border-top:1px solid var(--hair);--stop-y:calc(var(--row-pad) + var(--h3) * .54);}
-.row:last-child{border-bottom:1px solid var(--hair);}
-.row-in{
-  display:grid;grid-template-columns:minmax(170px,250px) minmax(0,1fr);
-  gap:10px clamp(20px,4vw,56px);
-  padding:var(--row-pad) 0;
-}
-.row h3{transition:transform .45s var(--ease);}
-.row:hover h3{transform:translateX(8px);}
-.when{font:500 12.5px/1.55 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);padding-top:calc(var(--h3) * .28);}
-.what{margin-top:8px;font-size:clamp(15.5px,1.25vw,17px);line-height:1.5;font-weight:500;max-width:38em;}
-.note{margin-top:8px;color:var(--ink-2);max-width:40em;}
-.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px 28px;margin-top:16px;}
-.role-t{font-weight:700;font-size:16px;line-height:1.3;}
-.role-d{margin-top:5px;font-size:14.5px;line-height:1.55;color:var(--ink-2);}
-.causes{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:16px;}
-.causes img{display:block;height:22px;width:auto;transition:transform .3s var(--ease);}
-.causes img:hover{transform:translateY(-3px) scale(1.04);}
-@media (max-width:760px){
-  .row{--stop-y:calc(var(--row-pad) + 9px);}
-  .row-in{grid-template-columns:1fr;}
-  .when{padding-top:0;}
-}
+/* Contact */
+.contact .big-mail{display:inline-flex;align-items:center;gap:.25em;font:500 clamp(28px,5.4vw,78px)/1.05 var(--display);letter-spacing:-.045em;}
+.contact .big-mail .ic{width:.62em;height:.62em;stroke-width:1.6;}
+.contact .chips{margin-top:24px;}
+.contact-t{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px clamp(14px,2vw,28px);margin-top:44px;padding-top:24px;border-top:1px solid var(--hair);}
+.contact-t p:first-child{color:var(--ink-2);}
+.contact-t p:last-child{font:500 18px/1.45 var(--display);letter-spacing:-.01em;}
+.contact .schools{margin-top:40px;}
+.foot{display:flex;justify-content:space-between;gap:16px;padding:22px 0 34px;border-top:1px solid var(--hair);color:var(--ink-2);}
+.foot a:hover{color:var(--ink);}
+@media (max-width:700px){.contact-t{grid-template-columns:1fr;}}
 
-/* ───────── Projets (cartes côte à côte, défilement horizontal) ───────── */
-.sec-head--row{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;}
-.p-ctrl{display:flex;gap:8px;flex:none;padding-bottom:calc(var(--h2) * .1);}
-.p-arrow{
-  display:grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;
-  border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;
-  transition:background .2s,color .2s,opacity .2s,transform .2s var(--ease);
-}
-.p-arrow:hover:not(:disabled){background:var(--ink);color:var(--paper);}
-.p-arrow:active:not(:disabled){transform:scale(.94);}
-.p-arrow:disabled{opacity:.25;cursor:default;}
-.p-arrow svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
-
-.p-track{
-  --gap:clamp(16px,2vw,26px);
-  --bleed:calc(max((100vw - var(--maxw)) / 2, 0px) + var(--gutter));
-  display:flex;align-items:stretch;gap:var(--gap);
-  margin:-8px calc(var(--bleed) * -1) 0 0;padding:8px 0 28px;
-  overflow-x:auto;overscroll-behavior-x:contain;
-  scroll-snap-type:x mandatory;scrollbar-width:none;
-}
-.p-track::-webkit-scrollbar{display:none;}
-.p-track::after{content:"";flex:0 0 var(--bleed);margin-left:calc(var(--gap) * -1);}
-.project{flex:0 0 clamp(270px,40%,430px);min-width:0;display:flex;scroll-snap-align:start;scroll-margin-top:110px;}
-.project-in{
-  display:flex;flex-direction:column;width:100%;
-  background:var(--card);border-radius:18px;overflow:hidden;
-  box-shadow:0 0 0 1px var(--hair);
-  transition:transform .45s var(--ease),box-shadow .45s var(--ease);
-}
-.project:hover .project-in{transform:translateY(-5px);box-shadow:0 0 0 1px var(--hair),0 22px 38px -24px rgba(21,23,27,.35);}
-.p-banner{margin:0;overflow:hidden;background:var(--hair);aspect-ratio:560/100;}
-.p-banner img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease);}
-.project:hover .p-banner img{transform:scale(1.05);}
-.js .p-banner{clip-path:inset(0 100% 0 0);transition:clip-path 1s var(--ease) .1s;}
-.js .in .p-banner{clip-path:inset(0 0 0 0);}
-.p-head{padding:20px 22px 0;}
-.p-head h3{margin-top:8px;font-size:clamp(18px,1.5vw,21px);line-height:1.16;}
-.p-logos{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:14px;}
-.p-logos img{display:block;height:28px;width:auto;}
-.p-body{flex:1;display:flex;flex-direction:column;padding:16px 22px 22px;}
-.p-question{font-size:15.5px;font-weight:600;line-height:1.4;}
-.p-text{margin-top:10px;font-size:15px;line-height:1.6;color:var(--ink-2);--bg:var(--card);}
-.p-text .fold-body{--fold-h:6.4em;}
-.p-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:auto;padding-top:18px;}
-.go{
-  display:inline-flex;align-items:center;
-  padding:9px 16px;border-radius:999px;
-  background:var(--ink);color:#fff;font-weight:700;font-size:14px;line-height:1.3;
-  transition:background .25s,color .25s,transform .25s var(--ease);
-}
-.go:hover{background:var(--line);color:var(--ink);transform:translateX(3px);}
-.p-progress{width:min(240px,60%);height:4px;border-radius:2px;background:var(--stop-idle);overflow:hidden;}
-.p-progress-fill{display:block;height:100%;border-radius:2px;background:var(--ink);transform-origin:left;transform:scaleX(.2);transition:transform .25s linear;}
-@media (max-width:760px){
-  .p-ctrl{display:none;}
-  .project{flex-basis:86%;}
-}
-
-/* ───────── Contact ───────── */
-.contact .wrap{padding-bottom:clamp(36px,5vw,64px);}
-.mail{
-  display:inline-block;
-  font-stretch:110%;font-weight:700;font-size:clamp(20px,3.3vw,44px);line-height:1.1;letter-spacing:-.025em;
-  background:linear-gradient(var(--sun),var(--sun)) 0 100%/100% .09em no-repeat;
-  padding-bottom:.12em;
-  transition:background-size .45s var(--ease),color .3s;
-}
-.mail:hover{background-size:100% 100%;color:var(--night);}
-.mail--hero{font-size:clamp(19px,2.3vw,31px);margin-top:clamp(18px,2vw,26px);}
-.hero .pills{margin-top:clamp(14px,1.6vw,20px);}
-.contact .pills{margin-top:clamp(22px,3vw,36px);}
-.contact-text{margin-top:clamp(28px,3.6vw,48px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px clamp(24px,5vw,72px);}
-.contact-text p{color:rgba(255,255,255,.78);max-width:34em;}
-.contact-text p:last-child{color:var(--sun);font-weight:600;font-size:clamp(16px,1.35vw,18px);line-height:1.42;}
-.contact .logos{margin-top:clamp(28px,3.6vw,44px);}
-.end{position:relative;margin-top:clamp(32px,4.4vw,56px);padding-top:22px;border-top:1px solid rgba(255,255,255,.16);--stop-y:calc(22px + .8em);}
-@media (max-width:760px){.contact-text{grid-template-columns:1fr;}}
-
-/* ───────── Apparitions au défilement ───────── */
-.js [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s);}
+/* Apparitions */
+.js [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
 .js [data-reveal].in{opacity:1;transform:none;}
-.js h2[data-reveal]{font-stretch:70%;transition:opacity .9s var(--ease),transform .9s var(--ease),font-stretch 1.2s var(--ease);}
-.js h2[data-reveal].in{font-stretch:125%;}
-
+.js .sec h2 .ln{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .12em .08em;margin:0 -.12em -.08em;}
+.js .sec h2 .ln > span{display:inline-block;transform:translateY(105%);transition:transform 1s var(--ease);}
+.js .sec h2.in .ln > span{transform:none;}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition:none !important;}
   .js [data-reveal]{opacity:1;transform:none;}
-  .js h2[data-reveal]{font-stretch:125%;}
-  .js .p-banner{clip-path:none;}
-  .marquee-track{flex-wrap:wrap;width:auto;}
-  .marquee ul[aria-hidden]{display:none;}
-  .marquee ul{flex-wrap:wrap;}
+  .js .hero h1 .ln > span,.js .sec h2 .ln > span{transform:none;}
+  .peek{display:none;}
 }
-  </style>
+</style>
 </head>
 <body>
 
-<header class="top" id="top">
-  <a class="top-brand" href="#accueil">Evan LISON</a>
-  <nav class="top-nav">
-    <a href="#competences">Compétences</a>
-    <a href="#formations">Formations</a>
-    <a href="#projets">Projets</a>
-    <a href="#experiences">Expériences</a>
-    <a href="#benevolat">Bénévolat</a>
-    <a class="top-cta" href="#contact">Contact</a>
-  </nav>
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top">Evan LISON</a>
+    <nav class="nav" aria-label="Sections"><a href="#competences"><span class="mono">01</span>Compétences</a><a href="#formations"><span class="mono">02</span>Formations</a><a href="#projets"><span class="mono">03</span>Projets</a><a href="#experiences"><span class="mono">04</span>Expériences</a><a href="#benevolat"><span class="mono">05</span>Bénévolat</a><a href="#contact"><span class="mono">06</span>Contact</a></nav>
+    <p class="clock mono" aria-label="Heure à Paris"><i></i><span>--:--:--</span></p>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
 </header>
 
-<div class="page">
-  <div class="rail-track" aria-hidden="true"></div>
-  <div class="rail-fill" aria-hidden="true"></div>
-
-  <!-- ═════════ OUVERTURE ═════════ -->
-  <section class="hero zone dark" id="accueil">
-
-    <div class="wrap"><div class="col">
-      <p class="hero-loc label">Paris, France</p>
-      <div class="hero-name">
-        <span class="stop major"></span>
-        <h1><span>Evan</span> <span>LISON</span></h1>
-      </div>
-
-      <div class="hero-grid">
-        <div>
-          <p class="hero-role">Étudiant urbaniste</p>
-          <p class="hero-prog"><a href="https://www.eup.fr/formations/m2-territoire-reseaux-amenagement-mobilite-environnement" target="_blank" rel="noopener">Master 2 TRAME (Territoire, Réseaux, Aménagement, Mobilités, Environnement)<br>Spécialité Transports et mobilités</a></p>
-          <div class="logos">
-            <a href="https://www.eup.fr" target="_blank" rel="noopener"><img src="images/eup-endosse-blanc.png" alt="École d'Urbanisme de Paris"></a>
-            <a href="https://ecoledesponts.fr" target="_blank" rel="noopener"><img src="images/enpc-endosse-blanc.png" alt="École nationale des ponts et chaussées" class="logo-grand"></a>
-          </div>
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top mono"><span>Paris, France</span></div>
+      <div class="grid">
+        <h1><span class="ln"><span>Evan</span></span> <span class="ln"><span>LISON</span></span></h1>
+        <div class="hero-a" data-reveal>
+          <p class="role">Étudiant urbaniste</p>
+          <p class="prog"><a href="https://www.eup.fr/formations/m2-territoire-reseaux-amenagement-mobilite-environnement" target="_blank" rel="noopener">Master 2 TRAME (Territoire, Réseaux, Aménagement, Mobilités, Environnement)<br>Spécialité Transports et mobilités</a></p>
+          <div class="schools"><a href="https://www.eup.fr" target="_blank" rel="noopener"><img src="images/eup-endosse-couleur.png" alt="École d'Urbanisme de Paris"></a><a href="https://ecoledesponts.fr" target="_blank" rel="noopener"><img src="images/enpc-endosse-couleur.png" alt="École nationale des ponts et chaussées" class="big"></a></div>
         </div>
-        <div>
-          <div class="status">
-            <span class="status-dot" aria-hidden="true"></span>
-            <p>Je suis à la recherche d'un stage de fin d'études de 4 à 6 mois, disponible entre le 15 mars et le 30 septembre 2027.</p>
-          </div>
-          <a class="mail mail--hero" href="mailto:evan.lison@outlook.com">evan.lison@outlook.com</a>
-          <div class="pills">
-            <a class="pill" href="tel:+33771651708">+33 7 71 65 17 08</a>
-            <a class="pill" href="curriculum-vitae.pdf" target="_blank" rel="noopener">🔗 CV</a>
-            <a class="pill" href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
+        <div class="hero-b" data-reveal>
+          <div class="status"><span class="dot" aria-hidden="true"></span><p>Je suis à la recherche d'un stage de fin d'études de 4 à 6 mois, disponible entre le 15 mars et le 30 septembre 2027.</p></div>
+          <a class="mail" href="mailto:evan.lison@outlook.com"><span class="u">evan.lison@outlook.com</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <div class="chips"><a class="chip" href="tel:+33771651708">+33 7 71 65 17 08</a><a class="chip" href="curriculum-vitae.pdf" target="_blank" rel="noopener">🔗 CV</a><a class="chip" href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a></div>
         </div>
       </div>
-    </div></div>
+    </div>
   </section>
 
-  <main>
-
-    <!-- ═════════ PRÉSENTATION ═════════ -->
-    <section class="zone about">
-      <div class="wrap"><div class="col">
+  <section class="sec" aria-label="Présentation">
+    <div class="wrap grid">
+      <div class="sec-l"><div class="sticky"><p class="mono">00</p></div></div>
+      <div class="sec-r">
         <div class="fold lead" data-reveal>
-          <div class="fold-body" id="fold-intro">
-            <p>Étudiant en Master 2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME), spécialité Transports et mobilités, une formation commune de l'École d'Urbanisme de Paris et de l'École nationale des ponts et chaussées, à l'interface des sciences humaines et sociales et des sciences de l'ingénieur pour former à l'analyse, à la conception et au pilotage de réseaux. Cette formation m'apporte des compétences en planification et en exploitation des systèmes de transport en tenant compte de leur résilience, ainsi qu'en construction de stratégies partagées entre acteurs publics/privés pour exercer des métiers au sein de la maîtrise d'ouvrage urbaine et de la conduite de projets territoriaux au sein de collectivités, d'aménageurs ou d'opérateurs de transport.</p>
-            <p>Mon parcours en géographie et urbanisme m'a doté d'une approche rigoureuse du diagnostic territorial, des réglementations d'urbanisme et du montage de projet, ainsi qu'une bonne maîtrise de l'analyse statistique et cartographique grâce à des outils comme QGIS.</p>
-            <p>En parallèle de mes études, j'occupe depuis trois ans un emploi étudiant à Disneyland Paris, où j'ai acquis une réelle capacité d'adaptation et de travail en équipe, ainsi qu'une pratique courante de l'anglais au quotidien.</p>
-          </div>
-          <button class="fold-btn" type="button" aria-expanded="false" aria-controls="fold-intro"><span class="fold-ico" aria-hidden="true"></span><span class="fold-label">Lire la suite</span></button>
-        </div>
-      </div></div>
-    </section>
-
-    <!-- ═════════ COMPÉTENCES ═════════ -->
-    <section class="zone competences" id="competences">
-      <div class="wrap"><div class="col">
-        <div class="sec-head"><span class="stop major"></span><h2 data-reveal>Compétences</h2></div>
-      </div></div>
-
-      <div class="marquee">
-        <div class="marquee-track">
-          <ul><li>géomatique</li><li>gestion de projet</li><li>diagnostic territorial</li><li>techniques d'enquête</li><li>réglementation d'urbanisme</li></ul>
-          <ul aria-hidden="true"><li>géomatique</li><li>gestion de projet</li><li>diagnostic territorial</li><li>techniques d'enquête</li><li>réglementation d'urbanisme</li></ul>
+          <div class="fold-body" id="intro-text"><p>Étudiant en Master 2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME), spécialité Transports et mobilités, une formation commune de l'École d'Urbanisme de Paris et de l'École nationale des ponts et chaussées, à l'interface des sciences humaines et sociales et des sciences de l'ingénieur pour former à l'analyse, à la conception et au pilotage de réseaux. Cette formation m'apporte des compétences en planification et en exploitation des systèmes de transport en tenant compte de leur résilience, ainsi qu'en construction de stratégies partagées entre acteurs publics/privés pour exercer des métiers au sein de la maîtrise d'ouvrage urbaine et de la conduite de projets territoriaux au sein de collectivités, d'aménageurs ou d'opérateurs de transport.</p><p>Mon parcours en géographie et urbanisme m'a doté d'une approche rigoureuse du diagnostic territorial, des réglementations d'urbanisme et du montage de projet, ainsi qu'une bonne maîtrise de l'analyse statistique et cartographique grâce à des outils comme QGIS.</p><p>En parallèle de mes études, j'occupe depuis trois ans un emploi étudiant à Disneyland Paris, où j'ai acquis une réelle capacité d'adaptation et de travail en équipe, ainsi qu'une pratique courante de l'anglais au quotidien.</p></div>
+          <button class="fold-btn" type="button" aria-expanded="false" aria-controls="intro-text"><span class="pm" aria-hidden="true"></span><span class="lab">Lire la suite</span></button>
         </div>
       </div>
-      <div class="marquee alt" aria-hidden="true">
-        <div class="marquee-track">
-          <ul><li>techniques d'enquête</li><li>réglementation d'urbanisme</li><li>géomatique</li><li>gestion de projet</li><li>diagnostic territorial</li></ul>
-          <ul><li>techniques d'enquête</li><li>réglementation d'urbanisme</li><li>géomatique</li><li>gestion de projet</li><li>diagnostic territorial</li></ul>
-        </div>
-      </div>
+    </div>
+  </section>
 
-      <div class="wrap"><div class="col">
+  <section class="sec" id="competences">
+    <div class="wrap grid">
+      <div class="sec-l"><div class="sticky"><p class="mono">01</p><h2>Compétences</h2></div></div>
+      <div class="sec-r">
+        <ul class="skills"><li class="skill" data-reveal><span class="n">01</span><span class="w">géomatique</span></li><li class="skill" data-reveal><span class="n">02</span><span class="w">gestion de projet</span></li><li class="skill" data-reveal><span class="n">03</span><span class="w">diagnostic territorial</span></li><li class="skill" data-reveal><span class="n">04</span><span class="w">techniques d'enquête</span></li><li class="skill" data-reveal><span class="n">05</span><span class="w">réglementation d'urbanisme</span></li></ul>
         <div class="kit" data-reveal>
-          <div>
-            <p class="label">Outils</p>
-            <ul class="chips"><li>QGIS</li><li>PTV Visum</li><li>Magrit</li><li>Canva</li><li>suite Office</li></ul>
-          </div>
-          <div>
-            <p class="label">Langues</p>
-            <ul class="chips"><li>Français</li><li>Anglais</li><li>Espagnol</li></ul>
-          </div>
-        </div>
-      </div></div>
-    </section>
-
-    <!-- ═════════ FORMATIONS ═════════ -->
-    <section class="zone" id="formations">
-      <div class="wrap"><div class="col">
-        <div class="sec-head"><span class="stop major"></span><h2 data-reveal>Formations</h2></div>
-
-        <div class="rows">
-          <article class="row">
-            <span class="stop"></span>
-            <div class="row-in" data-reveal>
-              <p class="when">2026-aujourd'hui, Champs-sur-Marne (77)</p>
-              <div>
-                <h3>École d'Urbanisme de Paris</h3>
-                <p class="what">M2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME), spécialité Transports et mobilités</p>
-              </div>
-            </div>
-          </article>
-          <article class="row">
-            <span class="stop"></span>
-            <div class="row-in" data-reveal>
-              <p class="when">2025–2026, Nanterre (92)</p>
-              <div>
-                <h3>Université Paris-Nanterre</h3>
-                <p class="what">M1 Urbanisme et aménagement, parcours Projet Urbain et Montage d'Opérations (PUMO)</p>
-              </div>
-            </div>
-          </article>
-          <article class="row">
-            <span class="stop"></span>
-            <div class="row-in" data-reveal>
-              <p class="when">2022–2025, Paris 13e arr.</p>
-              <div>
-                <h3>Université Paris-Cité</h3>
-                <p class="what">Licence Géographie et aménagement, parcours Environnement et Développement (GAED)</p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div></div>
-    </section>
-
-    <!-- ═════════ PROJETS ═════════ -->
-    <section class="zone" id="projets">
-      <div class="wrap"><div class="col">
-        <div class="sec-head sec-head--row">
-          <span class="stop major"></span>
-          <h2 data-reveal>Projets</h2>
-          <div class="p-ctrl">
-            <button class="p-arrow" type="button" data-dir="-1" aria-label="Projets précédents"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-            <button class="p-arrow" type="button" data-dir="1" aria-label="Projets suivants"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-        </div>
-
-        <div class="projects">
-          <div class="p-track" id="projectsTrack" tabindex="0">
-
-            <article class="project" id="atelier-irve" data-reveal>
-              <div class="project-in">
-                <figure class="p-banner"><img src="images/atelier-irve-long.png" alt="" loading="lazy"></figure>
-                <div class="p-head">
-                  <p class="label">sep. 2026-aujourd'hui</p>
-                  <h3>Stratégie des bornes de recharge électriques IRVE en Île-de-France</h3>
-                  <div class="p-logos">
-                    <img src="images/eup-couleur.png" alt="École d'Urbanisme de Paris">
-                    <img src="images/idfm.png" alt="Île-de-France Mobilités">
-                  </div>
-                </div>
-                <div class="p-body">
-                  <p class="p-question">Le développement d'un réseau de bornes de recharge d'accès public en Île-de-France : quelle trajectoire ?</p>
-                  <div class="fold p-text">
-                    <div class="fold-body" id="fold-atelier-irve"><p>Île-de-France Mobilités vise 100 000 points de charge ouverts au public en 2030 pour accompagner la transition vers le véhicule électrique, un levier majeur de la baisse des émissions du secteur des transports. L'objectif de cet atelier est d'évaluer si la trajectoire actuelle de déploiement permet d'atteindre l'objectif, et d'en apprécier la qualité du point de vue de l'offre de service rendue aux automobilistes (notamment en matière de couverture territoriale, de disponibilité, de lisibilité tarifaire et d'interopérabilité). Nous réalisons un état des lieux de l'offre existante et des entretiens avec les acteurs du déploiement, à savoir les syndicats d'énergie, les collectivités territoriales et les opérateurs privés.</p></div>
-                    <button class="fold-btn" type="button" aria-expanded="false" aria-controls="fold-atelier-irve"><span class="fold-ico" aria-hidden="true"></span><span class="fold-label">Lire la suite</span></button>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="project" id="reamenagement-vallees" data-reveal>
-              <div class="project-in">
-                <figure class="p-banner"><img src="images/reamenagement-vallees-long.png" alt="" loading="lazy"></figure>
-                <div class="p-head">
-                  <p class="label">avr. 2026</p>
-                  <h3>Réaménagement du secteur des Vallées à La Garenne-Colombes (Le fil vert de la jeunesse)</h3>
-                  <div class="p-logos">
-                    <img src="images/paris-nanterre.png" alt="Université Paris Nanterre">
-                    <img src="images/caue92.png" alt="Conseil d'architecture, d'urbanisme et de l'environnement des Hauts-de-Seine">
-                  </div>
-                </div>
-                <div class="p-body">
-                  <p class="p-question">Comment reconnecter les espaces publics d'un quartier minéralisé pour en faire un cœur de vie apaisé et végétalisé ?</p>
-                  <div class="fold p-text">
-                    <div class="fold-body" id="fold-reamenagement-vallees"><p>Lors d'une semaine intensive de projet organisée avec le CAUE 92, nous avons repensé le secteur des Vallées, à La Garenne-Colombes et Bois-Colombes, que notre diagnostic décrit comme un quartier très minéralisé et assez dépendant de la voiture. Notre projet « Le fil vert de la jeunesse » associe désimperméabilisation, végétalisation et apaisement des circulations pour relier les principaux lieux de vie du quartier. Nous avons réalisé de nombreuses illustrations, plans, coupes de rue, perspectives ou encore schémas de principe, qui donnent à voir une « rue aux écoles » sécurisée, un marché requalifié en lieu de vie intergénérationnel et une trame verte continue.</p></div>
-                    <button class="fold-btn" type="button" aria-expanded="false" aria-controls="fold-reamenagement-vallees"><span class="fold-ico" aria-hidden="true"></span><span class="fold-label">Lire la suite</span></button>
-                  </div>
-                  <div class="p-links">
-                    <a class="go" href="projet/reamenagement-vallees.html">Voir le projet en détail →</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="project" id="enquete-marais" data-reveal>
-              <div class="project-in">
-                <figure class="p-banner"><img src="images/enquete-marais-long.png" alt="" loading="lazy"></figure>
-                <div class="p-head">
-                  <p class="label">jan.–avr. 2026</p>
-                  <h3>Le Marais : pratiques et perceptions de l'espace public (Chaque regard révèle le Marais autrement)</h3>
-                  <div class="p-logos">
-                    <img src="images/paris-nanterre.png" alt="Université Paris Nanterre">
-                  </div>
-                </div>
-                <div class="p-body">
-                  <p class="p-question">Dans quelle mesure un même espace public peut-il être vécu, perçu et approprié différemment selon qu'on l'habite, qu'on le traverse ou qu'on le visite ?</p>
-                  <div class="fold p-text">
-                    <div class="fold-body" id="fold-enquete-marais"><p>Cette enquête ethnographique interroge le Marais comme un espace public vécu différemment selon ses usagers. L'objectif est de comprendre les pratiques, perceptions et ambiances du quotidien à travers une analyse sensible allant au-delà de la carte. La méthode combine parcours commentés, parcours sensibles via des croquis réalisés par les personnes interrogées elles-mêmes, afin de saisir la parole en mouvement et les ressentis propres à chaque profil d'usager.</p></div>
-                    <button class="fold-btn" type="button" aria-expanded="false" aria-controls="fold-enquete-marais"><span class="fold-ico" aria-hidden="true"></span><span class="fold-label">Lire la suite</span></button>
-                  </div>
-                  <div class="p-links">
-                    <a class="go" href="projet/enquete-marais.html">Voir le projet en détail →</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="project" id="diag-poissy" data-reveal>
-              <div class="project-in">
-                <figure class="p-banner"><img src="images/diag-poissy-long.png" alt="" loading="lazy"></figure>
-                <div class="p-head">
-                  <p class="label">jan.–avr. 2026</p>
-                  <h3>Diagnostic territorial autour du pôle multimodal de la gare de Poissy</h3>
-                  <div class="p-logos">
-                    <img src="images/paris-nanterre.png" alt="Université Paris Nanterre">
-                  </div>
-                </div>
-                <div class="p-body">
-                  <p class="p-question">Comment se déplacer sur un territoire dont l'organisation des mobilités produit elle-même des inégalités d'accessibilité ?</p>
-                  <div class="fold p-text">
-                    <div class="fold-body" id="fold-diag-poissy"><p>Réalisé dans le cadre d'un atelier de diagnostic territorial, ce travail porte sur le territoire formé par les communes de Poissy, Carrières-sous-Poissy et Villennes-sur-Seine, dans les Yvelines. Il se structure en deux temps complémentaires : un diagnostic quantitatif interrogeant la manière dont la morphologie urbaine, la structure sociale des communes et les transformations de l'offre de transport produisent des inégalités d'accessibilité, puis un diagnostic qualitatif resserré sur la gare de Poissy, questionnée comme espace d'intermodalité vécu, à travers les perceptions et récits de ses usagers.</p></div>
-                    <button class="fold-btn" type="button" aria-expanded="false" aria-controls="fold-diag-poissy"><span class="fold-ico" aria-hidden="true"></span><span class="fold-label">Lire la suite</span></button>
-                  </div>
-                  <div class="p-links">
-                    <a class="go" href="projet/diag-poissy.html">Voir le projet en détail →</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="project" id="enquete-havre" data-reveal>
-              <div class="project-in">
-                <figure class="p-banner"><img src="images/enquete-havre-long.png" alt="" loading="lazy"></figure>
-                <div class="p-head">
-                  <p class="label">sep.–déc. 2025</p>
-                  <h3>Enquête de terrain sur les stratégies d'attractivité touristique au Havre (voyage d'étude)</h3>
-                  <div class="p-logos">
-                    <img src="images/paris-nanterre.png" alt="Université Paris Nanterre">
-                  </div>
-                </div>
-                <div class="p-body">
-                  <p class="p-question">Dans quelle mesure une ville industrialo-portuaire longtemps perçue comme une ville « où l'on ne va pas » se transforme-t-elle en destination touristique structurée ?</p>
-                  <div class="fold p-text">
-                    <div class="fold-body" id="fold-enquete-havre"><p>Notre voyage d'étude de Master 1 s'est déroulé au Havre lors d'une semaine de terrain menée du 13 au 17 octobre 2025. Face à l'héritage industrialo-portuaire de la ville, longtemps perçue comme une ville « où l'on ne va pas », notre enquête interroge dans quelle mesure Le Havre tente aujourd'hui de se transformer en projet structuré d'attractivité touristique. Entre patrimoine Perret classé à l'UNESCO, identité impressionniste et dimension balnéaire en essor, la commune cherche à dépasser son image de ville de passage.</p></div>
-                    <button class="fold-btn" type="button" aria-expanded="false" aria-controls="fold-enquete-havre"><span class="fold-ico" aria-hidden="true"></span><span class="fold-label">Lire la suite</span></button>
-                  </div>
-                  <div class="p-links">
-                    <a class="go" href="projet/enquete-havre.html">Voir le projet en détail →</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="project" id="teledetection-australie" data-reveal>
-              <div class="project-in">
-                <figure class="p-banner"><img src="images/teledetection-australie-long.png" alt="" loading="lazy"></figure>
-                <div class="p-head">
-                  <p class="label">jan.–avr. 2025</p>
-                  <h3>Dynamiques de régénération post-incendie dans le parc national de Kosciuszko (2019–2022)</h3>
-                  <div class="p-logos">
-                    <img src="images/paris-cite.png" alt="Université Paris Cité">
-                  </div>
-                </div>
-                <div class="p-body">
-                  <p class="p-question">Comment les types de sol et les conditions environnementales locales influencent-ils la dynamique de revégétalisation ?</p>
-                  <div class="fold p-text">
-                    <div class="fold-body" id="fold-teledetection-australie"><p>Ce projet de télédétection analyse la régénération de la végétation sur un secteur de 380 km² du parc national de Kosciuszko (Nouvelle-Galles du Sud, Australie), fortement touché par les feux de forêt du Black Summer 2019-2020. L'objectif est d'évaluer l'intensité des incendies selon le type de couverture végétale et la proximité des ressources en eau, deux facteurs aussi susceptibles de favoriser la vitesse de reprise végétale. Notre démarche mobilise des images satellites Sentinel-2 et le calcul d'indices spectraux (NDVI, NBR), croisés avec le type d'occupation du sol et la topographie, sous QGIS et R.</p></div>
-                    <button class="fold-btn" type="button" aria-expanded="false" aria-controls="fold-teledetection-australie"><span class="fold-ico" aria-hidden="true"></span><span class="fold-label">Lire la suite</span></button>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="project" id="reamenagement-pythonduvernois" data-reveal>
-              <div class="project-in">
-                <figure class="p-banner"><img src="images/reamenagement-pythonduvernois-long.png" alt="" loading="lazy"></figure>
-                <div class="p-head">
-                  <p class="label">sep.–déc. 2024</p>
-                  <h3>Réaménagement du quartier Python-Duvernois (Paris 20<sup>e</sup>)</h3>
-                  <div class="p-logos">
-                    <img src="images/paris-cite.png" alt="Université Paris Cité">
-                    <img src="images/semapa.png" alt="Société d'étude, de maîtrise d'ouvrage et d'aménagement parisienne">
-                    <img src="images/mairie-20.png" alt="Mairie du 20ᵉ arrondissement de Paris">
-                  </div>
-                </div>
-                <div class="p-body">
-                  <p class="p-question">Peut-on transformer une coupure urbaine en lien, quand le périphérique est à la fois la cause de l’enclavement et l’élément structurant du quartier ?</p>
-                  <div class="fold p-text">
-                    <div class="fold-body" id="fold-reamenagement-pythonduvernois"><p>La SEMAPA et la mairie du 20e arrondissement de Paris nous ont commandé des études préliminaires portant sur des intentions de projet pour l'avenir du quartier Python-Duvernois. Situé à l'extrémité est du 20e arrondissement de Paris, en bordure du périphérique et de la frontière avec Bagnolet, ce quartier souffre d'un enclavement persistant depuis les années 1950. Tout d'abord, nous avons réalisé un diagnostic territorial du quartier portant sur son bâti, ses circulations et ses usages. Puis nous avons élaboré un projet urbain visant à répondre aux dysfonctionnements identifiés et à recréer une continuité avec le reste de l'arrondissement.</p></div>
-                    <button class="fold-btn" type="button" aria-expanded="false" aria-controls="fold-reamenagement-pythonduvernois"><span class="fold-ico" aria-hidden="true"></span><span class="fold-label">Lire la suite</span></button>
-                  </div>
-                  <div class="p-links">
-                    <a class="go" href="projet/reamenagement-pythonduvernois.html">Voir le projet en détail →</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="project" id="sig-nantes" data-reveal>
-              <div class="project-in">
-                <figure class="p-banner"><img src="images/sig-nantes-long.png" alt="" loading="lazy"></figure>
-                <div class="p-head">
-                  <p class="label">sep.–déc. 2024</p>
-                  <h3>Analyse de l'accessibilité des espaces verts à Nantes</h3>
-                  <div class="p-logos">
-                    <img src="images/paris-cite.png" alt="Université Paris Cité">
-                  </div>
-                </div>
-                <div class="p-body">
-                  <p class="p-question">Dans une ville réputée pour sa végétation, la desserte des quartiers de Nantes garantit-elle un accès équitable aux espaces verts ?</p>
-                  <div class="fold p-text">
-                    <div class="fold-body" id="fold-sig-nantes"><p>L'objectif de ce mini-projet SIG est de déterminer si tous les quartiers de Nantes ont un accès équivalent aux espaces verts, selon la qualité de leur desserte en transports en commun et en pistes cyclables. Nous avons croisé les quartiers, l'occupation du sol, les arrêts du réseau Naolib et les aménagements cyclables. Sous QGIS, une série de traitements nous ont permis d'isoler la végétation réellement accessible, puis de quantifier, quartier par quartier, la part de végétation et la superficie d'espaces verts accessibles. Ces résultats restent à nuancer : la précision des données de végétation, le choix des distances de zones tampon, l’exclusion des zones privées et l’absence de données d’usage limitent la portée de l’analyse.</p></div>
-                    <button class="fold-btn" type="button" aria-expanded="false" aria-controls="fold-sig-nantes"><span class="fold-ico" aria-hidden="true"></span><span class="fold-label">Lire la suite</span></button>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="project" id="enquete-bercy" data-reveal>
-              <div class="project-in">
-                <figure class="p-banner"><img src="images/enquete-bercy-long.png" alt="" loading="lazy"></figure>
-                <div class="p-head">
-                  <p class="label">jan.–avr. 2024</p>
-                  <h3>Enquête sur la typologie des mobilités dans le 12e arrondissement de Paris</h3>
-                  <div class="p-logos">
-                    <img src="images/paris-cite.png" alt="Université Paris Cité">
-                  </div>
-                </div>
-                <div class="p-body">
-                  <p class="p-question">Quelles motivations sous-tendent les choix de mobilité des usagers à Bercy, et comment façonnent-elles des expériences différenciées d'un même territoire ?</p>
-                  <div class="fold p-text">
-                    <div class="fold-body" id="fold-enquete-bercy"><p>Ce diagnostic est né d'une curiosité de terrain face au flux incessant de voyageurs et de valises qui traversent quotidiennement le quartier de Bercy, dans le 12e arrondissement de Paris. La diversité des profils (entre touristes et voyageurs d'affaires), et la manière dont l'expérience diffère selon le mode de transport emprunté ont motivé notre choix de terrain, couvrant la gare routière de Bercy-Seine, la gare SNCF de Bercy Bourgogne-Pays d'Auvergne et la station de la ligne 14 du métro. À travers une enquête de terrain, entretiens semi-directifs et observations, nous interrogeons les motivations qui sous-tendent les choix de mobilité des usagers à Bercy, que ce soit par le train, le bus ou le métro.</p></div>
-                    <button class="fold-btn" type="button" aria-expanded="false" aria-controls="fold-enquete-bercy"><span class="fold-ico" aria-hidden="true"></span><span class="fold-label">Lire la suite</span></button>
-                  </div>
-                  <div class="p-links">
-                    <a class="go" href="projet/enquete-bercy.html">Voir le projet en détail →</a>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-          </div>
-          <div class="p-progress" aria-hidden="true"><span class="p-progress-fill"></span></div>
-        </div>
-      </div></div>
-    </section>
-
-    <!-- ═════════ EXPÉRIENCES ═════════ -->
-    <section class="zone" id="experiences">
-      <div class="wrap"><div class="col">
-        <div class="sec-head"><span class="stop major"></span><h2 data-reveal>Expériences</h2></div>
-
-        <div class="rows">
-          <article class="row">
-            <span class="stop"></span>
-            <div class="row-in" data-reveal>
-              <p class="when">mai 2023-aujourd'hui, Chessy (77)</p>
-              <div>
-                <h3>Disneyland Paris</h3>
-                <div class="roles">
-                  <div>
-                    <p class="role-t">Opérateur-Animateur d'Attractions (OAA)</p>
-                    <p class="role-d">Accueil, exploitation de l'attraction, sécurité et gestion des flux de visiteurs.</p>
-                  </div>
-                  <div>
-                    <p class="role-t">Vendeur en boutiques et<br>Coordinateur caisses</p>
-                    <p class="role-d">Vente, conseil client et gestion de la caisse. Gestion du coffre et apport en numéraire.</p>
-                  </div>
-                  <div>
-                    <p class="role-t">Vendeur en kiosques de restauration</p>
-                    <p class="role-d">Prise de commande et service en kiosques.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="row">
-            <span class="stop"></span>
-            <div class="row-in" data-reveal>
-              <p class="when">déc. 2022-jan. 2023, Noisy-le-Grand (93)</p>
-              <div>
-                <h3>Carrefour Arcades</h3>
-                <div class="roles">
-                  <div>
-                    <p class="role-t">Vente en boulangerie-pâtisserie</p>
-                    <p class="role-d">Préparation, emballage et mise en rayon.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div></div>
-    </section>
-
-    <!-- ═════════ BÉNÉVOLAT ═════════ -->
-    <section class="zone" id="benevolat">
-      <div class="wrap"><div class="col">
-        <div class="sec-head"><span class="stop major"></span><h2 data-reveal>Bénévolat</h2></div>
-
-        <div class="rows">
-          <article class="row">
-            <span class="stop"></span>
-            <div class="row-in" data-reveal>
-              <p class="when">oct 2023-aujourd'hui, Chessy (77)</p>
-              <div>
-                <h3>Disney VoluntEARS</h3>
-                <p class="note">Programme de bénévolat des employés de Disneyland Paris, engagés pour des causes de tous horizons.</p>
-                <div class="causes">
-                  <img src="images/pieces-jaunes.png" alt="Pièces Jaunes">
-                  <img src="images/make-a-wish.png" alt="Make-A-Wish">
-                  <img src="images/secours-pop.png" alt="Secours Populaire">
-                  <img src="images/restos-du-coeur.png" alt="Restos du Cœur">
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div></div>
-    </section>
-
-  </main>
-
-  <!-- ═════════ CONTACT ═════════ -->
-  <footer class="zone dark contact" id="contact">
-    <div class="wrap"><div class="col">
-      <div class="sec-head"><span class="stop major"></span><h2 data-reveal>Contact</h2></div>
-
-      <div data-reveal>
-        <a class="mail" href="mailto:evan.lison@outlook.com">evan.lison@outlook.com</a>
-        <div class="pills">
-          <a class="pill" href="tel:+33771651708">+33 7 71 65 17 08</a>
-          <a class="pill" href="curriculum-vitae.pdf" target="_blank" rel="noopener">🔗 CV</a>
-          <a class="pill" href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a>
+          <div><p class="mono">Outils</p><p>QGIS, PTV Visum, Magrit, Canva, suite Office</p></div>
+          <div><p class="mono">Langues</p><p>Français, Anglais, Espagnol</p></div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="contact-text" data-reveal>
-        <p>Étudiant en Master 2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME), spécialité Transports et mobilités, une formation commune de l'École d'Urbanisme de Paris et de l'École nationale des ponts et chaussées.</p>
-        <p>Je suis à la recherche d'un stage de fin d'études de 4 à 6 mois, disponible entre le 15 mars et le 30 septembre 2027.</p>
+  <section class="sec" id="formations">
+    <div class="wrap grid">
+      <div class="sec-l"><div class="sticky"><p class="mono">02</p><h2>Formations</h2></div></div>
+      <div class="sec-r rows">
+          <article class="row" data-reveal>
+            <p class="row-date mono">2026-aujourd'hui, Champs-sur-Marne (77)</p>
+            <div class="row-main"><div class="row-top"><h3>École d'Urbanisme de Paris</h3><img class="row-logo" src="images/eup-couleur.png" alt="École d'Urbanisme de Paris" loading="lazy"></div><p class="row-sub">M2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME), spécialité Transports et mobilités</p></div>
+          </article>
+          <article class="row" data-reveal>
+            <p class="row-date mono">2025–2026, Nanterre (92)</p>
+            <div class="row-main"><div class="row-top"><h3>Université Paris-Nanterre</h3><img class="row-logo" src="images/paris-nanterre.png" alt="Université Paris Nanterre" loading="lazy"></div><p class="row-sub">M1 Urbanisme et aménagement, parcours Projet Urbain et Montage d'Opérations (PUMO)</p></div>
+          </article>
+          <article class="row" data-reveal>
+            <p class="row-date mono">2022–2025, Paris 13e arr.</p>
+            <div class="row-main"><div class="row-top"><h3>Université Paris-Cité</h3><img class="row-logo" src="images/paris-cite.png" alt="Université Paris Cité" loading="lazy"></div><p class="row-sub">Licence Géographie et aménagement, parcours Environnement et Développement (GAED)</p></div>
+          </article>
       </div>
+    </div>
+  </section>
 
-      <div class="logos" data-reveal>
-        <a href="https://www.eup.fr" target="_blank" rel="noopener"><img src="images/eup-endosse-blanc.png" alt="École d'Urbanisme de Paris"></a>
-        <a href="https://ecoledesponts.fr" target="_blank" rel="noopener"><img src="images/enpc-endosse-blanc.png" alt="École nationale des ponts et chaussées" class="logo-grand"></a>
+  <section class="sec" id="projets">
+    <div class="wrap grid">
+      <div class="sec-l"><div class="sticky"><p class="mono">03</p><h2>Projets</h2></div></div>
+      <div class="sec-r">
+        <div class="idx-head mono" aria-hidden="true"><span>N°</span><span>Projet</span><span style="text-align:right">Période</span><span></span></div>
+        <div class="idx">
+          <article class="proj" id="atelier-irve" data-reveal>
+            <div class="proj-row">
+            <button class="proj-head" type="button" aria-expanded="false" aria-controls="pb-atelier-irve" data-emoji="🔌">
+              <span class="proj-n mono">01</span>
+              <h3 class="proj-t">Stratégie des bornes de recharge électriques IRVE en Île-de-France</h3>
+              <span class="proj-d mono">sep. 2026-aujourd'hui</span>
+              <span class="proj-x" aria-hidden="true"></span>
+            </button>
+            </div>
+            <div class="proj-body" id="pb-atelier-irve" role="region" aria-label="Stratégie des bornes de recharge électriques IRVE en Île-de-France">
+              <div class="proj-in">
+                <figure class="proj-ban"><img src="images/atelier-irve-long.png" alt="" loading="lazy"></figure>
+                <div class="proj-side">
+                  <div class="proj-logos"><img src="images/eup-couleur.png" alt="École d'Urbanisme de Paris" loading="lazy"><img src="images/idfm.png" alt="Île-de-France Mobilités" loading="lazy"></div>
+                </div>
+                <div class="proj-txt">
+                  <p class="proj-q">Le développement d'un réseau de bornes de recharge d'accès public en Île-de-France : quelle trajectoire ?</p>
+                  <p class="proj-p">Île-de-France Mobilités vise 100 000 points de charge ouverts au public en 2030 pour accompagner la transition vers le véhicule électrique, un levier majeur de la baisse des émissions du secteur des transports. L'objectif de cet atelier est d'évaluer si la trajectoire actuelle de déploiement permet d'atteindre l'objectif, et d'en apprécier la qualité du point de vue de l'offre de service rendue aux automobilistes (notamment en matière de couverture territoriale, de disponibilité, de lisibilité tarifaire et d'interopérabilité). Nous réalisons un état des lieux de l'offre existante et des entretiens avec les acteurs du déploiement, à savoir les syndicats d'énergie, les collectivités territoriales et les opérateurs privés.</p>
+                  
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="reamenagement-vallees" data-reveal>
+            <div class="proj-row">
+            <button class="proj-head" type="button" aria-expanded="false" aria-controls="pb-reamenagement-vallees" data-emoji="🌳">
+              <span class="proj-n mono">02</span>
+              <h3 class="proj-t">Réaménagement du secteur des Vallées à La Garenne-Colombes (Le fil vert de la jeunesse)</h3>
+              <span class="proj-d mono">avr. 2026</span>
+              <span class="proj-x" aria-hidden="true"></span>
+            </button>
+            </div>
+            <div class="proj-body" id="pb-reamenagement-vallees" role="region" aria-label="Réaménagement du secteur des Vallées à La Garenne-Colombes (Le fil vert de la jeunesse)">
+              <div class="proj-in">
+                <figure class="proj-ban"><img src="images/reamenagement-vallees-long.png" alt="" loading="lazy"></figure>
+                <div class="proj-side">
+                  <div class="proj-logos"><img src="images/paris-nanterre.png" alt="Université Paris Nanterre" loading="lazy"><img src="images/caue92.png" alt="Conseil d'architecture, d'urbanisme et de l'environnement des Hauts-de-Seine" loading="lazy"></div>
+                </div>
+                <div class="proj-txt">
+                  <p class="proj-q">Comment reconnecter les espaces publics d'un quartier minéralisé pour en faire un cœur de vie apaisé et végétalisé ?</p>
+                  <p class="proj-p">Lors d'une semaine intensive de projet organisée avec le CAUE 92, nous avons repensé le secteur des Vallées, à La Garenne-Colombes et Bois-Colombes, que notre diagnostic décrit comme un quartier très minéralisé et assez dépendant de la voiture. Notre projet « Le fil vert de la jeunesse » associe désimperméabilisation, végétalisation et apaisement des circulations pour relier les principaux lieux de vie du quartier. Nous avons réalisé de nombreuses illustrations, plans, coupes de rue, perspectives ou encore schémas de principe, qui donnent à voir une « rue aux écoles » sécurisée, un marché requalifié en lieu de vie intergénérationnel et une trame verte continue.</p>
+                  <a class="proj-link" href="projet/reamenagement-vallees.html">Voir le projet en détail →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="enquete-marais" data-reveal>
+            <div class="proj-row">
+            <button class="proj-head" type="button" aria-expanded="false" aria-controls="pb-enquete-marais" data-emoji="👀">
+              <span class="proj-n mono">03</span>
+              <h3 class="proj-t">Le Marais : pratiques et perceptions de l'espace public (Chaque regard révèle le Marais autrement)</h3>
+              <span class="proj-d mono">jan.–avr. 2026</span>
+              <span class="proj-x" aria-hidden="true"></span>
+            </button>
+            </div>
+            <div class="proj-body" id="pb-enquete-marais" role="region" aria-label="Le Marais : pratiques et perceptions de l'espace public (Chaque regard révèle le Marais autrement)">
+              <div class="proj-in">
+                <figure class="proj-ban"><img src="images/enquete-marais-long.png" alt="" loading="lazy"></figure>
+                <div class="proj-side">
+                  <div class="proj-logos"><img src="images/paris-nanterre.png" alt="Université Paris Nanterre" loading="lazy"></div>
+                </div>
+                <div class="proj-txt">
+                  <p class="proj-q">Dans quelle mesure un même espace public peut-il être vécu, perçu et approprié différemment selon qu'on l'habite, qu'on le traverse ou qu'on le visite ?</p>
+                  <p class="proj-p">Cette enquête ethnographique interroge le Marais comme un espace public vécu différemment selon ses usagers. L'objectif est de comprendre les pratiques, perceptions et ambiances du quotidien à travers une analyse sensible allant au-delà de la carte. La méthode combine parcours commentés, parcours sensibles via des croquis réalisés par les personnes interrogées elles-mêmes, afin de saisir la parole en mouvement et les ressentis propres à chaque profil d'usager.</p>
+                  <a class="proj-link" href="projet/enquete-marais.html">Voir le projet en détail →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="diag-poissy" data-reveal>
+            <div class="proj-row">
+            <button class="proj-head" type="button" aria-expanded="false" aria-controls="pb-diag-poissy" data-emoji="🚉">
+              <span class="proj-n mono">04</span>
+              <h3 class="proj-t">Diagnostic territorial autour du pôle multimodal de la gare de Poissy</h3>
+              <span class="proj-d mono">jan.–avr. 2026</span>
+              <span class="proj-x" aria-hidden="true"></span>
+            </button>
+            </div>
+            <div class="proj-body" id="pb-diag-poissy" role="region" aria-label="Diagnostic territorial autour du pôle multimodal de la gare de Poissy">
+              <div class="proj-in">
+                <figure class="proj-ban"><img src="images/diag-poissy-long.png" alt="" loading="lazy"></figure>
+                <div class="proj-side">
+                  <div class="proj-logos"><img src="images/paris-nanterre.png" alt="Université Paris Nanterre" loading="lazy"></div>
+                </div>
+                <div class="proj-txt">
+                  <p class="proj-q">Comment se déplacer sur un territoire dont l'organisation des mobilités produit elle-même des inégalités d'accessibilité ?</p>
+                  <p class="proj-p">Réalisé dans le cadre d'un atelier de diagnostic territorial, ce travail porte sur le territoire formé par les communes de Poissy, Carrières-sous-Poissy et Villennes-sur-Seine, dans les Yvelines. Il se structure en deux temps complémentaires : un diagnostic quantitatif interrogeant la manière dont la morphologie urbaine, la structure sociale des communes et les transformations de l'offre de transport produisent des inégalités d'accessibilité, puis un diagnostic qualitatif resserré sur la gare de Poissy, questionnée comme espace d'intermodalité vécu, à travers les perceptions et récits de ses usagers.</p>
+                  <a class="proj-link" href="projet/diag-poissy.html">Voir le projet en détail →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="enquete-havre" data-reveal>
+            <div class="proj-row">
+            <button class="proj-head" type="button" aria-expanded="false" aria-controls="pb-enquete-havre" data-emoji="⚓">
+              <span class="proj-n mono">05</span>
+              <h3 class="proj-t">Enquête de terrain sur les stratégies d'attractivité touristique au Havre (voyage d'étude)</h3>
+              <span class="proj-d mono">sep.–déc. 2025</span>
+              <span class="proj-x" aria-hidden="true"></span>
+            </button>
+            </div>
+            <div class="proj-body" id="pb-enquete-havre" role="region" aria-label="Enquête de terrain sur les stratégies d'attractivité touristique au Havre (voyage d'étude)">
+              <div class="proj-in">
+                <figure class="proj-ban"><img src="images/enquete-havre-long.png" alt="" loading="lazy"></figure>
+                <div class="proj-side">
+                  <div class="proj-logos"><img src="images/paris-nanterre.png" alt="Université Paris Nanterre" loading="lazy"></div>
+                </div>
+                <div class="proj-txt">
+                  <p class="proj-q">Dans quelle mesure une ville industrialo-portuaire longtemps perçue comme une ville « où l'on ne va pas » se transforme-t-elle en destination touristique structurée ?</p>
+                  <p class="proj-p">Notre voyage d'étude de Master 1 s'est déroulé au Havre lors d'une semaine de terrain menée du 13 au 17 octobre 2025. Face à l'héritage industrialo-portuaire de la ville, longtemps perçue comme une ville « où l'on ne va pas », notre enquête interroge dans quelle mesure Le Havre tente aujourd'hui de se transformer en projet structuré d'attractivité touristique. Entre patrimoine Perret classé à l'UNESCO, identité impressionniste et dimension balnéaire en essor, la commune cherche à dépasser son image de ville de passage.</p>
+                  <a class="proj-link" href="projet/enquete-havre.html">Voir le projet en détail →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="teledetection-australie" data-reveal>
+            <div class="proj-row">
+            <button class="proj-head" type="button" aria-expanded="false" aria-controls="pb-teledetection-australie" data-emoji="🛰️">
+              <span class="proj-n mono">06</span>
+              <h3 class="proj-t">Dynamiques de régénération post-incendie dans le parc national de Kosciuszko (2019–2022)</h3>
+              <span class="proj-d mono">jan.–avr. 2025</span>
+              <span class="proj-x" aria-hidden="true"></span>
+            </button>
+            </div>
+            <div class="proj-body" id="pb-teledetection-australie" role="region" aria-label="Dynamiques de régénération post-incendie dans le parc national de Kosciuszko (2019–2022)">
+              <div class="proj-in">
+                <figure class="proj-ban"><img src="images/teledetection-australie-long.png" alt="" loading="lazy"></figure>
+                <div class="proj-side">
+                  <div class="proj-logos"><img src="images/paris-cite.png" alt="Université Paris Cité" loading="lazy"></div>
+                </div>
+                <div class="proj-txt">
+                  <p class="proj-q">Comment les types de sol et les conditions environnementales locales influencent-ils la dynamique de revégétalisation ?</p>
+                  <p class="proj-p">Ce projet de télédétection analyse la régénération de la végétation sur un secteur de 380 km² du parc national de Kosciuszko (Nouvelle-Galles du Sud, Australie), fortement touché par les feux de forêt du Black Summer 2019-2020. L'objectif est d'évaluer l'intensité des incendies selon le type de couverture végétale et la proximité des ressources en eau, deux facteurs aussi susceptibles de favoriser la vitesse de reprise végétale. Notre démarche mobilise des images satellites Sentinel-2 et le calcul d'indices spectraux (NDVI, NBR), croisés avec le type d'occupation du sol et la topographie, sous QGIS et R.</p>
+                  
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="reamenagement-pythonduvernois" data-reveal>
+            <div class="proj-row">
+            <button class="proj-head" type="button" aria-expanded="false" aria-controls="pb-reamenagement-pythonduvernois" data-emoji="🛣️">
+              <span class="proj-n mono">07</span>
+              <h3 class="proj-t">Réaménagement du quartier Python-Duvernois (Paris 20<sup>e</sup>)</h3>
+              <span class="proj-d mono">sep.–déc. 2024</span>
+              <span class="proj-x" aria-hidden="true"></span>
+            </button>
+            </div>
+            <div class="proj-body" id="pb-reamenagement-pythonduvernois" role="region" aria-label="Réaménagement du quartier Python-Duvernois (Paris 20e)">
+              <div class="proj-in">
+                <figure class="proj-ban"><img src="images/reamenagement-pythonduvernois-long.png" alt="" loading="lazy"></figure>
+                <div class="proj-side">
+                  <div class="proj-logos"><img src="images/paris-cite.png" alt="Université Paris Cité" loading="lazy"><img src="images/semapa.png" alt="Société d'étude, de maîtrise d'ouvrage et d'aménagement parisienne" loading="lazy"><img src="images/mairie-20.png" alt="Mairie du 20ᵉ arrondissement de Paris" loading="lazy"></div>
+                </div>
+                <div class="proj-txt">
+                  <p class="proj-q">Peut-on transformer une coupure urbaine en lien, quand le périphérique est à la fois la cause de l’enclavement et l’élément structurant du quartier ?</p>
+                  <p class="proj-p">La SEMAPA et la mairie du 20e arrondissement de Paris nous ont commandé des études préliminaires portant sur des intentions de projet pour l'avenir du quartier Python-Duvernois. Situé à l'extrémité est du 20e arrondissement de Paris, en bordure du périphérique et de la frontière avec Bagnolet, ce quartier souffre d'un enclavement persistant depuis les années 1950. Tout d'abord, nous avons réalisé un diagnostic territorial du quartier portant sur son bâti, ses circulations et ses usages. Puis nous avons élaboré un projet urbain visant à répondre aux dysfonctionnements identifiés et à recréer une continuité avec le reste de l'arrondissement.</p>
+                  <a class="proj-link" href="projet/reamenagement-pythonduvernois.html">Voir le projet en détail →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="sig-nantes" data-reveal>
+            <div class="proj-row">
+            <button class="proj-head" type="button" aria-expanded="false" aria-controls="pb-sig-nantes" data-emoji="🗺️">
+              <span class="proj-n mono">08</span>
+              <h3 class="proj-t">Analyse de l'accessibilité des espaces verts à Nantes</h3>
+              <span class="proj-d mono">sep.–déc. 2024</span>
+              <span class="proj-x" aria-hidden="true"></span>
+            </button>
+            </div>
+            <div class="proj-body" id="pb-sig-nantes" role="region" aria-label="Analyse de l'accessibilité des espaces verts à Nantes">
+              <div class="proj-in">
+                <figure class="proj-ban"><img src="images/sig-nantes-long.png" alt="" loading="lazy"></figure>
+                <div class="proj-side">
+                  <div class="proj-logos"><img src="images/paris-cite.png" alt="Université Paris Cité" loading="lazy"></div>
+                </div>
+                <div class="proj-txt">
+                  <p class="proj-q">Dans une ville réputée pour sa végétation, la desserte des quartiers de Nantes garantit-elle un accès équitable aux espaces verts ?</p>
+                  <p class="proj-p">L'objectif de ce mini-projet SIG est de déterminer si tous les quartiers de Nantes ont un accès équivalent aux espaces verts, selon la qualité de leur desserte en transports en commun et en pistes cyclables. Nous avons croisé les quartiers, l'occupation du sol, les arrêts du réseau Naolib et les aménagements cyclables. Sous QGIS, une série de traitements nous ont permis d'isoler la végétation réellement accessible, puis de quantifier, quartier par quartier, la part de végétation et la superficie d'espaces verts accessibles. Ces résultats restent à nuancer : la précision des données de végétation, le choix des distances de zones tampon, l’exclusion des zones privées et l’absence de données d’usage limitent la portée de l’analyse.</p>
+                  
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="proj" id="enquete-bercy" data-reveal>
+            <div class="proj-row">
+            <button class="proj-head" type="button" aria-expanded="false" aria-controls="pb-enquete-bercy" data-emoji="🧳">
+              <span class="proj-n mono">09</span>
+              <h3 class="proj-t">Enquête sur la typologie des mobilités dans le 12e arrondissement de Paris</h3>
+              <span class="proj-d mono">jan.–avr. 2024</span>
+              <span class="proj-x" aria-hidden="true"></span>
+            </button>
+            </div>
+            <div class="proj-body" id="pb-enquete-bercy" role="region" aria-label="Enquête sur la typologie des mobilités dans le 12e arrondissement de Paris">
+              <div class="proj-in">
+                <figure class="proj-ban"><img src="images/enquete-bercy-long.png" alt="" loading="lazy"></figure>
+                <div class="proj-side">
+                  <div class="proj-logos"><img src="images/paris-cite.png" alt="Université Paris Cité" loading="lazy"></div>
+                </div>
+                <div class="proj-txt">
+                  <p class="proj-q">Quelles motivations sous-tendent les choix de mobilité des usagers à Bercy, et comment façonnent-elles des expériences différenciées d'un même territoire ?</p>
+                  <p class="proj-p">Ce diagnostic est né d'une curiosité de terrain face au flux incessant de voyageurs et de valises qui traversent quotidiennement le quartier de Bercy, dans le 12e arrondissement de Paris. La diversité des profils (entre touristes et voyageurs d'affaires), et la manière dont l'expérience diffère selon le mode de transport emprunté ont motivé notre choix de terrain, couvrant la gare routière de Bercy-Seine, la gare SNCF de Bercy Bourgogne-Pays d'Auvergne et la station de la ligne 14 du métro. À travers une enquête de terrain, entretiens semi-directifs et observations, nous interrogeons les motivations qui sous-tendent les choix de mobilité des usagers à Bercy, que ce soit par le train, le bus ou le métro.</p>
+                  <a class="proj-link" href="projet/enquete-bercy.html">Voir le projet en détail →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="end">
-        <span class="stop major"></span>
-        <span class="label">Evan LISON (2026-2027)</span>
+  <section class="sec" id="experiences">
+    <div class="wrap grid">
+      <div class="sec-l"><div class="sticky"><p class="mono">04</p><h2>Expériences</h2></div></div>
+      <div class="sec-r rows">
+          <article class="row" data-reveal>
+            <p class="row-date mono">mai 2023-aujourd'hui, Chessy (77)</p>
+            <div class="row-main"><h3>Disneyland Paris</h3><div class="roles"><div><p class="role-t">Opérateur-Animateur d'Attractions (OAA)</p><p class="role-d">Accueil, exploitation de l'attraction, sécurité et gestion des flux de visiteurs.</p></div><div><p class="role-t">Vendeur en boutiques et kiosques de restauration / Coordinateur caisses</p><p class="role-d">Vente, conseil client et gestion de la caisse. Gestion du coffre et apport en numéraire.</p></div></div></div>
+          </article>
+          <article class="row" data-reveal>
+            <p class="row-date mono">déc. 2022-jan. 2023, Noisy-le-Grand (93)</p>
+            <div class="row-main"><h3>Carrefour Arcades</h3><div class="roles"><div><p class="role-t">Vente en boulangerie-pâtisserie</p><p class="role-d">Préparation, emballage et mise en rayon.</p></div></div></div>
+          </article>
       </div>
-    </div></div>
-  </footer>
-</div>
+    </div>
+  </section>
+
+  <section class="sec" id="benevolat">
+    <div class="wrap grid">
+      <div class="sec-l"><div class="sticky"><p class="mono">05</p><h2>Bénévolat</h2></div></div>
+      <div class="sec-r rows">
+          <article class="row" data-reveal>
+            <p class="row-date mono">oct 2023-aujourd'hui, Chessy (77)</p>
+            <div class="row-main"><h3>Disney VoluntEARS</h3><p class="row-sub muted">Programme de bénévolat des employés de Disneyland Paris, engagés pour des causes de tous horizons.</p><div class="causes"><img src="images/pieces-jaunes.png" alt="Pièces Jaunes" loading="lazy"><img src="images/make-a-wish.png" alt="Make-A-Wish" loading="lazy"><img src="images/secours-pop.png" alt="Secours Populaire" loading="lazy"><img src="images/restos-du-coeur.png" alt="Restos du Cœur" loading="lazy"></div></div>
+          </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec contact" id="contact">
+    <div class="wrap grid">
+      <div class="sec-l"><div class="sticky"><p class="mono">06</p><h2>Contact</h2></div></div>
+      <div class="sec-r">
+        <a class="big-mail" href="mailto:evan.lison@outlook.com" data-reveal><span class="u">evan.lison@outlook.com</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <div class="chips" data-reveal><a class="chip" href="tel:+33771651708">+33 7 71 65 17 08</a><a class="chip" href="curriculum-vitae.pdf" target="_blank" rel="noopener">🔗 CV</a><a class="chip" href="https://www.linkedin.com/in/evanlison" target="_blank" rel="noopener">LinkedIn</a></div>
+        <div class="contact-t" data-reveal><p>Étudiant en Master 2 Territoire, Réseaux, Aménagement, Mobilités, Environnement (TRAME), spécialité Transports et mobilités, une formation commune de l'École d'Urbanisme de Paris et de l'École nationale des ponts et chaussées.</p><p>Je suis à la recherche d'un stage de fin d'études de 4 à 6 mois, disponible entre le 15 mars et le 30 septembre 2027.</p></div>
+        <div class="schools" data-reveal><a href="https://www.eup.fr" target="_blank" rel="noopener"><img src="images/eup-endosse-couleur.png" alt="École d'Urbanisme de Paris"></a><a href="https://ecoledesponts.fr" target="_blank" rel="noopener"><img src="images/enpc-endosse-couleur.png" alt="École nationale des ponts et chaussées" class="big"></a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot mono"><span>Evan LISON (2026-2027)</span><a href="#top">↑</a></div>
+</footer>
 
 <script>
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const page = document.querySelector('.page');
-  const top = document.getElementById('top');
-  const hero = document.querySelector('.hero');
-  const contact = document.getElementById('contact');
+  const bar = document.querySelector('.bar');
+  const prog = document.querySelector('.progress');
 
-  /* ── Navigation interne en douceur ── */
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.getElementById(a.getAttribute('href').slice(1));
-      if (!target) return;
-      e.preventDefault();
-      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-    });
-  });
+  /* Liens internes : défilement doux */
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const t = document.getElementById(a.getAttribute('href').slice(1));
+    if (!t) return;
+    e.preventDefault();
+    t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }));
 
-  /* ── Textes repliables ── */
-  const folds = [...document.querySelectorAll('.fold')];
-  const checkFolds = () => folds.forEach(fold => {
-    if (fold.classList.contains('is-open')) return;
-    const body = fold.querySelector('.fold-body');
-    fold.classList.remove('is-short');
-    fold.classList.toggle('is-short', body.scrollHeight <= body.clientHeight + 10);
-  });
-  folds.forEach(fold => {
-    const body = fold.querySelector('.fold-body');
-    const btn = fold.querySelector('.fold-btn');
-    const label = fold.querySelector('.fold-label');
-    btn.addEventListener('click', () => {
-      const open = !fold.classList.contains('is-open');
-      if (open) {
-        body.style.maxHeight = body.clientHeight + 'px';
-        fold.classList.add('is-open');
-        requestAnimationFrame(() => { body.style.maxHeight = body.scrollHeight + 'px'; });
-      } else {
-        body.style.maxHeight = body.scrollHeight + 'px';
-        void body.offsetHeight;
-        fold.classList.remove('is-open');
-        body.style.maxHeight = '';
-        if (fold.getBoundingClientRect().top < 80) {
-          fold.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
-        }
-      }
-      btn.setAttribute('aria-expanded', String(open));
-      label.textContent = open ? 'Réduire' : 'Lire la suite';
-    });
-    body.addEventListener('transitionend', e => {
-      if (e.propertyName === 'max-height' && fold.classList.contains('is-open')) body.style.maxHeight = 'none';
-    });
-  });
+  /* Heure de Paris en direct */
+  const clock = document.querySelector('.clock span');
+  const fmt = new Intl.DateTimeFormat('fr-FR', { timeZone: 'Europe/Paris', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const tick = () => { clock.textContent = fmt.format(new Date()); };
+  tick(); setInterval(tick, 1000);
 
-  /* ── Projets : défilement horizontal ── */
-  const pTrack = document.getElementById('projectsTrack');
-  const pCards = [...pTrack.querySelectorAll('.project')];
-  const pFill = document.querySelector('.p-progress-fill');
-  const pArrows = [...document.querySelectorAll('.p-arrow')];
-  const pStep = () => pCards[1].offsetLeft - pCards[0].offsetLeft;
-  const syncProjects = () => {
-    const max = pTrack.scrollWidth - pTrack.clientWidth;
-    const x = pTrack.scrollLeft;
-    pFill.style.transform = 'scaleX(' + Math.min(1, (x + pTrack.clientWidth) / pTrack.scrollWidth) + ')';
-    pArrows.forEach(a => { a.disabled = +a.dataset.dir < 0 ? x <= 2 : x >= max - 2; });
-  };
-  const pMove = dir => pTrack.scrollBy({ left: dir * pStep(), behavior: reduce ? 'auto' : 'smooth' });
-  pArrows.forEach(a => a.addEventListener('click', () => pMove(+a.dataset.dir)));
+  /* Titres découpés en lignes masquées */
+  document.querySelectorAll('.sec h2').forEach(h => { h.innerHTML = '<span class="ln"><span>' + h.innerHTML + '</span></span>'; });
 
-  /* Le texte de chaque carte s'arrête au même niveau : le dégradé tombe partout à la même hauteur */
-  const alignCards = () => {
-    const bodies = pCards.map(c => c.querySelector('.p-text .fold-body'));
-    bodies.forEach(b => b.style.removeProperty('--fold-h'));
-    const lh = parseFloat(getComputedStyle(bodies[0]).lineHeight) || 24;
-    const tops = pCards.map((c, i) => bodies[i].getBoundingClientRect().top - c.getBoundingClientRect().top);
-    const bottom = Math.max(...tops) + lh * 4;
-    bodies.forEach((b, i) => b.style.setProperty('--fold-h', Math.round(bottom - tops[i]) + 'px'));
-  };
-  pTrack.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight') { e.preventDefault(); pMove(1); }
-    if (e.key === 'ArrowLeft') { e.preventDefault(); pMove(-1); }
-  });
-  let pTick = false;
-  pTrack.addEventListener('scroll', () => {
-    if (pTick) return;
-    pTick = true;
-    requestAnimationFrame(() => { syncProjects(); pTick = false; });
-  }, { passive: true });
-
-  /* ── Apparitions au défilement ── */
-  const revealEls = document.querySelectorAll('[data-reveal]');
+  /* Apparitions */
+  const els = document.querySelectorAll('[data-reveal], .sec h2');
   if ('IntersectionObserver' in window && !reduce) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    revealEls.forEach(el => io.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add('in'));
+    const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { rootMargin: '0px 0px -6% 0px', threshold: .06 });
+    els.forEach(el => io.observe(el));
+  } else els.forEach(el => el.classList.add('in'));
+
+  /* Texte de présentation repliable */
+  document.querySelectorAll('.fold').forEach(f => {
+    const body = f.querySelector('.fold-body'), btn = f.querySelector('.fold-btn'), lab = btn.querySelector('.lab');
+    btn.addEventListener('click', () => {
+      const open = !f.classList.contains('open');
+      if (open) { body.style.maxHeight = body.clientHeight + 'px'; f.classList.add('open'); requestAnimationFrame(() => body.style.maxHeight = body.scrollHeight + 'px'); }
+      else { body.style.maxHeight = body.scrollHeight + 'px'; void body.offsetHeight; f.classList.remove('open'); body.style.maxHeight = ''; }
+      btn.setAttribute('aria-expanded', open); lab.textContent = open ? 'Réduire' : 'Lire la suite';
+    });
+    body.addEventListener('transitionend', e => { if (e.propertyName === 'max-height' && f.classList.contains('open')) body.style.maxHeight = 'none'; });
+  });
+
+  /* Index des projets : accordéon */
+  document.querySelectorAll('.proj').forEach(p => {
+    const btn = p.querySelector('.proj-head');
+    btn.addEventListener('click', () => {
+      const open = !p.classList.contains('open');
+      p.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+      peek.classList.remove('on');
+    });
+  });
+
+  /* Aperçu de l'image qui suit le curseur */
+  const peek = document.createElement('div');
+  peek.className = 'peek'; peek.setAttribute('aria-hidden', 'true');
+  peek.innerHTML = '<span></span>';
+  document.body.appendChild(peek);
+  const pem = peek.querySelector('span');
+  let tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+  const loop = () => {
+    x += (tx - x) * .16; y += (ty - y) * .16;
+    peek.style.transform = `translate3d(${x + 64}px, ${y - 50}px, 0)`;
+    raf = Math.abs(tx - x) + Math.abs(ty - y) > .3 ? requestAnimationFrame(loop) : 0;
+  };
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce) {
+    document.querySelectorAll('.proj-head').forEach(h => {
+      h.addEventListener('pointerenter', e => {
+        if (h.closest('.proj').classList.contains('open')) return;
+        if (pem.textContent !== h.dataset.emoji) { pem.textContent = h.dataset.emoji; peek.classList.remove('on'); void peek.offsetWidth; } tx = x = e.clientX; ty = y = e.clientY; peek.classList.add('on'); if (!raf) raf = requestAnimationFrame(loop);
+      });
+      h.addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; if (!raf) raf = requestAnimationFrame(loop); });
+      h.addEventListener('pointerleave', () => peek.classList.remove('on'));
+    });
   }
 
-  /* ── La ligne : progression + station courante ── */
-  const track = document.querySelector('.rail-track');
-  const fill = document.querySelector('.rail-fill');
-  const stops = [...document.querySelectorAll('.stop')];
-  const sections = [...document.querySelectorAll('main section[id], footer[id]')];
-  const navLinks = [...document.querySelectorAll('.top-nav a')];
-  let railTop = 0, railLen = 0, ys = [];
-
-  const layout = () => {
-    const pr = page.getBoundingClientRect();
-    const center = el => { const r = el.getBoundingClientRect(); return r.top - pr.top + r.height / 2; };
-    ys = stops.map(center);
-    railTop = ys[0];
-    railLen = ys[ys.length - 1] - railTop;
-    const a = stops[0].getBoundingClientRect();
-    const x = a.left - pr.left + a.width / 2 - 3;
-    [track, fill].forEach(el => {
-      el.style.left = x + 'px';
-      el.style.top = railTop + 'px';
-      el.style.height = railLen + 'px';
-    });
-  };
-
+  /* Barre : progression + section active */
+  const secs = [...document.querySelectorAll('.sec[id]')];
+  const links = [...document.querySelectorAll('.nav a')];
+  let ticking = false;
   const update = () => {
     const max = document.documentElement.scrollHeight - innerHeight;
-    const p = max > 0 ? Math.min(1, scrollY / max) : 0;
-    const y = scrollY + innerHeight * (0.42 + 0.58 * p * p * p);
-    const h = Math.max(0, Math.min(railLen, y - railTop));
-    fill.style.transform = 'scaleY(' + (railLen ? h / railLen : 0) + ')';
-    let current = -1;
-    ys.forEach((sy, i) => { if (sy <= railTop + h + 1) current = i; });
-    stops.forEach((s, i) => {
-      s.classList.toggle('passed', i <= current);
-      s.classList.toggle('current', i === current);
-    });
-    top.classList.toggle('is-solid', scrollY > hero.offsetHeight - 64);
-    top.classList.toggle('is-night', contact.getBoundingClientRect().top <= 56);
-    let active = null;
-    sections.forEach(sec => { if (sec.getBoundingClientRect().top <= innerHeight * 0.45) active = sec.id; });
-    navLinks.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + active));
+    prog.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+    bar.classList.toggle('is-scrolled', scrollY > 8);
+    let on = null;
+    secs.forEach(s => { if (s.getBoundingClientRect().top < innerHeight * .4) on = s.id; });
+    links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + on));
+    ticking = false;
   };
-
-  let ticking = false;
-  const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => { update(); ticking = false; });
-  };
-  const refresh = () => { alignCards(); checkFolds(); layout(); update(); syncProjects(); };
-  addEventListener('scroll', onScroll, { passive: true });
-  addEventListener('resize', () => { checkFolds(); refresh(); });
-  if ('ResizeObserver' in window) new ResizeObserver(refresh).observe(page);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { checkFolds(); refresh(); });
-  addEventListener('load', () => { checkFolds(); refresh(); });
-  checkFolds();
-  refresh();
-
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', update);
+  update();
 })();
 </script>
 </body>
