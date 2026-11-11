@@ -32,7 +32,8 @@
   --ease:cubic-bezier(.2,.8,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box;}
-html{-webkit-text-size-adjust:100%;}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:58px;}
+@media (max-width:860px){html{scroll-snap-type:y proximity;}}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","cv11";}
 img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
@@ -63,7 +64,14 @@ h1,h2,h3{margin:0;font-family:var(--display);text-wrap:balance;}
 @media (max-width:980px){.nav{display:none;}.clock{margin-left:auto;}}
 
 /* Ouverture */
-.hero{padding:clamp(110px,16vh,170px) 0 clamp(40px,7vh,80px);}
+.hero{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:100vh;min-height:100svh;padding:clamp(80px,11vh,120px) 0 clamp(64px,9vh,96px);scroll-snap-align:start;}
+.hero > .wrap{width:100%;}
+.hero h1{margin-top:clamp(20px,4vh,48px) !important;margin-bottom:clamp(22px,4vh,52px) !important;}
+.cue{position:absolute;left:50%;bottom:clamp(18px,3.5vh,32px);display:flex;flex-direction:column;align-items:center;gap:8px;transform:translateX(-50%);color:var(--ink-2);transition:color .2s;}
+.cue:hover{color:var(--accent);}
+.cue i{position:relative;display:block;width:1px;height:34px;background:var(--hair);overflow:hidden;}
+.cue i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--accent);animation:cue 1.8s var(--ease) infinite;}
+@keyframes cue{to{top:100%;}}
 .hero-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;color:var(--ink-2);padding-bottom:18px;border-bottom:1px solid var(--hair);}
 .hero h1{grid-column:1/-1;margin:clamp(28px,5vh,56px) 0 clamp(30px,5vh,60px);font-weight:500;font-size:clamp(58px,12.4vw,182px);line-height:.86;letter-spacing:-.055em;white-space:nowrap;}
 .hero h1 .ln{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .12em .06em;margin:0 -.12em -.06em;}
@@ -77,8 +85,8 @@ h1,h2,h3{margin:0;font-family:var(--display);text-wrap:balance;}
 .prog{margin-top:12px;color:var(--ink-2);max-width:30em;}
 .prog a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .4s var(--ease),color .2s;}
 .prog a:hover{color:var(--accent);background-size:100% 1px;}
-.schools{display:flex;align-items:center;gap:24px;margin-top:26px;}
-.schools img{height:44px;width:auto;}
+.schools{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:26px;}
+.schools img{height:44px;width:auto;max-width:100%;flex:none;object-fit:contain;}
 .schools img.big{height:54px;}
 .status{display:flex;gap:12px;padding:18px 20px;background:var(--paper);border:1px solid var(--hair);border-radius:4px;font:500 clamp(16px,1.35vw,18.5px)/1.4 var(--display);letter-spacing:-.005em;}
 .status .dot{position:relative;flex:none;width:9px;height:9px;margin-top:.45em;border-radius:50%;background:var(--accent);}
@@ -95,15 +103,42 @@ h1,h2,h3{margin:0;font-family:var(--display);text-wrap:balance;}
 .ic{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none;}
 
 /* Sections */
-.sec{padding:clamp(56px,9vh,110px) 0;scroll-margin-top:58px;}
+.sec{display:flex;flex-direction:column;justify-content:center;min-height:100vh;min-height:100svh;padding:calc(58px + clamp(28px,6vh,72px)) 0 clamp(28px,6vh,72px);scroll-snap-align:start;}
+.sec > .wrap{width:100%;}
 .sec-l{grid-column:1/4;}
 .sec-l .sticky{position:sticky;top:96px;}
 .sec-l .mono{color:var(--accent);}
 .sec h2{margin-top:10px;font-weight:500;font-size:clamp(30px,3.4vw,48px);line-height:1;letter-spacing:-.04em;}
 .sec-r{grid-column:4/13;}
 @media (max-width:860px){
+  .sec{min-height:0;padding:calc(58px + 44px) 0 56px;}
+  .hero{padding-top:96px;padding-bottom:88px;}
+  .hero-top{padding-bottom:14px;}
+  .role{font-size:21px;}
+  .prog{font-size:15px;line-height:1.55;}
+  .schools{gap:14px 20px;margin-top:22px;}
+  .schools img{height:36px;}
+  .schools img.big{height:44px;}
+  .status{padding:14px 16px;font-size:15.5px;line-height:1.45;}
+  .mail{margin-top:24px;font-size:19px;}
+  .chips{gap:8px;margin-top:14px;}
+  .chip{padding:6px 12px;font-size:13px;}
+  .sec h2{font-size:32px;}
+  .lead{font-size:16px;line-height:1.7;}
+  .skill{gap:16px;padding:12px 0;font-size:23px;}
+  .kit{margin-top:32px;}
+  .kit p + p{font-size:15.5px;}
+  .row{padding:24px 0;}
+  .row h3{font-size:20px;}
+  .row-sub{font-size:15px;line-height:1.55;}
+  .proj-t{font-size:18px;}
+  .proj-head{padding:18px 0;}
+  .proj-p{font-size:15px;}
+  .contact .big-mail{font-size:clamp(24px,7.4vw,34px);}
+  .contact-t{margin-top:36px;gap:16px;}
+  .contact-t p:last-child{font-size:16.5px;}
   .hero-a,.hero-b,.sec-l,.sec-r{grid-column:1/-1;}
-  .hero-b{margin-top:34px;}
+  .hero-b{margin-top:40px;}
   .sec-l .sticky{position:static;}
   .sec-r{margin-top:28px;}
   .hero h1{white-space:normal;}
@@ -131,6 +166,9 @@ html:not(.js) .fold-btn{display:none;}
 .skill{display:flex;align-items:baseline;gap:20px;padding:14px 0;border-bottom:1px solid var(--hair);font:400 clamp(24px,3vw,42px)/1.15 var(--display);letter-spacing:-.035em;transition:padding .45s var(--ease);}
 .skill .n{font:400 11.5px/1 var(--mono);color:var(--accent);letter-spacing:.02em;min-width:2.2em;}
 @media (hover:hover){.skill:hover{padding-left:14px;}}
+.skill::after{content:attr(data-emoji);align-self:center;font-size:.78em;line-height:1;transform:scale(0) rotate(-25deg);transform-origin:left center;transition:transform .45s cubic-bezier(.34,1.56,.64,1);}
+@media (hover:hover){.skill:hover::after{transform:none;}}
+@media (prefers-reduced-motion:reduce){.skill::after{display:none;}}
 .skill:hover .n{color:var(--accent);}
 .kit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:36px;}
 .kit p.mono{color:var(--accent);}
@@ -149,7 +187,7 @@ html:not(.js) .fold-btn{display:none;}
 .role-t{font-weight:500;}
 .role-d{margin-top:4px;color:var(--ink-2);font-size:15px;}
 .causes{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:16px;}
-.causes img{height:22px;width:auto;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s;}
+.causes img{height:22px;width:auto;max-width:100%;flex:none;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s;}
 .causes img:hover{filter:none;opacity:1;}
 @media (max-width:600px){.row{grid-template-columns:1fr;}.row-date{padding-top:0;}}
 
@@ -183,7 +221,7 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
 .proj-ban img{display:block;width:100%;height:auto;}
 .proj-side{margin-top:18px;}
 .proj-logos{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;}
-.proj-logos img{height:30px;width:auto;}
+.proj-logos img{height:30px;width:auto;max-width:100%;flex:none;object-fit:contain;}
 .proj-txt{padding:18px 0 30px;max-width:46em;}
 .proj-q{font:500 clamp(17px,1.4vw,20px)/1.4 var(--display);letter-spacing:-.01em;}
 .proj-p{margin-top:12px;color:var(--ink-2);}
@@ -212,6 +250,7 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
 .contact-t p:first-child{color:var(--ink-2);}
 .contact-t p:last-child{font:500 18px/1.45 var(--display);letter-spacing:-.01em;}
 .contact .schools{margin-top:40px;}
+footer{scroll-snap-align:end;}
 .foot{display:flex;justify-content:space-between;gap:16px;padding:22px 0 34px;border-top:1px solid var(--hair);color:var(--ink-2);}
 .foot a:hover{color:var(--ink);}
 @media (max-width:700px){.contact-t{grid-template-columns:1fr;}}
@@ -259,9 +298,10 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
         </div>
       </div>
     </div>
+    <a class="cue mono" href="#presentation" aria-label="Défiler vers la présentation"><i></i></a>
   </section>
 
-  <section class="sec" aria-label="Présentation">
+  <section class="sec" id="presentation" aria-label="Présentation">
     <div class="wrap grid">
       <div class="sec-l"><div class="sticky"><p class="mono">00</p></div></div>
       <div class="sec-r">
@@ -277,7 +317,7 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
     <div class="wrap grid">
       <div class="sec-l"><div class="sticky"><p class="mono">01</p><h2>Compétences</h2></div></div>
       <div class="sec-r">
-        <ul class="skills"><li class="skill" data-reveal><span class="n">01</span><span class="w">géomatique</span></li><li class="skill" data-reveal><span class="n">02</span><span class="w">gestion de projet</span></li><li class="skill" data-reveal><span class="n">03</span><span class="w">diagnostic territorial</span></li><li class="skill" data-reveal><span class="n">04</span><span class="w">techniques d'enquête</span></li><li class="skill" data-reveal><span class="n">05</span><span class="w">réglementation d'urbanisme</span></li></ul>
+        <ul class="skills"><li class="skill" data-reveal data-emoji="🌍"><span class="n">01</span><span class="w">géomatique</span></li><li class="skill" data-reveal data-emoji="📋"><span class="n">02</span><span class="w">gestion de projet</span></li><li class="skill" data-reveal data-emoji="🔎"><span class="n">03</span><span class="w">diagnostic territorial</span></li><li class="skill" data-reveal data-emoji="🎙️"><span class="n">04</span><span class="w">techniques d'enquête</span></li><li class="skill" data-reveal data-emoji="📜"><span class="n">05</span><span class="w">réglementation d'urbanisme</span></li></ul>
         <div class="kit" data-reveal>
           <div><p class="mono">Outils</p><p>QGIS, PTV Visum, Magrit, Canva, suite Office</p></div>
           <div><p class="mono">Langues</p><p>Français, Anglais, Espagnol</p></div>
@@ -654,13 +694,77 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
   if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce) {
     document.querySelectorAll('.proj-head').forEach(h => {
       h.addEventListener('pointerenter', e => {
-        if (h.closest('.proj').classList.contains('open')) return;
+        const pr = h.closest('.proj');
+        if (pr && pr.classList.contains('open')) return;
         if (pem.textContent !== h.dataset.emoji) { pem.textContent = h.dataset.emoji; peek.classList.remove('on'); void peek.offsetWidth; } tx = x = e.clientX; ty = y = e.clientY; peek.classList.add('on'); if (!raf) raf = requestAnimationFrame(loop);
       });
       h.addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; if (!raf) raf = requestAnimationFrame(loop); });
       h.addEventListener('pointerleave', () => peek.classList.remove('on'));
     });
   }
+
+  /* Défilement page par page (molette / pavé tactile, ordinateur) */
+  const pages = [document.querySelector('.hero'), ...document.querySelectorAll('.sec')];
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const pagingOn = () => fine && !reduce && innerWidth > 860 && innerHeight >= 620;
+  let anim = 0, busyUntil = 0, lastWheel = 0;
+  const bounds = () => {
+    const end = document.documentElement.scrollHeight;
+    return pages.map((p, i) => {
+      const top = Math.round(p.getBoundingClientRect().top + scrollY);
+      const bottom = i < pages.length - 1 ? Math.round(pages[i + 1].getBoundingClientRect().top + scrollY) : end;
+      return { top, bottom };
+    });
+  };
+  const glide = to => {
+    cancelAnimationFrame(anim);
+    const from = scrollY, d = to - from, t0 = performance.now(), dur = Math.min(950, 520 + Math.abs(d) * .25);
+    const ease = t => 1 - Math.pow(1 - t, 4);
+    busyUntil = Infinity;
+    const step = now => {
+      const t = Math.min(1, (now - t0) / dur);
+      scrollTo(0, from + d * ease(t));
+      if (t < 1) anim = requestAnimationFrame(step); else busyUntil = performance.now() + 380;
+    };
+    anim = requestAnimationFrame(step);
+  };
+  const move = dir => {
+    const b = bounds(), y = scrollY, vh = innerHeight;
+    let i = b.findIndex(x => y >= x.top - 2 && y < x.bottom - 2);
+    if (i < 0) i = y < b[0].top ? 0 : b.length - 1;
+    const cur = b[i];
+    if (dir > 0) {
+      if (y + vh < cur.bottom - 2) return false;
+      if (i < b.length - 1) { glide(b[i + 1].top); return true; }
+      return false;
+    } else {
+      if (y > cur.top + 2) return false;
+      if (i > 0) { const p = b[i - 1]; glide(p.bottom - p.top > vh ? p.bottom - vh : p.top); return true; }
+      return false;
+    }
+  };
+  addEventListener('wheel', e => {
+    if (!pagingOn() || e.ctrlKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    const now = performance.now(), gap = now - lastWheel;
+    lastWheel = now;
+    if (now < busyUntil || (busyUntil !== 0 && gap < 160 && now < busyUntil + 600)) { e.preventDefault(); if (now >= busyUntil) busyUntil = now + 160; return; }
+    const dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+    if (Math.abs(dy) < 2) return;
+    const dir = Math.sign(dy);
+    if (move(dir)) { e.preventDefault(); return; }
+    /* À l'intérieur d'une partie plus haute que l'écran : défilement normal, mais on s'arrête net à sa limite */
+    const b = bounds(), y = scrollY, vh = innerHeight;
+    const cur = b.find(x => y >= x.top - 2 && y < x.bottom - 2);
+    if (!cur) return;
+    if (dir > 0 && y + vh + dy > cur.bottom) { e.preventDefault(); scrollTo(0, cur.bottom - vh); busyUntil = now + 320; }
+    if (dir < 0 && y + dy < cur.top) { e.preventDefault(); scrollTo(0, cur.top); busyUntil = now + 320; }
+  }, { passive: false });
+  addEventListener('keydown', e => {
+    if (!pagingOn() || e.target.closest('input,textarea,select,button,[contenteditable]')) return;
+    const k = e.key;
+    const dir = (k === 'PageDown' || (k === ' ' && !e.shiftKey)) ? 1 : (k === 'PageUp' || (k === ' ' && e.shiftKey)) ? -1 : 0;
+    if (dir && performance.now() >= busyUntil && move(dir)) e.preventDefault();
+  });
 
   /* Barre : progression + section active */
   const secs = [...document.querySelectorAll('.sec[id]')];
