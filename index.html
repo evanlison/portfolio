@@ -48,11 +48,19 @@ h1,h2,h3{margin:0;font-family:var(--display);text-wrap:balance;}
 .bar.is-scrolled{border-color:var(--hair);}
 .bar .wrap{display:flex;align-items:center;gap:24px;height:58px;}
 .brand{font:600 15px/1 var(--display);letter-spacing:-.01em;}
+.nav{display:flex;gap:clamp(12px,1.8vw,26px);margin-left:auto;font-size:13.5px;}
+.nav a{position:relative;display:flex;gap:6px;align-items:baseline;color:var(--ink-2);transition:color .2s;}
+.nav a .mono{font-size:10.5px;}
+.nav a:hover,.nav a.on{color:var(--ink);}
+.nav a .t{display:inline-flex;flex-direction:column;}
+.nav a .t::after{content:attr(data-t);height:0;overflow:hidden;visibility:hidden;font-weight:600;}
+.nav a.on{font-weight:600;}
+.nav a.on .mono{color:var(--accent);}
 .clock{font-size:11.5px;color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums;}
 .clock i{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--accent);vertical-align:1px;animation:blink 2s steps(1) infinite;}
 @keyframes blink{50%{opacity:.25;}}
 .progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--accent);transform-origin:left;transform:scaleX(0);}
-.clock{margin-left:auto;}
+@media (max-width:980px){.nav{display:none;}.clock{margin-left:auto;}}
 
 /* Ouverture */
 .hero{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:100vh;min-height:100svh;padding:clamp(80px,11vh,120px) 0 clamp(64px,9vh,96px);}
@@ -159,6 +167,13 @@ html:not(.js) .fold-btn{display:none;}
 @media (hover:hover){.skill:hover{padding-left:14px;}}
 .skill::after{content:attr(data-emoji);align-self:center;font-size:.78em;line-height:1;transform:scale(0) rotate(-25deg);transform-origin:left center;transition:transform .45s cubic-bezier(.34,1.56,.64,1);}
 @media (hover:hover){.skill:hover::after{transform:none;}}
+.skill.act::after{transform:none;}
+.skill.act{padding-left:12px;}
+.proj-n{position:relative;}
+.proj-n .pn{display:inline-block;transition:opacity .25s,transform .35s var(--ease);}
+.proj-n .pe{position:absolute;left:-1px;top:50%;font-size:21px;line-height:1;letter-spacing:0;transform:translateY(-50%) scale(0) rotate(-25deg);transform-origin:center;transition:transform .45s cubic-bezier(.34,1.56,.64,1);}
+.proj-head.act .pn{opacity:0;transform:scale(.6);}
+.proj-head.act .pe{transform:translateY(-50%) scale(1);}
 @media (prefers-reduced-motion:reduce){.skill::after{display:none;}}
 .skill:hover .n{color:var(--accent);}
 .kit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:36px;}
@@ -247,6 +262,7 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
 .here-menu a small{font:400 11px/1 var(--mono);color:var(--accent);}
 .here-menu a:hover,.here-menu a.on{background:rgba(0,0,0,.05);}
 @media (max-width:860px){.here-btn{height:38px;font-size:13.5px;}}
+@media (min-width:981px){.here{display:none;}}
 /* Aperçu qui suit le curseur */
 .peek{position:fixed;left:0;top:0;z-index:30;display:grid;place-items:center;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:var(--paper);box-shadow:0 0 0 1px var(--hair),0 18px 36px -16px rgba(0,0,0,.35);pointer-events:none;opacity:0;transition:opacity .25s;}
 .peek.on{opacity:1;}
@@ -285,6 +301,7 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
 <header class="bar">
   <div class="wrap">
     <a class="brand" href="#top">Evan LISON</a>
+    <nav class="nav" aria-label="Sections"><a href="#competences"><span class="mono">01</span><span class="t" data-t="Compétences">Compétences</span></a><a href="#formations"><span class="mono">02</span><span class="t" data-t="Formations">Formations</span></a><a href="#projets"><span class="mono">03</span><span class="t" data-t="Projets">Projets</span></a><a href="#experiences"><span class="mono">04</span><span class="t" data-t="Expériences">Expériences</span></a><a href="#benevolat"><span class="mono">05</span><span class="t" data-t="Bénévolat">Bénévolat</span></a><a href="#contact"><span class="mono">06</span><span class="t" data-t="Contact">Contact</span></a></nav>
     <p class="clock mono" aria-label="Heure à Paris"><i></i><span>--:--:--</span></p>
   </div>
   <div class="progress" aria-hidden="true"></div>
@@ -719,6 +736,32 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
     });
   }
 
+  /* Sur mobile, pas de survol : l'émoji apparaît sur l'élément placé au centre de l'écran */
+  if (matchMedia('(hover: none), (pointer: coarse)').matches && !reduce) {
+    document.querySelectorAll('.proj-head').forEach(h => {
+      const n = h.querySelector('.proj-n');
+      n.innerHTML = '<span class="pn">' + n.textContent + '</span><span class="pe" aria-hidden="true">' + h.dataset.emoji + '</span>';
+    });
+    const targets = [...document.querySelectorAll('.skill, .proj-head')];
+    let act = null, tk = false;
+    const pick = () => {
+      tk = false;
+      const mid = innerHeight * .5;
+      let best = null, bd = innerHeight * .2;
+      targets.forEach(t => {
+        if (t.classList.contains('proj-head') && t.closest('.proj').classList.contains('open')) return;
+        if (t.classList.contains('skill') && !t.classList.contains('in')) return;
+        const r = t.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - mid);
+        if (d < bd) { bd = d; best = t; }
+      });
+      if (best !== act) { if (act) act.classList.remove('act'); if (best) best.classList.add('act'); act = best; }
+    };
+    const ask = () => { if (!tk) { tk = true; requestAnimationFrame(pick); } };
+    addEventListener('scroll', ask, { passive: true });
+    document.querySelectorAll('.proj-head').forEach(h => h.addEventListener('click', () => setTimeout(ask, 60)));
+    setInterval(ask, 600);
+  }
+
   /* Bouton « partie suivante » : une partie à la fois, sans toucher à la molette */
   const nextBtn = document.querySelector('.next');
   const pages = [document.querySelector('.hero'), ...document.querySelectorAll('.sec')];
@@ -768,6 +811,7 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
 
   /* Barre : progression + section active */
   const secs = [...document.querySelectorAll('.sec[id]')];
+  const links = [...document.querySelectorAll('.nav a')];
   let ticking = false;
   const update = () => {
     const max = document.documentElement.scrollHeight - innerHeight;
@@ -775,6 +819,7 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
     bar.classList.toggle('is-scrolled', scrollY > 8);
     let on = null;
     secs.forEach(s => { if (s.getBoundingClientRect().top < innerHeight * .4) on = s.id; });
+    links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + on));
     setHere(on);
     ticking = false;
   };
