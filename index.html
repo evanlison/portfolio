@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -102,7 +103,7 @@ h1,h2,h3{margin:0;font-family:var(--display);text-wrap:balance;}
 .ic{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none;}
 
 /* Sections */
-.sec{display:flex;flex-direction:column;justify-content:center;min-height:100vh;min-height:100svh;padding:calc(58px + clamp(28px,6vh,72px)) 0 clamp(28px,6vh,72px);}
+.sec{display:flex;flex-direction:column;justify-content:flex-start;min-height:0;padding:calc(58px + clamp(20px,3.5vh,36px)) 0 clamp(20px,3.5vh,36px);}
 .sec > .wrap{width:100%;}
 .sec-l{grid-column:1/4;}
 .sec-l .sticky{position:sticky;top:96px;}
@@ -110,7 +111,7 @@ h1,h2,h3{margin:0;font-family:var(--display);text-wrap:balance;}
 .sec h2{margin-top:10px;font-weight:500;font-size:clamp(30px,3.4vw,48px);line-height:1;letter-spacing:-.04em;}
 .sec-r{grid-column:4/13;}
 @media (max-width:860px){
-  .sec{min-height:0;padding:calc(58px + 44px) 0 56px;}
+  .sec{min-height:0;padding:calc(58px + 28px) 0 28px;}
   .hero{padding-top:96px;padding-bottom:88px;}
   .hero-top{padding-bottom:14px;}
   .role{font-size:21px;}
@@ -325,7 +326,6 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
         </div>
       </div>
     </div>
-    <a class="cue mono" href="#presentation" aria-label="Défiler vers la présentation"><i></i></a>
   </section>
 
   <section class="sec" id="presentation" aria-label="Présentation">
@@ -830,3 +830,4 @@ html:not(.js) .proj-in{opacity:1;transform:none;}
 </script>
 </body>
 </html>
+```
